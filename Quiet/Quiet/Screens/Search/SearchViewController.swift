@@ -26,7 +26,7 @@ final class SearchViewController: UIViewController {
         button.addAction(buttonAction, for: .touchUpInside)
         return button
     }()
-    private let searchTextField: UITextField = {
+    private lazy var searchTextField: UITextField = {
         let textfield = UITextField(frame: CGRect(origin: .zero,
                                                   size: CGSize(width: Size.textFieldWidth, height: Size.textFieldHeight)))
         textfield.placeholder = "지역구 혹은 동을 입력해주세요"
@@ -36,6 +36,7 @@ final class SearchViewController: UIViewController {
         textfield.autocorrectionType = .no
         textfield.autocapitalizationType = .none
         textfield.returnKeyType = .search
+        textfield.delegate = self
         return textfield
     }()
     private let separatorView: UIView = {
@@ -107,7 +108,8 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RecentKeywordTableViewCell = tableView.dequeueReusableCell(withType: RecentKeywordTableViewCell.self, for: indexPath)
-        cell.setKeyword(to: UserDefaultStorage.keywords[indexPath.row])
+        let keywords = Array(UserDefaultStorage.keywords.reversed())
+        cell.setKeyword(to: keywords[indexPath.row])
         return cell
     }
 }
@@ -125,5 +127,17 @@ extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return Size.headerHeight
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension SearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let keyword = textField.text else { return false }
+        
+        UserDefaultHandler.setKeywords(keyword: keyword)
+        searchTableView.reloadData()
+        
+        return true
     }
 }
