@@ -102,11 +102,12 @@ final class SearchViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return UserDefaultStorage.keywords.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: RecentKeywordTableViewCell.className, for: indexPath)
+        let cell: RecentKeywordTableViewCell = tableView.dequeueReusableCell(withType: RecentKeywordTableViewCell.self, for: indexPath)
+        cell.setKeyword(to: UserDefaultStorage.keywords[indexPath.row])
         return cell
     }
 }

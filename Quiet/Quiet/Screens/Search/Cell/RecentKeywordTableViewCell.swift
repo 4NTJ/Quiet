@@ -48,4 +48,8 @@ final class RecentKeywordTableViewCell: UITableViewCell {
                                 centerY: safeAreaLayoutGuide.centerYAnchor,
                                 padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 18))
     }
+    
+    func setKeyword(to keyword: String) {
+        keywordLabel.text = keyword
+    }
 }
