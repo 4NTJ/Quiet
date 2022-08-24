@@ -110,6 +110,10 @@ extension SearchViewController: UITableViewDataSource {
         let cell: RecentKeywordTableViewCell = tableView.dequeueReusableCell(withType: RecentKeywordTableViewCell.self, for: indexPath)
         let keywords = Array(UserDefaultStorage.keywords.reversed())
         cell.setKeyword(to: keywords[indexPath.row])
+        cell.didTappedRemove = { [weak self] keyword in
+            UserDefaultHandler.clearKeyword(keyword: keyword)
+            self?.searchTableView.reloadData()
+        }
         return cell
     }
 }

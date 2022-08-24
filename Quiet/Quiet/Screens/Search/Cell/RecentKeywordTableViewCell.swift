@@ -9,6 +9,8 @@ import UIKit
 
 final class RecentKeywordTableViewCell: UITableViewCell {
     
+    var didTappedRemove: ((String) -> ())?
+    
     // MARK: - properties
     
     private let keywordLabel: UILabel = {
@@ -29,6 +31,7 @@ final class RecentKeywordTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupLayout()
+        setupButtonAction()
     }
     
     required init?(coder: NSCoder) {
@@ -38,15 +41,23 @@ final class RecentKeywordTableViewCell: UITableViewCell {
     // MARK: - func
     
     private func setupLayout() {
-        addSubview(keywordLabel)
+        contentView.addSubview(keywordLabel)
         keywordLabel.constraint(leading: safeAreaLayoutGuide.leadingAnchor,
                                 centerY: safeAreaLayoutGuide.centerYAnchor,
                                 padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0))
         
-        addSubview(removeButton)
+        contentView.addSubview(removeButton)
         removeButton.constraint(trailing: safeAreaLayoutGuide.trailingAnchor,
                                 centerY: safeAreaLayoutGuide.centerYAnchor,
                                 padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 18))
+    }
+    
+    private func setupButtonAction() {
+        let removeAction = UIAction { [weak self] _ in
+            guard let keyword = self?.keywordLabel.text else { return }
+            self?.didTappedRemove?(keyword)
+        }
+        removeButton.addAction(removeAction, for: .touchUpInside)
     }
     
     func setKeyword(to keyword: String) {
