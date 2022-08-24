@@ -36,10 +36,29 @@ final class SearchViewController: UIViewController {
         textfield.returnKeyType = .search
         return textfield
     }()
+    private let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray5
+        return view
+    }()
+    
+    // MARK: - life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLayout()
         setupNavigationBar()
+    }
+    
+    // MARK: - func
+    
+    private func setupLayout() {
+        view.addSubview(separatorView)
+        separatorView.constraint(separatorView.heightAnchor, constant: 5)
+        separatorView.constraint(top: view.safeAreaLayoutGuide.topAnchor,
+                                 leading: view.leadingAnchor,
+                                 trailing: view.trailingAnchor,
+                                 padding: .zero)
     }
     
     private func setupNavigationBar() {
