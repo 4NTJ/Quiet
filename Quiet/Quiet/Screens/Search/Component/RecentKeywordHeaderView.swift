@@ -9,6 +9,8 @@ import UIKit
 
 final class RecentKeywordHeaderView: UIView {
     
+    var didTappedClearAll: (() -> ())?
+    
     // MARK: - properties
     
     private let titleLabel: UILabel = {
@@ -37,6 +39,7 @@ final class RecentKeywordHeaderView: UIView {
         super.init(frame: frame)
         setupLayout()
         configureUI()
+        setupButtonAction()
     }
     
     required init?(coder: NSCoder) {
@@ -66,5 +69,12 @@ final class RecentKeywordHeaderView: UIView {
     
     private func configureUI() {
         backgroundColor = .white
+    }
+    
+    private func setupButtonAction() {
+        let removeAction = UIAction { [weak self] _ in
+            self?.didTappedClearAll?()
+        }
+        removeButton.addAction(removeAction, for: .touchUpInside)
     }
 }

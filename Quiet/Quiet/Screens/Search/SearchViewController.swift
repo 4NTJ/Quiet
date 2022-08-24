@@ -126,6 +126,10 @@ extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = RecentKeywordHeaderView()
+        headerView.didTappedClearAll = { [weak self] in
+            UserDefaultHandler.clearAllKeywords()
+            self?.searchTableView.reloadData()
+        }
         return headerView
     }
     
