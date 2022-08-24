@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		212C1DF928B675B900728F24 /* NoiseLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1DF828B675B900728F24 /* NoiseLineChartView.swift */; };
+		212C1DFC28B6760900728F24 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 212C1DFB28B6760900728F24 /* Charts */; };
+		212C1E0028B6767F00728F24 /* NoiseLineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1DFF28B6767F00728F24 /* NoiseLineChartViewController.swift */; };
+		212C1E0228B6774B00728F24 /* NoiseBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1E0128B6774B00728F24 /* NoiseBarChartView.swift */; };
+		212C1E0428B6779300728F24 /* NoiseBarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1E0328B6779300728F24 /* NoiseBarChartViewController.swift */; };
+		212C1E0628B680D600728F24 /* UIView+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1E0528B680D600728F24 /* UIView+Preview.swift */; };
+		212C1E0828B6813600728F24 /* UIViewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1E0728B6813600728F24 /* UIViewController+Preview.swift */; };
 		3558D91728B71541000D1925 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D91628B71541000D1925 /* CircleButton.swift */; };
 		3558D91928B74030000D1925 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D91828B74030000D1925 /* SearchBarView.swift */; };
 		B51F19ED28B5276200B82CAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F19EC28B5276200B82CAD /* AppDelegate.swift */; };
@@ -31,6 +38,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		212C1DF828B675B900728F24 /* NoiseLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseLineChartView.swift; sourceTree = "<group>"; };
+		212C1DFF28B6767F00728F24 /* NoiseLineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseLineChartViewController.swift; sourceTree = "<group>"; };
+		212C1E0128B6774B00728F24 /* NoiseBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseBarChartView.swift; sourceTree = "<group>"; };
+		212C1E0328B6779300728F24 /* NoiseBarChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseBarChartViewController.swift; sourceTree = "<group>"; };
+		212C1E0528B680D600728F24 /* UIView+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Preview.swift"; sourceTree = "<group>"; };
+		212C1E0728B6813600728F24 /* UIViewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Preview.swift"; sourceTree = "<group>"; };
 		3558D91628B71541000D1925 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		3558D91828B74030000D1925 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		B51F19E928B5276200B82CAD /* Quiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				212C1DFC28B6760900728F24 /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,7 +171,9 @@
 			isa = PBXGroup;
 			children = (
 				B51F1A1628B5294F00B82CAD /* UIView+Constraints.swift */,
+				212C1E0528B680D600728F24 /* UIView+Preview.swift */,
 				B51F1A1828B5296400B82CAD /* UIViewController+Alert.swift */,
+				212C1E0728B6813600728F24 /* UIViewController+Preview.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -194,6 +210,10 @@
 			isa = PBXGroup;
 			children = (
 				B51F1A0F28B5283D00B82CAD /* DetailViewController.swift */,
+				212C1E0128B6774B00728F24 /* NoiseBarChartView.swift */,
+				212C1E0328B6779300728F24 /* NoiseBarChartViewController.swift */,
+				212C1DF828B675B900728F24 /* NoiseLineChartView.swift */,
+				212C1DFF28B6767F00728F24 /* NoiseLineChartViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -247,6 +267,9 @@
 			dependencies = (
 			);
 			name = Quiet;
+			packageProductDependencies = (
+				212C1DFB28B6760900728F24 /* Charts */,
+			);
 			productName = Quiet;
 			productReference = B51F19E928B5276200B82CAD /* Quiet.app */;
 			productType = "com.apple.product-type.application";
@@ -275,6 +298,9 @@
 				Base,
 			);
 			mainGroup = B51F19E028B5276200B82CAD;
+			packageReferences = (
+				212C1DFA28B6760900728F24 /* XCRemoteSwiftPackageReference "Charts" */,
+			);
 			productRefGroup = B51F19EA28B5276200B82CAD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -302,7 +328,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				212C1E0028B6767F00728F24 /* NoiseLineChartViewController.swift in Sources */,
 				B51F1A1F28B5299B00B82CAD /* UIViewController+Extension.swift in Sources */,
+				212C1E0428B6779300728F24 /* NoiseBarChartViewController.swift in Sources */,
+				212C1E0828B6813600728F24 /* UIViewController+Preview.swift in Sources */,
+				212C1E0228B6774B00728F24 /* NoiseBarChartView.swift in Sources */,
 				B51F1A1928B5296400B82CAD /* UIViewController+Alert.swift in Sources */,
 				B51F1A6E28B6739900B82CAD /* RecentKeywordHeaderView.swift in Sources */,
 				B51F19ED28B5276200B82CAD /* AppDelegate.swift in Sources */,
@@ -310,7 +340,9 @@
 				B51F1A1328B5292200B82CAD /* ImageLiteral.swift in Sources */,
 				B51F1A1528B5293600B82CAD /* StringLiteral.swift in Sources */,
 				B51F1A1D28B5298B00B82CAD /* NSObject+Extension.swift in Sources */,
+				212C1DF928B675B900728F24 /* NoiseLineChartView.swift in Sources */,
 				B51F1A0B28B5282300B82CAD /* MapViewController.swift in Sources */,
+				212C1E0628B680D600728F24 /* UIView+Preview.swift in Sources */,
 				3558D91728B71541000D1925 /* CircleButton.swift in Sources */,
 				B51F1A1028B5283D00B82CAD /* DetailViewController.swift in Sources */,
 				B51F1A0E28B5283400B82CAD /* SearchViewController.swift in Sources */,
@@ -543,6 +575,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		212C1DFA28B6760900728F24 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		212C1DFB28B6760900728F24 /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 212C1DFA28B6760900728F24 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B51F19E128B5276200B82CAD /* Project object */;
 }
