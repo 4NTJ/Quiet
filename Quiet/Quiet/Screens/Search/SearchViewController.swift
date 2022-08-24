@@ -54,11 +54,14 @@ final class SearchViewController: UIViewController {
         return tableView
     }()
     
+    private var tableViewBottomConstraint: NSLayoutConstraint?
+    
     // MARK: - life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        setupNotificationCenter()
         setupNavigationBar()
     }
     
@@ -73,11 +76,19 @@ final class SearchViewController: UIViewController {
                                  padding: .zero)
         
         view.addSubview(searchTableView)
-        searchTableView.constraint(top: separatorView.bottomAnchor,
+        let constraint = searchTableView.constraint(top: separatorView.bottomAnchor,
                                    leading: view.leadingAnchor,
                                    bottom: view.bottomAnchor,
                                    trailing: view.trailingAnchor,
                                    padding: .zero)
+        tableViewBottomConstraint = constraint[.bottom]
+    }
+    
+    private func setupNotificationCenter() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow(_:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
     }
     
     private func setupNavigationBar() {
@@ -97,6 +108,17 @@ final class SearchViewController: UIViewController {
         offsetView.bounds = offsetView.bounds.offsetBy(dx: offsetX, dy: offsetY)
         offsetView.addSubview(button)
         return offsetView
+    }
+    
+    // MARK: - selector
+    
+    @objc
+    private func keyboardWillShow(_ notification:NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            self.tableViewBottomConstraint?.constant = -keyboardHeight
+        }
     }
 }
 
@@ -140,9 +162,19 @@ extension SearchViewController: UITableViewDelegate {
 
 // MARK: - UITextFieldDelegate
 extension SearchViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.becomeFirstResponder()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+        self.tableViewBottomConstraint?.constant = 0
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let keyword = textField.text else { return false }
+        textField.resignFirstResponder()
         
+        guard let keyword = textField.text else { return false }
         UserDefaultHandler.setKeywords(keyword: keyword)
         searchTableView.reloadData()
         

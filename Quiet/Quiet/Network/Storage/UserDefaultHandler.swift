@@ -13,10 +13,15 @@ struct UserDefaultHandler {
     }
     
     static func setKeywords(keyword: String) {
+        guard !keyword.isEmpty else { return }
         var keywords: [String] = UserDefaultStorage.keywords
         
         if let index = keywords.firstIndex(of: keyword) {
             keywords.remove(at: index)
+        }
+        
+        if keywords.count > 9 {
+            keywords.removeFirst()
         }
         
         keywords.append(keyword)
