@@ -12,6 +12,8 @@ final class SearchViewController: UIViewController {
     private enum Size {
         static let textFieldWidth = UIScreen.main.bounds.size.width - 64
         static let textFieldHeight = 44.0
+        static let headerHeight = 66.0
+        static let cellHeight = 56.0
     }
     
     // MARK: - properties
@@ -43,6 +45,7 @@ final class SearchViewController: UIViewController {
     }()
     private lazy var searchTableView: UITableView = {
         let tableView = UITableView()
+        tableView.separatorInset = .zero
         tableView.sectionHeaderTopPadding = 0
         tableView.delegate = self
         tableView.dataSource = self
@@ -110,12 +113,16 @@ extension SearchViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Size.cellHeight
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = RecentKeywordHeaderView()
         return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 66
+        return Size.headerHeight
     }
 }
