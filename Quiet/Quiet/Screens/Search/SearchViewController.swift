@@ -43,6 +43,7 @@ final class SearchViewController: UIViewController {
     }()
     private lazy var searchTableView: UITableView = {
         let tableView = UITableView()
+        tableView.sectionHeaderTopPadding = 0
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(cell: RecentKeywordTableViewCell.self)
@@ -109,5 +110,12 @@ extension SearchViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = RecentKeywordHeaderView()
+        return headerView
+    }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 66
+    }
 }
