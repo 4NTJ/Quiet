@@ -41,6 +41,13 @@ final class SearchViewController: UIViewController {
         view.backgroundColor = .systemGray5
         return view
     }()
+    private lazy var searchTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(cell: RecentKeywordTableViewCell.self)
+        return tableView
+    }()
     
     // MARK: - life cycle
 
@@ -59,6 +66,13 @@ final class SearchViewController: UIViewController {
                                  leading: view.leadingAnchor,
                                  trailing: view.trailingAnchor,
                                  padding: .zero)
+        
+        view.addSubview(searchTableView)
+        searchTableView.constraint(top: separatorView.bottomAnchor,
+                                   leading: view.leadingAnchor,
+                                   bottom: view.bottomAnchor,
+                                   trailing: view.trailingAnchor,
+                                   padding: .zero)
     }
     
     private func setupNavigationBar() {
@@ -79,4 +93,21 @@ final class SearchViewController: UIViewController {
         offsetView.addSubview(button)
         return offsetView
     }
+}
+
+// MARK: - UITableViewDataSource
+extension SearchViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: RecentKeywordTableViewCell.className, for: indexPath)
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension SearchViewController: UITableViewDelegate {
+    
 }
