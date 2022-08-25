@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension UIView {
-    public struct UIViewPreview<View: UIView>: UIViewRepresentable {
+    internal struct UIViewPreview<View: UIView>: UIViewRepresentable {
         public let view: View
         public init(_ builder: @autoclosure () -> View) {
             view = builder()

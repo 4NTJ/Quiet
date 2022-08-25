@@ -25,7 +25,6 @@ class NoiseLineChartViewController: UIViewController {
     
     private func setupLineChartView() {
         self.lineChartView = NoiseLineChartView()
-        self.lineChartView.translatesAutoresizingMaskIntoConstraints = false
         self.lineChartView.setupLineChart(dataPoints: hours, values: dbValues)
         self.lineChartView.setupAverageLineChart(dataPoints: hours, values: dbValues)
         self.view.addSubview(self.lineChartView)
