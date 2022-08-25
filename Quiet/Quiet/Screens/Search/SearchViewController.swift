@@ -11,6 +11,10 @@ import UIKit
 
 final class SearchViewController: UIViewController {
     
+    private enum SearchType {
+        case recentSearch, search, noResult
+    }
+    
     private enum Size {
         static let textFieldWidth = UIScreen.main.bounds.size.width - 64
         static let textFieldHeight = 44.0
@@ -53,12 +57,14 @@ final class SearchViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(cell: RecentKeywordTableViewCell.self)
+        tableView.register(cell: SearchTableViewCell.self)
         return tableView
     }()
     
     private var tableViewBottomConstraint: NSLayoutConstraint?
     private var searchCompleter = MKLocalSearchCompleter()
     private var searchResults: [MKLocalSearchCompletion] = []
+    private var searchType: SearchType = .recentSearch
     
     // MARK: - life cycle
     
@@ -135,20 +141,30 @@ final class SearchViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return UserDefaultStorage.keywords.count
-        return searchResults.count
+        switch searchType {
+        case .recentSearch:
+            return UserDefaultStorage.keywords.count
+        default:
+            return searchResults.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: RecentKeywordTableViewCell = tableView.dequeueReusableCell(withType: RecentKeywordTableViewCell.self, for: indexPath)
-//        let keywords = Array(UserDefaultStorage.keywords.reversed())
-//        cell.setKeyword(to: keywords[indexPath.row])
-//        cell.didTappedRemove = { [weak self] keyword in
-//            UserDefaultHandler.clearKeyword(keyword: keyword)
-//            self?.searchTableView.reloadData()
-//        }
-        cell.setKeyword(to: searchResults[indexPath.row].title)
-        return cell
+        switch searchType {
+        case .recentSearch:
+            let cell: RecentKeywordTableViewCell = tableView.dequeueReusableCell(withType: RecentKeywordTableViewCell.self, for: indexPath)
+            let keywords = Array(UserDefaultStorage.keywords.reversed())
+            cell.setKeyword(to: keywords[indexPath.row])
+            cell.didTappedRemove = { [weak self] keyword in
+                UserDefaultHandler.clearKeyword(keyword: keyword)
+                self?.searchTableView.reloadData()
+            }
+            return cell
+        default:
+            let cell: SearchTableViewCell = tableView.dequeueReusableCell(withType: SearchTableViewCell.self, for: indexPath)
+            cell.setKeyword(to: searchResults[indexPath.row].title)
+            return cell
+        }
     }
 }
 
@@ -159,16 +175,26 @@ extension SearchViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = RecentKeywordHeaderView()
-        headerView.didTappedClearAll = { [weak self] in
-            UserDefaultHandler.clearAllKeywords()
-            self?.searchTableView.reloadData()
+        switch searchType {
+        case .recentSearch:
+            let headerView = RecentKeywordHeaderView()
+            headerView.didTappedClearAll = { [weak self] in
+                UserDefaultHandler.clearAllKeywords()
+                self?.searchTableView.reloadData()
+            }
+            return headerView
+        default:
+            return nil
         }
-        return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return Size.headerHeight
+        switch searchType {
+        case .recentSearch:
+            return Size.headerHeight
+        default:
+            return 0
+        }
     }
 }
 
@@ -194,9 +220,14 @@ extension SearchViewController: UITextFieldDelegate {
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        if let searchText = textField.text {
-            searchCompleter.queryFragment = searchText
+        guard let searchText = textField.text, searchText != "" else {
+            searchType = .recentSearch
+            searchTableView.reloadData()
+            return
         }
+        
+        searchType = .search
+        searchCompleter.queryFragment = searchText
     }
 }
 
