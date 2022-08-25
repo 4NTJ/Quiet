@@ -5,8 +5,8 @@
 //  Created by SHIN YOON AH on 2022/08/24.
 //
 
-import UIKit
 import MapKit
+import UIKit
 
 class MapViewController: UIViewController {
     // MARK: - Properties
@@ -66,7 +66,7 @@ class MapViewController: UIViewController {
     // MARK: - Func
     
     
-    func setupLayout() {
+    private func setupLayout() {
         view.addSubview(mapView)
         mapView.constraint(to: view)
         
@@ -108,19 +108,19 @@ class MapViewController: UIViewController {
                                                         right: 20))
     }
     
-    func getLocationUsagePermission() {
+    private func getLocationUsagePermission() {
         locationManager.requestWhenInUseAuthorization()
     }
     
-    func btnAddTargets() {
+    private func btnAddTargets() {
         manualButton.addTarget(self, action: #selector(manualButtonTapped), for: .touchUpInside)
         locationButton.addTarget(self, action: #selector(locationButtonTapped), for: .touchUpInside)
     }
     
-    @objc func manualButtonTapped() {
+    @objc private func manualButtonTapped() {
     }
     
-    @objc func locationButtonTapped() {
+    @objc private func locationButtonTapped() {
     }
     
 }
