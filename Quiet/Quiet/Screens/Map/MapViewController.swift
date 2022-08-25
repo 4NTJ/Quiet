@@ -29,7 +29,7 @@ class MapViewController: UIViewController {
         return view
     }()
     
-    private var locationManager: CLLocationManager = {
+    private let locationManager: CLLocationManager = {
         let manager = CLLocationManager()
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.startUpdatingLocation()
