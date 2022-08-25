@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3558D91728B71541000D1925 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D91628B71541000D1925 /* CircleButton.swift */; };
 		B51F19ED28B5276200B82CAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F19EC28B5276200B82CAD /* AppDelegate.swift */; };
 		B51F19EF28B5276200B82CAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F19EE28B5276200B82CAD /* SceneDelegate.swift */; };
 		B51F19F428B5276200B82CAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B51F19F228B5276200B82CAD /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3558D91628B71541000D1925 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		B51F19E928B5276200B82CAD /* Quiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B51F19EC28B5276200B82CAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B51F19EE28B5276200B82CAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3558D91528B7151B000D1925 /* UIComponent */ = {
+			isa = PBXGroup;
+			children = (
+				3558D91628B71541000D1925 /* CircleButton.swift */,
+			);
+			path = UIComponent;
+			sourceTree = "<group>";
+		};
 		B51F19E028B5276200B82CAD = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +104,7 @@
 		B51F1A0128B5276D00B82CAD /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				3558D91528B7151B000D1925 /* UIComponent */,
 				B51F1A1128B5291700B82CAD /* Literals */,
 				B51F1A0528B5279A00B82CAD /* Utils */,
 				B51F1A0428B5278600B82CAD /* Extension */,
@@ -263,6 +274,7 @@
 				B51F1A1528B5293600B82CAD /* StringLiteral.swift in Sources */,
 				B51F1A1D28B5298B00B82CAD /* NSObject+Extension.swift in Sources */,
 				B51F1A0B28B5282300B82CAD /* MapViewController.swift in Sources */,
+				3558D91728B71541000D1925 /* CircleButton.swift in Sources */,
 				B51F1A1028B5283D00B82CAD /* DetailViewController.swift in Sources */,
 				B51F1A0E28B5283400B82CAD /* SearchViewController.swift in Sources */,
 				B51F19EF28B5276200B82CAD /* SceneDelegate.swift in Sources */,

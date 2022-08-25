@@ -30,6 +30,15 @@ class MapViewController: UIViewController {
        }()
     
     
+    private let manualButton: UIButton = {
+        let button = CircleButton(buttonImage: "info.circle.fill")
+        return button
+    }()
+    private let locationButton: UIButton = {
+        let button = CircleButton(buttonImage: "location")
+        return button
+    }()
+    
    
     // MARK: - View Life Cycle
     
@@ -39,7 +48,8 @@ class MapViewController: UIViewController {
         setupLayout()
         getLocationUsagePermission()
         locationManager.delegate = self
-       
+        manualButton.addTarget(self, action: #selector(manualButtonTapped), for: .touchUpInside)
+        locationButton.addTarget(self, action: #selector(locationButtonTapped), for: .touchUpInside)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -55,14 +65,42 @@ class MapViewController: UIViewController {
         mapView.constraint(to: view)
         
         
-      
+        mapView.addSubview(manualButton)
+        manualButton.constraint(manualButton.widthAnchor,
+                                  constant: 50)
+        manualButton.constraint(manualButton.heightAnchor,
+                                  constant: 50)
+        manualButton.constraint(bottom: mapView.bottomAnchor,
+                                trailing: mapView.trailingAnchor,
+                                padding: UIEdgeInsets(top: 0,
+                                                      left: 0,
+                                                      bottom: 20,
+                                                      right: 20))
+        
+        mapView.addSubview(locationButton)
+        locationButton.constraint(locationButton.widthAnchor,
+                                  constant: 50)
+        locationButton.constraint(locationButton.heightAnchor,
+                                  constant: 50)
+        locationButton.constraint(bottom: manualButton.topAnchor,
+                                  trailing: mapView.trailingAnchor,
+                                  padding: UIEdgeInsets(top: 0,
+                                                        left: 0,
+                                                        bottom: 16,
+                                                        right: 20))
            }
     
     func getLocationUsagePermission() {
            locationManager.requestWhenInUseAuthorization()
        }
     
-  
+    @objc func manualButtonTapped(){
+    
+    }
+    @objc func locationButtonTapped(){
+
+
+    }
 
 }
 
