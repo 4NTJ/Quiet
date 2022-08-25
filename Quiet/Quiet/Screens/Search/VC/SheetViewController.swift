@@ -54,7 +54,11 @@ class SheetViewController<Content: UIViewController, BottomSheet: UIViewControll
         self.addChild(contentViewController)
         self.view.addSubview(contentViewController.view)
         
-        contentViewController.view.constraint(to: view)
+        contentViewController.view.constraint(top: view.safeAreaLayoutGuide.topAnchor,
+                                              leading: view.leadingAnchor,
+                                              bottom: view.bottomAnchor,
+                                              trailing: view.trailingAnchor,
+                                              padding: .zero)
         contentViewController.didMove(toParent: self)
         
         self.addChild(bottomSheetViewController)
@@ -67,6 +71,8 @@ class SheetViewController<Content: UIViewController, BottomSheet: UIViewControll
     }
     
     override func configureUI() {
+        super.configureUI()
+        
         bottomSheetViewController.view.addGestureRecognizer(panGesture)
     }
     

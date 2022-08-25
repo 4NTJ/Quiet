@@ -188,11 +188,11 @@
 		B51F1A0828B527FB00B82CAD /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				B51F1A8428B7971100B82CAD /* VC */,
 				B51F1A6C28B6738000B82CAD /* Component */,
 				B51F1A6928B6713000B82CAD /* Cell */,
 				B51F1A0D28B5283400B82CAD /* SearchViewController.swift */,
 				B51F1A7728B756C300B82CAD /* SearchResultViewController.swift */,
-				B51F1A7E28B781C700B82CAD /* SheetViewController.swift */,
 				B51F1A8028B78EE400B82CAD /* SearchMapViewController.swift */,
 				B51F1A8228B78F4A00B82CAD /* SheetContainerViewController.swift */,
 			);
@@ -264,6 +264,14 @@
 				B51F1A7A28B7583800B82CAD /* BaseViewController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		B51F1A8428B7971100B82CAD /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				B51F1A7E28B781C700B82CAD /* SheetViewController.swift */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
