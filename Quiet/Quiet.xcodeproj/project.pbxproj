@@ -29,6 +29,7 @@
 		B51F1A7228B681EA00B82CAD /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7128B681EA00B82CAD /* UserDefaultStorage.swift */; };
 		B51F1A7428B681F300B82CAD /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7328B681F300B82CAD /* UserDefaultHandler.swift */; };
 		B51F1A7628B73B5400B82CAD /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7528B73B5400B82CAD /* SearchTableViewCell.swift */; };
+		B51F1A7828B756C300B82CAD /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7728B756C300B82CAD /* SearchResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		B51F1A7128B681EA00B82CAD /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
 		B51F1A7328B681F300B82CAD /* UserDefaultHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
 		B51F1A7528B73B5400B82CAD /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		B51F1A7728B756C300B82CAD /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 				B51F1A6C28B6738000B82CAD /* Component */,
 				B51F1A6928B6713000B82CAD /* Cell */,
 				B51F1A0D28B5283400B82CAD /* SearchViewController.swift */,
+				B51F1A7728B756C300B82CAD /* SearchResultViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			files = (
 				B51F1A1F28B5299B00B82CAD /* UIViewController+Extension.swift in Sources */,
 				B51F1A1928B5296400B82CAD /* UIViewController+Alert.swift in Sources */,
+				B51F1A7828B756C300B82CAD /* SearchResultViewController.swift in Sources */,
 				B51F1A6E28B6739900B82CAD /* RecentKeywordHeaderView.swift in Sources */,
 				B51F1A7228B681EA00B82CAD /* UserDefaultStorage.swift in Sources */,
 				B51F19ED28B5276200B82CAD /* AppDelegate.swift in Sources */,
