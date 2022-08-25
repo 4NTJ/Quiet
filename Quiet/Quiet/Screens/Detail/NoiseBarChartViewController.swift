@@ -23,7 +23,6 @@ class NoiseBarChartViewController: UIViewController {
     
     private func setupBarChartView() {
         self.barChartView = NoiseBarChartView()
-        self.barChartView.translatesAutoresizingMaskIntoConstraints = false
         self.barChartView.setupBarChart(dataPoints: months, values: dbValues)
         self.view.addSubview(self.barChartView)
         self.barChartView.constraint(

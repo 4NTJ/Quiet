@@ -25,14 +25,13 @@ final class NoiseLineChartView: UIView {
         lineChart = LineChartView()
         addSubview(lineChart)
         
-        lineChart.translatesAutoresizingMaskIntoConstraints = false
         lineChart.constraint(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor)
     }
     
     func setupLineChart(dataPoints: [String], values: [Double]) {
         var dataEntries: [ChartDataEntry] = []
         
-        for i in 0..<dataPoints.count {
+        for i in dataPoints.indices {
             let dataEntry = ChartDataEntry(x: Double(i), y: values[i])
             dataEntries.append(dataEntry)
         }
@@ -60,7 +59,7 @@ final class NoiseLineChartView: UIView {
     func setupAverageLineChart(dataPoints: [String], values: [Double]) {
         var dataEntries: [ChartDataEntry] = []
         
-        for i in 0..<dataPoints.count {
+        for i in dataPoints.indices {
             let dataEntry = ChartDataEntry(x: Double(i), y: values[dataPoints.count-1-i]/2)
             dataEntries.append(dataEntry)
         }

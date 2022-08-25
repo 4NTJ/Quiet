@@ -10,7 +10,7 @@ import UIKit
 import Charts
 
 final class NoiseBarChartView: UIView {
-    private var horizontalBarChart: HorizontalBarChartView!
+    private var horizontalBarChart = HorizontalBarChartView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,10 +22,8 @@ final class NoiseBarChartView: UIView {
     }
     
     func drawBarChart() {
-        horizontalBarChart = HorizontalBarChartView()
         addSubview(horizontalBarChart)
         
-        horizontalBarChart.translatesAutoresizingMaskIntoConstraints = false
         self.horizontalBarChart.constraint(
             top: self.topAnchor,
             leading: self.leadingAnchor,
@@ -36,7 +34,7 @@ final class NoiseBarChartView: UIView {
     
     func setupBarChart(dataPoints: [String], values: [Double]) {
         var dataEntries: [BarChartDataEntry] = []
-        for i in 0..<dataPoints.count {
+        for i in dataPoints.indices {
             let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
             dataEntries.append(dataEntry)
         }

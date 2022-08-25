@@ -9,7 +9,7 @@ import UIKit
 import SwiftUI
 
 extension UIViewController {
-    public struct UIViewControllerPreview<ViewController: UIViewController>: UIViewControllerRepresentable {
+    internal struct UIViewControllerPreview<ViewController: UIViewController>: UIViewControllerRepresentable {
         public let viewController: ViewController
 
         public init(_ builder: @autoclosure () -> ViewController) {
