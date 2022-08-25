@@ -16,7 +16,7 @@ final class SearchViewController: UIViewController {
         static let cellHeight = 56.0
     }
     
-    // MARK: - properties
+    // MARK: - Properties
     
     private lazy var backButton: UIButton = {
         let button = BackButton()
@@ -56,7 +56,7 @@ final class SearchViewController: UIViewController {
     
     private var tableViewBottomConstraint: NSLayoutConstraint?
     
-    // MARK: - life cycle
+    // MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +65,7 @@ final class SearchViewController: UIViewController {
         setupNavigationBar()
     }
     
-    // MARK: - func
+    // MARK: - Func
     
     private func setupLayout() {
         view.addSubview(separatorView)
