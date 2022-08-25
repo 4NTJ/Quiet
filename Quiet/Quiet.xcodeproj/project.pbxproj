@@ -17,6 +17,7 @@
 		3558D91F28B79C98000D1925 /* Noise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D91E28B79C98000D1925 /* Noise.swift */; };
 		3558D92128B79CF7000D1925 /* NoiseInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D92028B79CF7000D1925 /* NoiseInfoView.swift */; };
 		3558D92328B79DE0000D1925 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D92228B79DE0000D1925 /* UILabel+Extension.swift */; };
+		3558D92528B79E4E000D1925 /* ManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D92428B79E4E000D1925 /* ManualViewController.swift */; };
 		B51F19ED28B5276200B82CAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F19EC28B5276200B82CAD /* AppDelegate.swift */; };
 		B51F19EF28B5276200B82CAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F19EE28B5276200B82CAD /* SceneDelegate.swift */; };
 		B51F19F428B5276200B82CAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B51F19F228B5276200B82CAD /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		3558D91E28B79C98000D1925 /* Noise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Noise.swift; sourceTree = "<group>"; };
 		3558D92028B79CF7000D1925 /* NoiseInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseInfoView.swift; sourceTree = "<group>"; };
 		3558D92228B79DE0000D1925 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		3558D92428B79E4E000D1925 /* ManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualViewController.swift; sourceTree = "<group>"; };
 		B51F19E928B5276200B82CAD /* Quiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B51F19EC28B5276200B82CAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B51F19EE28B5276200B82CAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			children = (
 				3558D91D28B79C91000D1925 /* Component */,
 				B51F1A0A28B5282300B82CAD /* MapViewController.swift */,
+				3558D92428B79E4E000D1925 /* ManualViewController.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				B51F1A1728B5294F00B82CAD /* UIView+Constraints.swift in Sources */,
 				B51F1A1B28B5297500B82CAD /* UIColor+Extension.swift in Sources */,
 				B51F1A6828B6674600B82CAD /* BackButton.swift in Sources */,
+				3558D92528B79E4E000D1925 /* ManualViewController.swift in Sources */,
 				B51F1A2128B52A0700B82CAD /* UITableView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
