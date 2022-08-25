@@ -14,7 +14,7 @@ final class SearchViewController: UIViewController {
         static let textFieldHeight = 44.0
     }
     
-    // MARK: - properties
+    // MARK: - Properties
     
     private lazy var backButton: UIButton = {
         let button = BackButton()
@@ -50,7 +50,7 @@ final class SearchViewController: UIViewController {
         return tableView
     }()
     
-    // MARK: - life cycle
+    // MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +58,7 @@ final class SearchViewController: UIViewController {
         setupNavigationBar()
     }
     
-    // MARK: - func
+    // MARK: - Func
     
     private func setupLayout() {
         view.addSubview(separatorView)
