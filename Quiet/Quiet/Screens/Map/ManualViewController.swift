@@ -5,8 +5,8 @@
 //  Created by DaeSeong on 2022/08/25.
 //
 
-import UIKit
 import SafariServices
+import UIKit
 
 class ManualViewController: UIViewController {
     // MARK: - Properties
