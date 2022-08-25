@@ -39,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		3558D91628B71541000D1925 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		3558D91828B74030000D1925 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		212C1DF828B675B900728F24 /* NoiseLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseLineChartView.swift; sourceTree = "<group>"; };
 		212C1DFF28B6767F00728F24 /* NoiseLineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseLineChartViewController.swift; sourceTree = "<group>"; };
 		212C1E0128B6774B00728F24 /* NoiseBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseBarChartView.swift; sourceTree = "<group>"; };
