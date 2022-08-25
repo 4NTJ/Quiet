@@ -9,7 +9,9 @@ import UIKit
 
 final class RecentKeywordHeaderView: UIView {
     
-    // MARK: - properties
+    var didTappedClearAll: (() -> ())?
+    
+    // MARK: - Properties
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -31,19 +33,20 @@ final class RecentKeywordHeaderView: UIView {
         return view
     }()
     
-    // MARK: - init
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
         configureUI()
+        setupButtonAction()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - func
+    // MARK: - Func
     
     private func setupLayout() {
         addSubview(titleLabel)
@@ -66,5 +69,12 @@ final class RecentKeywordHeaderView: UIView {
     
     private func configureUI() {
         backgroundColor = .white
+    }
+    
+    private func setupButtonAction() {
+        let removeAction = UIAction { [weak self] _ in
+            self?.didTappedClearAll?()
+        }
+        removeButton.addAction(removeAction, for: .touchUpInside)
     }
 }
