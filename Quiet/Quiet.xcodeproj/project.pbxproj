@@ -23,6 +23,9 @@
 		B51F1A1D28B5298B00B82CAD /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1C28B5298B00B82CAD /* NSObject+Extension.swift */; };
 		B51F1A1F28B5299B00B82CAD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1E28B5299B00B82CAD /* UIViewController+Extension.swift */; };
 		B51F1A2128B52A0700B82CAD /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A2028B52A0700B82CAD /* UITableView+Extension.swift */; };
+		B51F1A6828B6674600B82CAD /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A6728B6674600B82CAD /* BackButton.swift */; };
+		B51F1A6B28B6714600B82CAD /* RecentKeywordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A6A28B6714600B82CAD /* RecentKeywordTableViewCell.swift */; };
+		B51F1A6E28B6739900B82CAD /* RecentKeywordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A6D28B6739900B82CAD /* RecentKeywordHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		B51F1A1C28B5298B00B82CAD /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		B51F1A1E28B5299B00B82CAD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B51F1A2028B52A0700B82CAD /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		B51F1A6728B6674600B82CAD /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		B51F1A6A28B6714600B82CAD /* RecentKeywordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentKeywordTableViewCell.swift; sourceTree = "<group>"; };
+		B51F1A6D28B6739900B82CAD /* RecentKeywordHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentKeywordHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,7 @@
 		B51F1A0128B5276D00B82CAD /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				B51F1A6628B666E800B82CAD /* UIComponents */,
 				B51F1A1128B5291700B82CAD /* Literals */,
 				B51F1A0528B5279A00B82CAD /* Utils */,
 				B51F1A0428B5278600B82CAD /* Extension */,
@@ -163,6 +170,8 @@
 		B51F1A0828B527FB00B82CAD /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				B51F1A6C28B6738000B82CAD /* Component */,
+				B51F1A6928B6713000B82CAD /* Cell */,
 				B51F1A0D28B5283400B82CAD /* SearchViewController.swift */,
 			);
 			path = Search;
@@ -183,6 +192,30 @@
 				B51F1A1428B5293600B82CAD /* StringLiteral.swift */,
 			);
 			path = Literals;
+			sourceTree = "<group>";
+		};
+		B51F1A6628B666E800B82CAD /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				B51F1A6728B6674600B82CAD /* BackButton.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		B51F1A6928B6713000B82CAD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B51F1A6A28B6714600B82CAD /* RecentKeywordTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		B51F1A6C28B6738000B82CAD /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				B51F1A6D28B6739900B82CAD /* RecentKeywordHeaderView.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +291,9 @@
 			files = (
 				B51F1A1F28B5299B00B82CAD /* UIViewController+Extension.swift in Sources */,
 				B51F1A1928B5296400B82CAD /* UIViewController+Alert.swift in Sources */,
+				B51F1A6E28B6739900B82CAD /* RecentKeywordHeaderView.swift in Sources */,
 				B51F19ED28B5276200B82CAD /* AppDelegate.swift in Sources */,
+				B51F1A6B28B6714600B82CAD /* RecentKeywordTableViewCell.swift in Sources */,
 				B51F1A1328B5292200B82CAD /* ImageLiteral.swift in Sources */,
 				B51F1A1528B5293600B82CAD /* StringLiteral.swift in Sources */,
 				B51F1A1D28B5298B00B82CAD /* NSObject+Extension.swift in Sources */,
@@ -268,6 +303,7 @@
 				B51F19EF28B5276200B82CAD /* SceneDelegate.swift in Sources */,
 				B51F1A1728B5294F00B82CAD /* UIView+Constraints.swift in Sources */,
 				B51F1A1B28B5297500B82CAD /* UIColor+Extension.swift in Sources */,
+				B51F1A6828B6674600B82CAD /* BackButton.swift in Sources */,
 				B51F1A2128B52A0700B82CAD /* UITableView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
