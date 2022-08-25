@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3558D91728B71541000D1925 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D91628B71541000D1925 /* CircleButton.swift */; };
+		3558D91928B74030000D1925 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D91828B74030000D1925 /* SearchBarView.swift */; };
 		B51F19ED28B5276200B82CAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F19EC28B5276200B82CAD /* AppDelegate.swift */; };
 		B51F19EF28B5276200B82CAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F19EE28B5276200B82CAD /* SceneDelegate.swift */; };
 		B51F19F428B5276200B82CAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B51F19F228B5276200B82CAD /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		3558D91628B71541000D1925 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		3558D91828B74030000D1925 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		B51F19E928B5276200B82CAD /* Quiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B51F19EC28B5276200B82CAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B51F19EE28B5276200B82CAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				B51F1A0A28B5282300B82CAD /* MapViewController.swift */,
+				3558D91828B74030000D1925 /* SearchBarView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				3558D91728B71541000D1925 /* CircleButton.swift in Sources */,
 				B51F1A1028B5283D00B82CAD /* DetailViewController.swift in Sources */,
 				B51F1A0E28B5283400B82CAD /* SearchViewController.swift in Sources */,
+				3558D91928B74030000D1925 /* SearchBarView.swift in Sources */,
 				B51F19EF28B5276200B82CAD /* SceneDelegate.swift in Sources */,
 				B51F1A1728B5294F00B82CAD /* UIView+Constraints.swift in Sources */,
 				B51F1A1B28B5297500B82CAD /* UIColor+Extension.swift in Sources */,
