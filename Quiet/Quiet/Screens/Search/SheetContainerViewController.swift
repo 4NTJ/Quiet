@@ -14,7 +14,7 @@ final class SheetContainerViewController: BaseViewController {
     private lazy var detailTableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
-        tableView.register(cell: SearchTableViewCell.self)
+        tableView.register(cell: LocationDetailTableViewCell.self)
         return tableView
     }()
 
@@ -48,8 +48,8 @@ extension SheetContainerViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: SearchTableViewCell = tableView.dequeueReusableCell(withType: SearchTableViewCell.self, for: indexPath)
-        cell.setKeyword(to: "더미")
+        let cell: LocationDetailTableViewCell = tableView.dequeueReusableCell(withType: LocationDetailTableViewCell.self, for: indexPath)
+        cell.setLocationData("안농")
         return cell
     }
 }

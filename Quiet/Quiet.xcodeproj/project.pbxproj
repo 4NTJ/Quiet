@@ -34,6 +34,7 @@
 		B51F1A7F28B781C700B82CAD /* SheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7E28B781C700B82CAD /* SheetViewController.swift */; };
 		B51F1A8128B78EE400B82CAD /* SearchMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A8028B78EE400B82CAD /* SearchMapViewController.swift */; };
 		B51F1A8328B78F4A00B82CAD /* SheetContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A8228B78F4A00B82CAD /* SheetContainerViewController.swift */; };
+		B548F20D28B7C69000C4E24F /* LocationDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F20C28B7C69000C4E24F /* LocationDetailTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		B51F1A7E28B781C700B82CAD /* SheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewController.swift; sourceTree = "<group>"; };
 		B51F1A8028B78EE400B82CAD /* SearchMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMapViewController.swift; sourceTree = "<group>"; };
 		B51F1A8228B78F4A00B82CAD /* SheetContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetContainerViewController.swift; sourceTree = "<group>"; };
+		B548F20C28B7C69000C4E24F /* LocationDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +231,7 @@
 			children = (
 				B51F1A6A28B6714600B82CAD /* RecentKeywordTableViewCell.swift */,
 				B51F1A7528B73B5400B82CAD /* SearchTableViewCell.swift */,
+				B548F20C28B7C69000C4E24F /* LocationDetailTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				B51F1A1328B5292200B82CAD /* ImageLiteral.swift in Sources */,
 				B51F1A1528B5293600B82CAD /* StringLiteral.swift in Sources */,
 				B51F1A1D28B5298B00B82CAD /* NSObject+Extension.swift in Sources */,
+				B548F20D28B7C69000C4E24F /* LocationDetailTableViewCell.swift in Sources */,
 				B51F1A0B28B5282300B82CAD /* MapViewController.swift in Sources */,
 				B51F1A7628B73B5400B82CAD /* SearchTableViewCell.swift in Sources */,
 				B51F1A1028B5283D00B82CAD /* DetailViewController.swift in Sources */,
