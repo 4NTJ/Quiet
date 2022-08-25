@@ -37,7 +37,19 @@ final class SearchTableViewCell: UITableViewCell {
                                 padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0))
     }
     
+    private func makeAddressWithoutCountry(with splitedKeyword: [String.SubSequence]) -> String {
+        var address: String = ""
+        
+        for index in 1..<splitedKeyword.count {
+            address += splitedKeyword[index] + " "
+        }
+        
+        return address
+    }
+    
     func setKeyword(to keyword: String) {
-        keywordLabel.text = keyword
+        let splitKeyword = keyword.split(separator: " ")
+        let isCountryWritten = splitKeyword[0] == "대한민국"
+        keywordLabel.text = isCountryWritten ? makeAddressWithoutCountry(with: Array(splitKeyword)) : keyword
     }
 }
