@@ -234,7 +234,11 @@ extension SearchViewController: UITextFieldDelegate {
 // MARK: - MKLocalSearchCompleterDelegate
 extension SearchViewController: MKLocalSearchCompleterDelegate {
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        searchResults = completer.results
+        searchResults = completer.results.filter { result in
+            let splitTitle = result.title.split(separator: " ")
+            guard splitTitle.count > 1 else { return false }
+            return splitTitle.contains("서울특별시")
+        }
         searchTableView.reloadData()
     }
     
