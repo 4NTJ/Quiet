@@ -30,6 +30,7 @@
 		B51F1A7428B681F300B82CAD /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7328B681F300B82CAD /* UserDefaultHandler.swift */; };
 		B51F1A7628B73B5400B82CAD /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7528B73B5400B82CAD /* SearchTableViewCell.swift */; };
 		B51F1A7828B756C300B82CAD /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7728B756C300B82CAD /* SearchResultViewController.swift */; };
+		B51F1A7B28B7583800B82CAD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7A28B7583800B82CAD /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		B51F1A7328B681F300B82CAD /* UserDefaultHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
 		B51F1A7528B73B5400B82CAD /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		B51F1A7728B756C300B82CAD /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		B51F1A7A28B7583800B82CAD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		B51F1A0128B5276D00B82CAD /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				B51F1A7928B7583100B82CAD /* Base */,
 				B51F1A6628B666E800B82CAD /* UIComponents */,
 				B51F1A1128B5291700B82CAD /* Literals */,
 				B51F1A0528B5279A00B82CAD /* Utils */,
@@ -246,6 +249,14 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		B51F1A7928B7583100B82CAD /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B51F1A7A28B7583800B82CAD /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -322,6 +333,7 @@
 				B51F1A7828B756C300B82CAD /* SearchResultViewController.swift in Sources */,
 				B51F1A6E28B6739900B82CAD /* RecentKeywordHeaderView.swift in Sources */,
 				B51F1A7228B681EA00B82CAD /* UserDefaultStorage.swift in Sources */,
+				B51F1A7B28B7583800B82CAD /* BaseViewController.swift in Sources */,
 				B51F19ED28B5276200B82CAD /* AppDelegate.swift in Sources */,
 				B51F1A6B28B6714600B82CAD /* RecentKeywordTableViewCell.swift in Sources */,
 				B51F1A1328B5292200B82CAD /* ImageLiteral.swift in Sources */,
