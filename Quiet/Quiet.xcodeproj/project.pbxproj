@@ -26,7 +26,6 @@
 		B51F1A1528B5293600B82CAD /* StringLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1428B5293600B82CAD /* StringLiteral.swift */; };
 		B51F1A1728B5294F00B82CAD /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1628B5294F00B82CAD /* UIView+Constraints.swift */; };
 		B51F1A1928B5296400B82CAD /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1828B5296400B82CAD /* UIViewController+Alert.swift */; };
-		B51F1A1B28B5297500B82CAD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1A28B5297500B82CAD /* UIColor+Extension.swift */; };
 		B51F1A1D28B5298B00B82CAD /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1C28B5298B00B82CAD /* NSObject+Extension.swift */; };
 		B51F1A1F28B5299B00B82CAD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1E28B5299B00B82CAD /* UIViewController+Extension.swift */; };
 		B51F1A2128B52A0700B82CAD /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A2028B52A0700B82CAD /* UITableView+Extension.swift */; };
@@ -56,7 +55,6 @@
 		B51F1A1428B5293600B82CAD /* StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiteral.swift; sourceTree = "<group>"; };
 		B51F1A1628B5294F00B82CAD /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		B51F1A1828B5296400B82CAD /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
-		B51F1A1A28B5297500B82CAD /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		B51F1A1C28B5298B00B82CAD /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		B51F1A1E28B5299B00B82CAD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B51F1A2028B52A0700B82CAD /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 		B51F1A0428B5278600B82CAD /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				B51F1A1A28B5297500B82CAD /* UIColor+Extension.swift */,
 				B51F1A1C28B5298B00B82CAD /* NSObject+Extension.swift */,
 				B51F1A1E28B5299B00B82CAD /* UIViewController+Extension.swift */,
 				B51F1A2028B52A0700B82CAD /* UITableView+Extension.swift */,
@@ -334,7 +331,6 @@
 				B51F1A0E28B5283400B82CAD /* SearchViewController.swift in Sources */,
 				B51F19EF28B5276200B82CAD /* SceneDelegate.swift in Sources */,
 				B51F1A1728B5294F00B82CAD /* UIView+Constraints.swift in Sources */,
-				B51F1A1B28B5297500B82CAD /* UIColor+Extension.swift in Sources */,
 				B51F1A6828B6674600B82CAD /* BackButton.swift in Sources */,
 				B51F1A2128B52A0700B82CAD /* UITableView+Extension.swift in Sources */,
 			);
