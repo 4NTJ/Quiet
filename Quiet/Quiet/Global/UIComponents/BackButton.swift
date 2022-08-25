@@ -9,7 +9,7 @@ import UIKit
 
 final class BackButton: UIButton {
 
-    // MARK: - init
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: .init(origin: .zero, size: .init(width: 44, height: 44)))
@@ -20,7 +20,7 @@ final class BackButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - func
+    // MARK: - Func
     
     private func configUI() {
         self.setImage(ImageLiteral.btnBack, for: .normal)

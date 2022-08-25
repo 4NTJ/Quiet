@@ -9,7 +9,7 @@ import UIKit
 
 enum ImageLiteral {
     
-    // MARK: - button
+    // MARK: - Button
     
     static var btnBack: UIImage { .load(systemName: "chevron.backward") }
     static var exampleIcon: UIImage { .load(name: "btnList") }
