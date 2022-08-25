@@ -9,19 +9,19 @@ import UIKit
 import SwiftUI
 
 extension UIViewController {
-    internal struct UIViewControllerPreview<ViewController: UIViewController>: UIViewControllerRepresentable {
-        public let viewController: ViewController
+    struct UIViewControllerPreview<ViewController: UIViewController>: UIViewControllerRepresentable {
+        let viewController: ViewController
 
-        public init(_ builder: @autoclosure () -> ViewController) {
+        init(_ builder: @autoclosure () -> ViewController) {
             viewController = builder()
         }
 
         // MARK: - UIViewControllerRepresentable
-        public func makeUIViewController(context: Context) -> ViewController {
+        func makeUIViewController(context: Context) -> ViewController {
             viewController
         }
 
-        public func updateUIViewController(_ uiViewController: ViewController, context: UIViewControllerRepresentableContext<UIViewControllerPreview<ViewController>>) {
+        func updateUIViewController(_ uiViewController: ViewController, context: UIViewControllerRepresentableContext<UIViewControllerPreview<ViewController>>) {
 
         }
     }
