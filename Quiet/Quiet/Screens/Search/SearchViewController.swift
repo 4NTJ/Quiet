@@ -5,6 +5,8 @@
 //  Created by SHIN YOON AH on 2022/08/24.
 //
 
+import CoreLocation
+import MapKit
 import UIKit
 
 final class SearchViewController: UIViewController {
@@ -55,6 +57,8 @@ final class SearchViewController: UIViewController {
     }()
     
     private var tableViewBottomConstraint: NSLayoutConstraint?
+    private var searchCompleter = MKLocalSearchCompleter()
+    private var searchResults: [MKLocalSearchCompletion] = []
     
     // MARK: - life cycle
 
@@ -62,6 +66,7 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
         setupNotificationCenter()
+        setupSearchCompleter()
         setupNavigationBar()
     }
     
@@ -89,6 +94,11 @@ final class SearchViewController: UIViewController {
                                                selector: #selector(keyboardWillShow(_:)),
                                                name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
+    }
+    
+    private func setupSearchCompleter() {
+        searchCompleter.delegate = self
+        searchCompleter.resultTypes = .address
     }
     
     private func setupNavigationBar() {
