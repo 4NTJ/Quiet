@@ -12,6 +12,7 @@ enum ImageLiteral {
     // MARK: - icon
     
     static var exampleIcon: UIImage { .load(name: "btnList") }
+    static var icMagnifyingglass: UIImage { .load(systemName: "magnifyingglass") }
 }
 
 extension UIImage {

@@ -12,8 +12,7 @@ class SearchBarView: UIView {
     
     
     private let searchImage: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage.load(systemName: "magnifyingglass")
+        let view = UIImageView(image: ImageLiteral.icMagnifyingglass)
         view.tintColor = .black
         return view
     }()
