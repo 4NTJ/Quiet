@@ -46,7 +46,7 @@ class SearchBarView: UIView {
     
     // MARK: - Func
     
-    func setupLayout() {
+    private func setupLayout() {
         self.addSubview(searchImage)
         searchImage.constraint(searchImage.widthAnchor, constant: 20)
         searchImage.constraint(leading: self.leadingAnchor,
@@ -65,7 +65,7 @@ class SearchBarView: UIView {
                                                      right: 20))
     }
     
-    func configureUI() {
+    private func configureUI() {
         self.layer.cornerRadius = 10
         self.layer.shadowColor = UIColor(red: 0,
                                          green: 0,
