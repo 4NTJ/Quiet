@@ -8,17 +8,17 @@
 import SwiftUI
 
 extension UIView {
-    internal struct UIViewPreview<View: UIView>: UIViewRepresentable {
-        public let view: View
-        public init(_ builder: @autoclosure () -> View) {
+    struct UIViewPreview<View: UIView>: UIViewRepresentable {
+        let view: View
+        init(_ builder: @autoclosure () -> View) {
             view = builder()
         }
             
         // MARK: - UIViewRepresentable
-        public func makeUIView(context: Context) -> UIView {
+        func makeUIView(context: Context) -> UIView {
             return view
         }
-        public func updateUIView(_ view: UIView, context: Context) {
+        func updateUIView(_ view: UIView, context: Context) {
         }
     }
 
