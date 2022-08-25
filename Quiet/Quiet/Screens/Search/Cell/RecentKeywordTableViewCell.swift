@@ -11,12 +11,11 @@ final class RecentKeywordTableViewCell: UITableViewCell {
     
     var didTappedRemove: ((String) -> ())?
     
-    // MARK: - properties
+    // MARK: - Properties
     
     private let keywordLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .light)
-        label.text = "강남구"
         return label
     }()
     private let removeButton: UIButton = {
@@ -26,7 +25,7 @@ final class RecentKeywordTableViewCell: UITableViewCell {
         return button
     }()
     
-    // MARK: - init
+    // MARK: - Init
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -38,7 +37,7 @@ final class RecentKeywordTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - func
+    // MARK: - Func
     
     private func setupLayout() {
         contentView.addSubview(keywordLabel)
