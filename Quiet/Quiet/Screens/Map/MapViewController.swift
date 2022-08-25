@@ -12,10 +12,7 @@ class MapViewController: UIViewController {
     // MARK: - Properties
     
     
-    private let searchBarView: SearchBarView = {
-        let view = SearchBarView()
-        return view
-    }()
+    private let searchBarView = SearchBarView()
     
     private let mapView: MKMapView = {
         let view = MKMapView()
@@ -33,16 +30,8 @@ class MapViewController: UIViewController {
         return manager
     }()
     
-    
-    private let manualButton: UIButton = {
-        let button = CircleButton(buttonImage: "info.circle.fill")
-        return button
-    }()
-    
-    private let locationButton: UIButton = {
-        let button = CircleButton(buttonImage: "location")
-        return button
-    }()
+    private let manualButton: UIButton = CircleButton(buttonImage: "info.circle.fill")
+    private let locationButton: UIButton = CircleButton(buttonImage: "location")
     
     
     // MARK: - Life Cycle
