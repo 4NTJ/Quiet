@@ -96,11 +96,19 @@ final class SearchViewController: BaseViewController {
         super.configureUI()
         
         let backAction = UIAction { [weak self] _ in
-            let vc = SearchResultViewController(locationText: "마포구")
-            let navigationController = UINavigationController(rootViewController: vc)
-            navigationController.modalPresentationStyle = .fullScreen
-            navigationController.modalTransitionStyle = .crossDissolve
-            self?.present(navigationController, animated: true)
+            let searchMapViewController = SearchMapViewController(locationText: "마포구")
+            let mapNavigationController = UINavigationController(rootViewController: searchMapViewController)
+            let viewController = SearchResultViewController(
+                contentViewController: mapNavigationController,
+                bottomSheetViewController: SheetContainerViewController(),
+                bottomSheetConfiguration: .init(
+                    height: UIScreen.main.bounds.height * 0.8,
+                    initialOffset: 140 + 44
+                )
+            )
+            viewController.modalPresentationStyle = .fullScreen
+            viewController.modalTransitionStyle = .crossDissolve
+            self?.present(viewController, animated: true)
         }
         setupBackAction(backAction)
     }
