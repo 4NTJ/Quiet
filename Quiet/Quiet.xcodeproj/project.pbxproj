@@ -38,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3558D91628B71541000D1925 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		212C1DF828B675B900728F24 /* NoiseLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseLineChartView.swift; sourceTree = "<group>"; };
 		212C1DFF28B6767F00728F24 /* NoiseLineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseLineChartViewController.swift; sourceTree = "<group>"; };
 		212C1E0128B6774B00728F24 /* NoiseBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseBarChartView.swift; sourceTree = "<group>"; };
@@ -126,6 +127,7 @@
 		B51F1A0128B5276D00B82CAD /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				3558D91528B7151B000D1925 /* UIComponent */,
 				B51F1A6628B666E800B82CAD /* UIComponents */,
 				B51F1A1128B5291700B82CAD /* Literals */,
 				B51F1A0528B5279A00B82CAD /* Utils */,
@@ -342,6 +344,7 @@
 				B51F1A1D28B5298B00B82CAD /* NSObject+Extension.swift in Sources */,
 				212C1DF928B675B900728F24 /* NoiseLineChartView.swift in Sources */,
 				B51F1A0B28B5282300B82CAD /* MapViewController.swift in Sources */,
+				3558D91728B71541000D1925 /* CircleButton.swift in Sources */,
 				212C1E0628B680D600728F24 /* UIView+Preview.swift in Sources */,
 				3558D91728B71541000D1925 /* CircleButton.swift in Sources */,
 				B51F1A1028B5283D00B82CAD /* DetailViewController.swift in Sources */,
