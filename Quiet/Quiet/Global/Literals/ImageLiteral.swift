@@ -13,6 +13,9 @@ enum ImageLiteral {
     
     static var exampleIcon: UIImage { .load(name: "btnList") }
     static var icMagnifyingglass: UIImage { .load(systemName: "magnifyingglass") }
+    static var icLocation: UIImage { .load(systemName: "location") }
+    static var icLocationFill: UIImage { .load(systemName: "location.fill") }
+
 }
 
 extension UIImage {
