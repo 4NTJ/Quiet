@@ -40,8 +40,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getLocationUsagePermission()
-        locationManager.delegate = self
-        
+        setDelegation()
         setupLayout()
         btnAddTargets()
         
@@ -54,6 +53,10 @@ class MapViewController: UIViewController {
     
     // MARK: - Func
     
+    
+    private func setDelegation() {
+        locationManager.delegate = self
+    }
     
     private func setupLayout() {
         view.addSubview(mapView)
