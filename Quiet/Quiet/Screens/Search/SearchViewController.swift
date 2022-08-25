@@ -61,7 +61,7 @@ final class SearchViewController: UIViewController {
     private var searchResults: [MKLocalSearchCompletion] = []
     
     // MARK: - life cycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
@@ -82,10 +82,10 @@ final class SearchViewController: UIViewController {
         
         view.addSubview(searchTableView)
         let constraint = searchTableView.constraint(top: separatorView.bottomAnchor,
-                                   leading: view.leadingAnchor,
-                                   bottom: view.bottomAnchor,
-                                   trailing: view.trailingAnchor,
-                                   padding: .zero)
+                                                    leading: view.leadingAnchor,
+                                                    bottom: view.bottomAnchor,
+                                                    trailing: view.trailingAnchor,
+                                                    padding: .zero)
         tableViewBottomConstraint = constraint[.bottom]
     }
     
@@ -108,7 +108,7 @@ final class SearchViewController: UIViewController {
         
         navigationItem.leftBarButtonItems = [backButton, searchTextField]
     }
-
+    
     private func makeBarButtonItem<T: UIView>(with view: T) -> UIBarButtonItem {
         return UIBarButtonItem(customView: view)
     }
@@ -135,17 +135,19 @@ final class SearchViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UserDefaultStorage.keywords.count
+//        return UserDefaultStorage.keywords.count
+        return searchResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RecentKeywordTableViewCell = tableView.dequeueReusableCell(withType: RecentKeywordTableViewCell.self, for: indexPath)
-        let keywords = Array(UserDefaultStorage.keywords.reversed())
-        cell.setKeyword(to: keywords[indexPath.row])
-        cell.didTappedRemove = { [weak self] keyword in
-            UserDefaultHandler.clearKeyword(keyword: keyword)
-            self?.searchTableView.reloadData()
-        }
+//        let keywords = Array(UserDefaultStorage.keywords.reversed())
+//        cell.setKeyword(to: keywords[indexPath.row])
+//        cell.didTappedRemove = { [weak self] keyword in
+//            UserDefaultHandler.clearKeyword(keyword: keyword)
+//            self?.searchTableView.reloadData()
+//        }
+        cell.setKeyword(to: searchResults[indexPath.row].title)
         return cell
     }
 }
@@ -189,5 +191,23 @@ extension SearchViewController: UITextFieldDelegate {
         searchTableView.reloadData()
         
         return true
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if let searchText = textField.text {
+            searchCompleter.queryFragment = searchText
+        }
+    }
+}
+
+// MARK: - MKLocalSearchCompleterDelegate
+extension SearchViewController: MKLocalSearchCompleterDelegate {
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        searchResults = completer.results
+        searchTableView.reloadData()
+    }
+    
+    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
+        print(error.localizedDescription)
     }
 }
