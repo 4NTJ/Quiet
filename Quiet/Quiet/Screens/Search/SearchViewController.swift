@@ -93,8 +93,14 @@ final class SearchViewController: BaseViewController {
     }
     
     override func configureUI() {
+        super.configureUI()
+        
         let backAction = UIAction { [weak self] _ in
-            self?.dismiss(animated: true)
+            let vc = SearchResultViewController(locationText: "마포구")
+            let navigationController = UINavigationController(rootViewController: vc)
+            navigationController.modalPresentationStyle = .fullScreen
+            navigationController.modalTransitionStyle = .crossDissolve
+            self?.present(navigationController, animated: true)
         }
         setupBackAction(backAction)
     }

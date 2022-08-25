@@ -12,6 +12,20 @@ class BaseViewController: UIViewController {
     // MARK: - Properties
     
     lazy var backButton = BackButton()
+    
+    // MARK: - Init
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
 
     // MARK: - Life Cycle
     
@@ -29,6 +43,7 @@ class BaseViewController: UIViewController {
     
     func configureUI() {
         // UI configuration
+        view.backgroundColor = .white
     }
     
     func setupBackAction(_ action: UIAction) {
