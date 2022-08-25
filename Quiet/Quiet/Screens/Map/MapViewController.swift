@@ -11,6 +11,12 @@ import UIKit
 class MapViewController: UIViewController {
     // MARK: - Properties
     
+    private var locationBtnCliked = false {
+        didSet {
+            let image = locationBtnCliked ? ImageLiteral.icLocationFill : ImageLiteral.icLocation
+            locationButton.setImage(image, for: .normal)
+        }
+    }
     
     private let searchBarView = SearchBarView()
     
@@ -44,7 +50,6 @@ class MapViewController: UIViewController {
         setDelegation()
         setupLayout()
         btnAddTargets()
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -114,6 +119,9 @@ class MapViewController: UIViewController {
     }
     
     @objc private func locationButtonTapped() {
+        mapView.showsUserLocation.toggle()
+        mapView.setUserTrackingMode(.follow, animated: true)
+        locationBtnCliked.toggle()
     }
     
 }
@@ -141,6 +149,6 @@ extension MapViewController : CLLocationManagerDelegate {
             print("GPS: Default")
         }
     }
+    
+    
 }
-
-
