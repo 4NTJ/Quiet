@@ -59,6 +59,7 @@ final class NoiseBarChartView: UIView {
         
         horizontalBarChart.pinchZoomEnabled = false
         horizontalBarChart.doubleTapToZoomEnabled = false
+        horizontalBarChart.highlightPerTapEnabled = false
     }
 }
 

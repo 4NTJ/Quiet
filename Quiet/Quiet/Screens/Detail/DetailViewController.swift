@@ -125,11 +125,23 @@ class DetailViewController: UIViewController {
         chartTitle.font = .systemFont(ofSize: 18, weight: .semibold)
         return chartTitle
     }()
+    private let dayChartDescriptionLabel: UILabel = {
+        let descriptionLabel = UILabel()
+        descriptionLabel.text = "최근 일주일 평균(22.08.15~22.08.22)"
+        descriptionLabel.font = .systemFont(ofSize: 10)
+        return descriptionLabel
+    }()
     private let weeklyChartLabel: UILabel = {
         let chartTitle = UILabel()
         chartTitle.text = "평일/주말 소음 비교"
         chartTitle.font = .systemFont(ofSize: 18, weight: .semibold)
         return chartTitle
+    }()
+    private let weeklyChartDescriptionLabel: UILabel = {
+        let descriptionLabel = UILabel()
+        descriptionLabel.text = "최근 한 달 평균(22.07)"
+        descriptionLabel.font = .systemFont(ofSize: 10)
+        return descriptionLabel
     }()
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -179,7 +191,7 @@ class DetailViewController: UIViewController {
                                  leading: dayChartLabel.leadingAnchor,
                                  trailing: infoBoxView.trailingAnchor,
                                  padding: .init(top: 20, left: 0, bottom: 0, right: 0))
-        lineChartView.constraint(lineChartView.heightAnchor, constant: 300)
+        lineChartView.constraint(lineChartView.heightAnchor, constant: 200)
         
         scrollContentView.addSubview(separatorView)
         separatorView.constraint(separatorView.heightAnchor, constant: 5)
@@ -194,13 +206,13 @@ class DetailViewController: UIViewController {
                                     padding: .init(top: 30.0, left: 20.0, bottom: 0, right: 0))
         
         scrollContentView.addSubview(self.barChartView)
-        barChartView.constraint(barChartView.heightAnchor, constant: 400)
+        barChartView.constraint(barChartView.heightAnchor, constant: 200)
         barChartView.constraint(
             top: weeklyChartLabel.bottomAnchor,
             leading: infoBoxView.leadingAnchor,
             bottom: scrollContentView.bottomAnchor,
             trailing: infoBoxView.trailingAnchor,
-            padding: .init(top: 20, left: 0, bottom: 0, right: 0)
+            padding: .init(top: 20, left: 0, bottom: 20, right: 0)
         )
 
     }
