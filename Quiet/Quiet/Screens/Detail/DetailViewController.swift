@@ -135,10 +135,7 @@ class DetailViewController: UIViewController {
         let scrollView = UIScrollView()
         return scrollView
     }()
-    private let contentView: UIView = {
-        let contentView = UIView()
-        return contentView
-    }()
+    private let scrollContentView = UIView()
     
     // MARK: - Life cycle
     
@@ -156,37 +153,56 @@ class DetailViewController: UIViewController {
     // MARK: - Func
     
     private func setupLayout() {
+        view.addSubview(scrollView)
+        scrollView.constraint(top: view.safeAreaLayoutGuide.topAnchor,
+                              leading: view.leadingAnchor,
+                              bottom: view.bottomAnchor,
+                              trailing: view.trailingAnchor)
         
-        view.addSubview(infoBoxView)
-        infoBoxView.constraint(top: view.safeAreaLayoutGuide.topAnchor,
-                               centerX: view.centerXAnchor,
-                               padding: .init(top: 20.0, left: 0, bottom: 0, right: 0))
-        view.addSubview(dayChartLabel)
-        dayChartLabel.constraint(top: infoBoxView.bottomAnchor, leading: view.leadingAnchor, padding: .init(top: 30.0, left: 20.0, bottom: 0, right: 0))
-        view.addSubview(self.lineChartView)
-        lineChartView.constraint(lineChartView.heightAnchor, constant: 200)
-        lineChartView.constraint(
-            top: dayChartLabel.bottomAnchor,
-            leading: dayChartLabel.leadingAnchor,
-            trailing: infoBoxView.trailingAnchor,
-            padding: .init(top: 20, left: 0, bottom: 0, right: 0)
+        scrollView.addSubview(scrollContentView)
+        scrollContentView.constraint(to: scrollView)
+        scrollContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        
+        scrollContentView.addSubview(infoBoxView)
+        infoBoxView.constraint(top: scrollContentView.topAnchor,
+                               centerX: scrollContentView.centerXAnchor,
+                               padding: .init(top: 20.0, left: 0, bottom: 0, right: 0)
         )
-        view.addSubview(separatorView)
+        
+        scrollContentView.addSubview(dayChartLabel)
+        dayChartLabel.constraint(top: infoBoxView.bottomAnchor,
+                                 leading: scrollContentView.leadingAnchor,
+                                 padding: .init(top: 30.0, left: 20.0, bottom: 0, right: 0))
+        
+        scrollContentView.addSubview(lineChartView)
+        lineChartView.constraint(top: dayChartLabel.bottomAnchor,
+                                 leading: dayChartLabel.leadingAnchor,
+                                 trailing: infoBoxView.trailingAnchor,
+                                 padding: .init(top: 20, left: 0, bottom: 0, right: 0))
+        lineChartView.constraint(lineChartView.heightAnchor, constant: 300)
+        
+        scrollContentView.addSubview(separatorView)
         separatorView.constraint(separatorView.heightAnchor, constant: 5)
         separatorView.constraint(top: lineChartView.bottomAnchor,
-                                 leading: view.leadingAnchor,
-                                 trailing: view.trailingAnchor,
+                                 leading: scrollContentView.leadingAnchor,
+                                 trailing: scrollContentView.trailingAnchor,
                                  padding: .init(top: 30.0, left: 0, bottom: 0, right: 0))
-        view.addSubview(weeklyChartLabel)
-        weeklyChartLabel.constraint(top: separatorView.bottomAnchor, leading: view.leadingAnchor, padding: .init(top: 30.0, left: 20.0, bottom: 0, right: 0))
-        view.addSubview(self.barChartView)
-        barChartView.constraint(barChartView.heightAnchor, constant: 200)
+        
+        scrollContentView.addSubview(weeklyChartLabel)
+        weeklyChartLabel.constraint(top: separatorView.bottomAnchor,
+                                    leading: scrollContentView.leadingAnchor,
+                                    padding: .init(top: 30.0, left: 20.0, bottom: 0, right: 0))
+        
+        scrollContentView.addSubview(self.barChartView)
+        barChartView.constraint(barChartView.heightAnchor, constant: 400)
         barChartView.constraint(
             top: weeklyChartLabel.bottomAnchor,
             leading: infoBoxView.leadingAnchor,
+            bottom: scrollContentView.bottomAnchor,
             trailing: infoBoxView.trailingAnchor,
             padding: .init(top: 20, left: 0, bottom: 0, right: 0)
         )
+
     }
     
     private func configureUI() {
