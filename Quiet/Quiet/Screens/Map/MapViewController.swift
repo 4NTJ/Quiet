@@ -29,7 +29,14 @@ class MapViewController: UIViewController {
             locationButton.setImage(image, for: .normal)
         }
     }
+    var locationText: String = ""
+    var noiseText: String = ""
+    var addressText: String = ""
     
+    private var noiseLevel: NoiseLevel = .level_1
+
+    private var locationData: [InstallInfo] = []
+
     private let searchBarView = SearchBarView()
     
     private let mapView: MKMapView = {
@@ -125,7 +132,8 @@ class MapViewController: UIViewController {
                                                         right: 20))
         
         mapView.addSubview(selectedInfoView)
-        selectedInfoView.constraint(selectedInfoView.heightAnchor, constant: CGFloat(Size.infoViewHeight))
+        selectedInfoView.constraint(selectedInfoView.heightAnchor,
+                                    constant: CGFloat(Size.infoViewHeight))
         selectedInfoView.constraint(leading: mapView.leadingAnchor,
                             bottom: view.safeAreaLayoutGuide.bottomAnchor,
                             trailing: mapView.trailingAnchor,
@@ -155,7 +163,43 @@ class MapViewController: UIViewController {
             }
         }
     }
+    
+    private func setMapRegion() {
+        guard let locationCoorinate = locationManager.location?.coordinate else {return}
+            let region = MKCoordinateRegion(center: locationCoorinate, span: MKCoordinateSpan(latitudeDelta: 0.016, longitudeDelta: 0.016) )
+        mapView.setRegion(region, animated: true)
+    }
+    
 
+    
+    
+    // MARK: - Network
+
+    
+    private func fetchLocationNoiseData(completion: @escaping (([InstallInfo]) -> ())) {
+        IoTAPI().fetchInstlInfo(datasetNo: GeneralAPI.noiseDatasetNo) { [weak self] data in
+            self?.locationData = data
+            completion(data)
+        }
+    }
+    
+    private func fetchSpecificLocationData(modelSerial: String, address: String, coordinate2D: CLLocationCoordinate2D) {
+        IoTAPI().fetchInquiry(datasetNo: GeneralAPI.noiseDatasetNo, modelSerial: modelSerial, inqDt: Date.getCurrentDate(with: "20220801"), currPageNo: 1) { data in
+            DispatchQueue.main.async {
+                guard let currentNoise = data.last?.column14 else { return }
+                let noiseLevel = getNoiseLevel(dbValue: Double(currentNoise) ?? 0.0)
+                self.noiseText = "\(noiseLevel.sheetComment)\n\(noiseLevel.level)"
+
+                self.selectedInfoView.setLocationData(title: self.locationText,
+                                                      content: self.noiseText,
+                                                      address: address)
+            }
+        }
+    }
+    
+    
+    // MARK: - Selector
+    
     @objc
     private func manualButtonTapped() {
         let vc = ManualViewController()
@@ -172,19 +216,7 @@ class MapViewController: UIViewController {
             mapView.setUserTrackingMode(.none, animated: true)
         }
     }
-    
-    private func setMapRegion() {
-        guard let locationCoorinate = locationManager.location?.coordinate else {return}
-            let region = MKCoordinateRegion(center: locationCoorinate, span: MKCoordinateSpan(latitudeDelta: 0.016, longitudeDelta: 0.016) )
-        mapView.setRegion(region, animated: true)
-    }
-}
-// MARK: - Network
-
-private func fetchLocationNoiseData(completion: @escaping (([InstallInfo]) -> ())) {
-    IoTAPI().fetchInstlInfo(datasetNo: GeneralAPI.noiseDatasetNo) { data in
-        completion(data)
-    }
+  
 }
 
 // MARK: - CLLocationManagerDelegate
@@ -207,8 +239,6 @@ extension MapViewController : CLLocationManagerDelegate {
             print("GPS: Default")
         }
     }
-    
-    
 }
 
 
@@ -235,7 +265,7 @@ extension MapViewController: MKMapViewDelegate {
         guard let marker = mapView.dequeueReusableAnnotationView(withIdentifier: AnnotationView.className) as? AnnotationView else {
             return AnnotationView()
         }
-        
+
         return marker
     }
     
@@ -244,10 +274,36 @@ extension MapViewController: MKMapViewDelegate {
         mapView.setCenter(coordinate, animated: true)
         selectedInfoView.isHidden = false
         
+        selectedInfoView.setLocationData(title: "", content: "", address: "")
+
+        
         UIView.animate(withDuration: 0.5, animations: { [weak self] in
             self?.locationButton.transform = .init(translationX: 0, y: -(Size.infoViewHeight + Size.infoViewBottomOffset + view.safeAreaInsets.bottom ))
             self?.manualButton.transform = .init(translationX: 0, y:-(Size.infoViewHeight + Size.infoViewBottomOffset + view.safeAreaInsets.bottom))
         }, completion: nil)
+        
+        var modelSerial = ""
+        var addressText = ""
+        
+        locationData.forEach {
+
+            let isSameLongitude = Double($0.longitude ?? "0") == view.annotation?.coordinate.longitude
+            let isSameLatitude = Double($0.latitude ?? "0") == view.annotation?.coordinate.latitude
+
+            if isSameLatitude && isSameLongitude {
+                guard let modlSerial = $0.modlSerial,
+                      let address = $0.address
+                else { return }
+                modelSerial = modlSerial
+                addressText = address
+                let splitAddress = address.split(separator: " ").map { String($0) }
+                locationText = splitAddress[2]
+                return
+            }
+        }
+        
+        fetchSpecificLocationData(modelSerial: modelSerial, address: addressText, coordinate2D: coordinate)
+
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
@@ -256,6 +312,8 @@ extension MapViewController: MKMapViewDelegate {
             self?.locationButton.transform = .identity
             self?.manualButton.transform = .identity
         }, completion: nil)
+        
+        selectedInfoView.setLocationData(title: "", content: "", address: "")
 
     }
 }

@@ -15,6 +15,12 @@ class SelectedInfoView: UIView {
         label.font = .systemFont(ofSize: 18, weight: .semibold)
         return label
     }()
+    private let addressLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.textColor = .systemGray
+        return label
+    }()
     private let nextIconImageView: UIImageView = {
         let imageView = UIImageView(image: ImageLiteral.imgRightChevron)
         imageView.tintColor = .systemCyan
@@ -54,8 +60,14 @@ class SelectedInfoView: UIView {
                                      centerY: locationLabel.centerYAnchor,
                                      padding: UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0))
         
+        addSubview(addressLabel)
+        addressLabel.constraint(top: locationLabel.bottomAnchor,
+                                leading: leadingAnchor,
+                                trailing: trailingAnchor,
+                                padding: UIEdgeInsets(top: 6, left: 20, bottom: 0, right: 20))
+        
         addSubview(soundLabel)
-        soundLabel.constraint(top: locationLabel.bottomAnchor,
+        soundLabel.constraint(top: addressLabel.bottomAnchor,
                               leading: leadingAnchor,
                               bottom: bottomAnchor,
                               padding: UIEdgeInsets(top: 12, left: 20, bottom: 20, right: 0))
@@ -74,10 +86,13 @@ class SelectedInfoView: UIView {
         self.layer.shadowRadius = 10
     }
     
-    func setLocationData(title: String, content: String?) {
+    func setLocationData(title: String, content: String, address: String) {
         locationLabel.text = title
-        if let content = content {
-            soundLabel.text = content
-        }
+        soundLabel.text = content
+        soundLabel.setLineSpacing(lineSpacing: 6.0, lineHeightMultiple: 0.0)
+        soundLabel.textColor = UIColor(red: 66/255, green: 66/255, blue: 66/255, alpha: 1.0)
+        addressLabel.text = address
+        
+    }
 }
-}
+
