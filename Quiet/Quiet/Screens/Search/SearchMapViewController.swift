@@ -176,8 +176,12 @@ final class SearchMapViewController: BaseViewController {
     @objc
     private func locationButtonTapped() {
         mapView.showsUserLocation.toggle()
-        mapView.setUserTrackingMode(.follow, animated: true)
         locationBtnCliked.toggle()
+        if mapView.showsUserLocation {
+            mapView.setUserTrackingMode(.follow, animated: true)
+        } else {
+            mapView.setUserTrackingMode(.none, animated: true)
+        }
     }
     
     // MARK: - Network
