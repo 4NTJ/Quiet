@@ -12,7 +12,7 @@ final class SearchMapViewController: BaseViewController {
     
     private enum Size {
         static let gulocationBottomConstant: CGFloat = 240
-        static let donglocationBottomConstant: CGFloat = 150
+        static let donglocationBottomConstant: CGFloat = 165
     }
     
     // MARK: - Properties
@@ -40,14 +40,18 @@ final class SearchMapViewController: BaseViewController {
             locationButton.setImage(image, for: .normal)
         }
     }
+    private var circle: MKOverlay?
+    private var noiseLevel: NoiseLevel = .level_1
     private var locationType: LocationType
     private var locationData: [InstallInfo]
+    private var currentCoordinator: CLLocationCoordinate2D
     
     // MARK: - Init
     
-    init(locationType: LocationType, locationData: [InstallInfo]) {
+    init(locationType: LocationType, locationData: [InstallInfo], currentCoordinator: CLLocationCoordinate2D) {
         self.locationType = locationType
         self.locationData = locationData
+        self.currentCoordinator = currentCoordinator
         super.init()
     }
     
@@ -140,6 +144,13 @@ final class SearchMapViewController: BaseViewController {
     }
     
     private func moveLocation() {
+        guard !locationData.isEmpty else {
+            let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            let region = MKCoordinateRegion(center: currentCoordinator, span: span)
+            mapView.setRegion(region, animated: true)
+            return
+        }
+        
         let averageLocation = calculateAverageLocation()
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: averageLocation, span: span)
@@ -154,6 +165,22 @@ final class SearchMapViewController: BaseViewController {
         let averageLongitude = (locationData.map { Double($0.longitude ?? "0") ?? 0.0 }.reduce(0.0, +)) / Double(locationData.count)
         
         return CLLocationCoordinate2D(latitude: averageLatitude, longitude: averageLongitude)
+    }
+    
+    private func setupAnnoationCircle(with center: CLLocationCoordinate2D) {
+        removeCircle()
+        
+        let distance = CLLocationDistance(300)
+        circle = MKCircle(center: center, radius: distance)
+        
+        mapView.addOverlay(circle!)
+    }
+    
+    private func removeCircle() {
+        if let circle = self.circle {
+            self.mapView.removeOverlay(circle)
+            self.circle = nil
+        }
     }
     
     // MARK: - Selector
@@ -172,6 +199,23 @@ final class SearchMapViewController: BaseViewController {
             mapView.setUserTrackingMode(.follow, animated: true)
         } else {
             mapView.setUserTrackingMode(.none, animated: true)
+        }
+    }
+    
+    // MARK: - Network
+    
+    private func fetchSpecificLocationData(modelSerial: String, address: String, coordinate2D: CLLocationCoordinate2D) {
+        IoTAPI().fetchInquiry(datasetNo: GeneralAPI.noiseDatasetNo, modelSerial: modelSerial, inqDt: Date.getCurrentDate(with: "20220801"), currPageNo: 1) { data in
+            DispatchQueue.main.async {
+                guard let currentNoise = data.last?.column14 else { return }
+                let noiseLevel = getNoiseLevel(dbValue: Double(currentNoise) ?? 0.0)
+                let noiseText = "\(noiseLevel.sheetComment)\n\(noiseLevel.level)"
+                NotificationCenter.default.post(name: .noiseDetail, object: noiseText)
+                NotificationCenter.default.post(name: .address, object: address)
+                
+                self.noiseLevel = noiseLevel
+                self.setupAnnoationCircle(with: coordinate2D)
+            }
         }
     }
 }
@@ -215,5 +259,30 @@ extension SearchMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let coordinate = view.annotation?.coordinate else { return }
         mapView.setCenter(coordinate, animated: true)
+        var modelSerial = ""
+        var addressText = ""
+        
+        locationData.forEach {
+            let isSameLongitude = Double($0.longitude ?? "0") == view.annotation?.coordinate.longitude
+            let isSameLatitude = Double($0.latitude ?? "0") == view.annotation?.coordinate.latitude
+            
+            if isSameLatitude && isSameLongitude {
+                guard let modlSerial = $0.modlSerial,
+                      let address = $0.address
+                else { return }
+                modelSerial = modlSerial
+                addressText = address
+                
+                return
+            }
+        }
+        
+        fetchSpecificLocationData(modelSerial: modelSerial, address: addressText, coordinate2D: coordinate)
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let circleRenderer : MKCircleRenderer = MKCircleRenderer(overlay: overlay)
+        circleRenderer.fillColor = noiseLevel.color.withAlphaComponent(0.3)
+        return circleRenderer
     }
 }

@@ -64,6 +64,36 @@ enum NoiseLevel {
             }
         }
     }
+    
+    var sheetComment: String {
+        switch self {
+        case .level_1:
+            return "😌 “수면에 영향이 없는 조용한 지역이에요”"
+        case .level_2:
+            return "🥱 “조용한 도서관 정도의 소음이 있어요”"
+        case .level_3:
+            return "🥱 “시끄러운 사무실 정도의 소음이 있어요”"
+        case .level_4:
+            return "😨 “공사장만큼 시끄러울 가능성이 있어요”"
+        case .level_5:
+            return "😱 “소음이 인체에 영향을 주는 위험 지역이에요”"
+        }
+    }
+    
+    var color: UIColor {
+        switch self {
+        case .level_1:
+            return .systemGray
+        case .level_2:
+            return .systemBlue
+        case .level_3:
+            return .systemGreen
+        case .level_4:
+            return .systemYellow
+        case .level_5:
+            return .systemRed
+        }
+    }
 }
 
 class DetailViewController: UIViewController {
@@ -98,14 +128,20 @@ class DetailViewController: UIViewController {
         // 값이 범위 내에 없다면?
         let noiseLevelEnum = getNoiseLevel(dbValue: averageNoiseDb)
         noiseInfo.text = noiseLevelEnum.comment
+        noiseInfo.font = .systemFont(ofSize: 16)
+        noiseInfo.numberOfLines = 0
+        noiseInfo.lineBreakMode = .byCharWrapping
+        
+        
         let noiseLevel = UILabel()
         noiseLevel.text = noiseLevelEnum.level
+        noiseLevel.font = .systemFont(ofSize: 16)
         
         let infoBox = UIStackView(arrangedSubviews: [noiseInfo, noiseLevel])
         infoBox.axis = .vertical
         infoBox.spacing = 10
         infoBox.widthAnchor.constraint(equalToConstant: screenWidth - 40).isActive = true
-        infoBox.layoutMargins = UIEdgeInsets(top: 15, left: 16, bottom: 15, right: .zero)
+        infoBox.layoutMargins = UIEdgeInsets(top: 15, left: 16, bottom: 15, right: 15)
         infoBox.isLayoutMarginsRelativeArrangement = true
         infoBox.backgroundColor = UIColor.white
         infoBox.layer.shadowColor = UIColor.gray.cgColor
@@ -126,14 +162,28 @@ class DetailViewController: UIViewController {
         chartTitle.font = .systemFont(ofSize: 18, weight: .semibold)
         return chartTitle
     }()
+    private let dayChartDescriptionLabel: UILabel = {
+        let descriptionLabel = UILabel()
+        descriptionLabel.text = "최근 일주일 평균(22.08.15~22.08.22)"
+        descriptionLabel.font = .systemFont(ofSize: 10)
+        return descriptionLabel
+    }()
     private let weeklyChartLabel: UILabel = {
         let chartTitle = UILabel()
         chartTitle.text = "평일/주말 소음 비교"
         chartTitle.font = .systemFont(ofSize: 18, weight: .semibold)
         return chartTitle
     }()
+    private let weeklyChartDescriptionLabel: UILabel = {
+        let descriptionLabel = UILabel()
+        descriptionLabel.text = "최근 한 달 평균(22.07)"
+        descriptionLabel.font = .systemFont(ofSize: 10)
+        return descriptionLabel
+    }()
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
         return scrollView
     }()
     private let scrollContentView = UIView()
@@ -201,12 +251,17 @@ class DetailViewController: UIViewController {
                                  leading: scrollContentView.leadingAnchor,
                                  padding: .init(top: 30.0, left: 20.0, bottom: 0, right: 0))
         
+        scrollContentView.addSubview(dayChartDescriptionLabel)
+        dayChartDescriptionLabel.constraint(top: dayChartLabel.bottomAnchor,
+                                 leading: scrollContentView.leadingAnchor,
+                                 padding: .init(top: 10.0, left: 20.0, bottom: 0, right: 0))
+        
         scrollContentView.addSubview(lineChartView)
-        lineChartView.constraint(top: dayChartLabel.bottomAnchor,
-                                 leading: dayChartLabel.leadingAnchor,
+        lineChartView.constraint(top: dayChartDescriptionLabel.bottomAnchor,
+                                 leading: dayChartDescriptionLabel.leadingAnchor,
                                  trailing: infoBoxView.trailingAnchor,
                                  padding: .init(top: 20, left: 0, bottom: 0, right: 0))
-        lineChartView.constraint(lineChartView.heightAnchor, constant: 300)
+        lineChartView.constraint(lineChartView.heightAnchor, constant: 200)
         
         scrollContentView.addSubview(separatorView)
         separatorView.constraint(separatorView.heightAnchor, constant: 5)
@@ -220,14 +275,19 @@ class DetailViewController: UIViewController {
                                     leading: scrollContentView.leadingAnchor,
                                     padding: .init(top: 30.0, left: 20.0, bottom: 0, right: 0))
         
+        scrollContentView.addSubview(weeklyChartDescriptionLabel)
+        weeklyChartDescriptionLabel.constraint(top: weeklyChartLabel.bottomAnchor,
+                                 leading: scrollContentView.leadingAnchor,
+                                 padding: .init(top: 10.0, left: 20.0, bottom: 0, right: 0))
+        
         scrollContentView.addSubview(self.barChartView)
-        barChartView.constraint(barChartView.heightAnchor, constant: 400)
+        barChartView.constraint(barChartView.heightAnchor, constant: 200)
         barChartView.constraint(
-            top: weeklyChartLabel.bottomAnchor,
+            top: weeklyChartDescriptionLabel.bottomAnchor,
             leading: infoBoxView.leadingAnchor,
             bottom: scrollContentView.bottomAnchor,
             trailing: infoBoxView.trailingAnchor,
-            padding: .init(top: 20, left: 0, bottom: 0, right: 0)
+            padding: .init(top: 20, left: 0, bottom: 20, right: 0)
         )
 
     }
