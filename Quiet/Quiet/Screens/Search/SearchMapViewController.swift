@@ -40,6 +40,7 @@ final class SearchMapViewController: BaseViewController {
             locationButton.setImage(image, for: .normal)
         }
     }
+    private var circle: MKOverlay?
     private var noiseLevel: NoiseLevel = .level_1
     private var locationType: LocationType
     private var locationData: [InstallInfo]
@@ -167,10 +168,19 @@ final class SearchMapViewController: BaseViewController {
     }
     
     private func setupAnnoationCircle(with center: CLLocationCoordinate2D) {
-        let distance = CLLocationDistance(300)
-        let circle = MKCircle(center: center, radius: distance)
+        removeCircle()
         
-        mapView.addOverlay(circle)
+        let distance = CLLocationDistance(300)
+        circle = MKCircle(center: center, radius: distance)
+        
+        mapView.addOverlay(circle!)
+    }
+    
+    private func removeCircle() {
+        if let circle = self.circle {
+            self.mapView.removeOverlay(circle)
+            self.circle = nil
+        }
     }
     
     // MARK: - Selector
