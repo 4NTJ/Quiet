@@ -317,7 +317,7 @@ extension SearchViewController: MKLocalSearchCompleterDelegate {
         searchResults = completer.results.filter { result in
             let splitTitle = result.title.split(separator: " ")
             guard splitTitle.count > 1 else { return false }
-            return splitTitle.contains("서울특별시")
+            return splitTitle.contains("서울특별시") && splitTitle.last?.last == "동"
         }
         searchTableView.reloadData()
     }
