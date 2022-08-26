@@ -121,6 +121,10 @@ final class SearchViewController: BaseViewController {
         let selectedResult = searchResults[indexPath.row]
         let searchRequest = MKLocalSearch.Request(completion: selectedResult)
         let search = MKLocalSearch(request: searchRequest)
+        let splitKeyword = selectedResult.title.split(separator: " ")
+        let keyword = makeAddressWithoutCountry(with: Array(splitKeyword))
+        UserDefaultHandler.setKeywords(keyword: keyword)
+        
         search.start { (response, error) in
             guard error == nil else {
                 return
@@ -153,6 +157,16 @@ final class SearchViewController: BaseViewController {
         navigationController.modalPresentationStyle = .fullScreen
         navigationController.modalTransitionStyle = .crossDissolve
         present(navigationController, animated: true)
+    }
+    
+    private func makeAddressWithoutCountry(with splitedKeyword: [String.SubSequence]) -> String {
+        var address: String = ""
+        
+        for index in 1..<splitedKeyword.count {
+            address += splitedKeyword[index] + " "
+        }
+        
+        return address
     }
     
     // MARK: - selector
@@ -242,16 +256,6 @@ extension SearchViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
         self.tableViewBottomConstraint?.constant = 0
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        
-        guard let keyword = textField.text else { return false }
-        UserDefaultHandler.setKeywords(keyword: keyword)
-        searchTableView.reloadData()
-        
-        return true
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
