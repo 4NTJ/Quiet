@@ -149,9 +149,10 @@ final class SearchViewController: BaseViewController {
     
     private func presentSearchResultView(with placeMark: MKPlacemark, installModel: [InstallInfo]) {
         let locationType = checkLocationType(placeMark.subLocality ?? "")
+        let sheetContainerViewController = SheetContainerViewController(locationType: locationType, locationData: installModel)
         let viewController = SearchResultViewController(
             contentViewController: SearchMapViewController(locationType: locationType, locationData: installModel),
-            bottomSheetViewController: SheetContainerViewController(locationType: locationType),
+            bottomSheetViewController: sheetContainerViewController,
             bottomSheetConfiguration: .init(
                 height: UIScreen.main.bounds.height * 0.8,
                 initialOffset: locationType == .gu ? Size.guOffset : Size.dongOffset
@@ -160,8 +161,10 @@ final class SearchViewController: BaseViewController {
 
         if let subLocality = placeMark.subLocality {
             viewController.locationText = subLocality
+            sheetContainerViewController.locationText = subLocality
         } else {
             viewController.locationText = placeMark.title ?? ""
+            sheetContainerViewController.locationText = placeMark.title ?? ""
         }
 
         let navigationController = UINavigationController(rootViewController: viewController)
