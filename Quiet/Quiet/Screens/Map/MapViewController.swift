@@ -9,6 +9,15 @@ import MapKit
 import UIKit
 
 class MapViewController: UIViewController {
+    
+    private enum Size {
+        static let infoViewWidth: CGFloat = UIScreen.main.bounds.size.width - 64
+        static let infoViewHeight: CGFloat = 150
+        static let infoViewBottomOffset: CGFloat = 20
+
+    }
+    
+    
     // MARK: - Properties
     
     private var locationBtnCliked = true {
@@ -42,6 +51,7 @@ class MapViewController: UIViewController {
     private let manualButton: UIButton = CircleButton(buttonImage: "info.circle.fill")
     private let locationButton: UIButton = CircleButton(buttonImage: "location.fill")
     
+    private let selectedInfoView = SelectedInfoView()
     
     
     // MARK: - Life Cycle
@@ -101,6 +111,7 @@ class MapViewController: UIViewController {
                                                       bottom: 20,
                                                       right: 20))
         
+        
         mapView.addSubview(locationButton)
         locationButton.constraint(locationButton.widthAnchor,
                                   constant: 50)
@@ -112,6 +123,16 @@ class MapViewController: UIViewController {
                                                         left: 0,
                                                         bottom: 16,
                                                         right: 20))
+        
+        mapView.addSubview(selectedInfoView)
+        selectedInfoView.constraint(selectedInfoView.heightAnchor, constant: CGFloat(Size.infoViewHeight))
+        selectedInfoView.constraint(leading: mapView.leadingAnchor,
+                            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                            trailing: mapView.trailingAnchor,
+                            padding: UIEdgeInsets(top: 0,
+                                                  left: 20,
+                                                  bottom: CGFloat(Size.infoViewBottomOffset) + view.safeAreaInsets.bottom,
+                                                  right: 20))
     }
     
     private func getLocationUsagePermission() {
@@ -221,5 +242,20 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let coordinate = view.annotation?.coordinate else { return }
         mapView.setCenter(coordinate, animated: true)
+        selectedInfoView.isHidden = false
+        
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            self?.locationButton.transform = .init(translationX: 0, y: -(Size.infoViewHeight + Size.infoViewBottomOffset + view.safeAreaInsets.bottom ))
+            self?.manualButton.transform = .init(translationX: 0, y:-(Size.infoViewHeight + Size.infoViewBottomOffset + view.safeAreaInsets.bottom))
+        }, completion: nil)
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        selectedInfoView.isHidden = true
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            self?.locationButton.transform = .identity
+            self?.manualButton.transform = .identity
+        }, completion: nil)
+
     }
 }

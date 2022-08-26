@@ -23,6 +23,7 @@
 		3558D93228B8AA6F000D1925 /* Red.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3558D92E28B8AA6F000D1925 /* Red.mp3 */; };
 		3558D93328B8AA6F000D1925 /* Green.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3558D92F28B8AA6F000D1925 /* Green.mp3 */; };
 		3558D93428B8AA6F000D1925 /* Blue.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3558D93028B8AA6F000D1925 /* Blue.mp3 */; };
+		3558D93628B9433D000D1925 /* SelectedInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D93528B9433D000D1925 /* SelectedInfoView.swift */; };
 		B51F19ED28B5276200B82CAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F19EC28B5276200B82CAD /* AppDelegate.swift */; };
 		B51F19EF28B5276200B82CAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F19EE28B5276200B82CAD /* SceneDelegate.swift */; };
 		B51F19F428B5276200B82CAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B51F19F228B5276200B82CAD /* Main.storyboard */; };
@@ -82,6 +83,7 @@
 		3558D92E28B8AA6F000D1925 /* Red.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Red.mp3; sourceTree = "<group>"; };
 		3558D92F28B8AA6F000D1925 /* Green.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Green.mp3; sourceTree = "<group>"; };
 		3558D93028B8AA6F000D1925 /* Blue.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Blue.mp3; sourceTree = "<group>"; };
+		3558D93528B9433D000D1925 /* SelectedInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedInfoView.swift; sourceTree = "<group>"; };
 		B51F19E928B5276200B82CAD /* Quiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B51F19EC28B5276200B82CAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B51F19EE28B5276200B82CAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				3558D91E28B79C98000D1925 /* Noise.swift */,
 				3558D92028B79CF7000D1925 /* NoiseInfoView.swift */,
+				3558D93528B9433D000D1925 /* SelectedInfoView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				212C1E0828B6813600728F24 /* UIViewController+Preview.swift in Sources */,
 				212C1E0228B6774B00728F24 /* NoiseBarChartView.swift in Sources */,
 				B51F1A1928B5296400B82CAD /* UIViewController+Alert.swift in Sources */,
+				3558D93628B9433D000D1925 /* SelectedInfoView.swift in Sources */,
 				B51F1A7F28B781C700B82CAD /* SheetViewController.swift in Sources */,
 				B548F22228B8A83900C4E24F /* DatasetInfo.swift in Sources */,
 				B51F1A7828B756C300B82CAD /* SearchResultViewController.swift in Sources */,
@@ -687,7 +691,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = J85NQ6YL4V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Quiet/Global/Supports/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -719,7 +723,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = J85NQ6YL4V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Quiet/Global/Supports/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
