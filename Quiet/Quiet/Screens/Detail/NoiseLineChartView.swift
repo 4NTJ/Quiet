@@ -36,7 +36,7 @@ final class NoiseLineChartView: UIView {
             dataEntries.append(dataEntry)
         }
         
-        let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "시간별 데시벨 정보")
+        let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "시간별 소음레벨")
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         
         lineChart.noDataText = "데이터가 없습니다"
@@ -47,11 +47,25 @@ final class NoiseLineChartView: UIView {
         lineChart.rightAxis.addLimitLine(limitLine)
         lineChart.xAxis.labelPosition = .bottom
         lineChart.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
-        lineChart.xAxis.setLabelCount(dataPoints.count, force: false)
+        lineChart.xAxis.setLabelCount(dataPoints.count/3, force: false)
         lineChart.data = lineChartData
         
-        lineChartDataSet.colors = [UIColor.blue]
-        lineChartDataSet.circleRadius = 3
+        lineChart.chartDescription?.enabled = false
+        lineChart.xAxis.drawGridLinesEnabled = false
+        lineChart.rightAxis.enabled = false
+        lineChart.leftAxis.drawGridLinesEnabled = false
+        
+        lineChart.legend.xEntrySpace = 20
+        lineChart.extraBottomOffset = 15
+        lineChart.legend.font = .systemFont(ofSize: 12)
+        lineChart.data?.setDrawValues(false)
+        
+        lineChartDataSet.colors = [UIColor.systemCyan]
+        lineChartDataSet.drawCirclesEnabled = false
+        lineChartDataSet.highlightColor = .gray
+        lineChartDataSet.drawHorizontalHighlightIndicatorEnabled = false
+        lineChartDataSet.lineWidth = 2
+        lineChartDataSet.lineCapType = .round
         
         lineChart.animate(xAxisDuration: 3.0, easingOption: .easeInOutBack)
     }
@@ -67,10 +81,55 @@ final class NoiseLineChartView: UIView {
         let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "서울시 평균")
         lineChart.data?.addDataSet(lineChartDataSet)
         
+        let marker = ChartMarker()
+        marker.chartView = lineChart
+        lineChart.marker = marker
+        
         lineChartDataSet.colors = [UIColor.gray]
-        lineChartDataSet.circleRadius = 0.5
+        lineChartDataSet.drawCirclesEnabled = false
         lineChartDataSet.drawValuesEnabled = false
+        lineChartDataSet.highlightColor = .gray
+        lineChartDataSet.drawHorizontalHighlightIndicatorEnabled = false
+        
         lineChart.animate(xAxisDuration: 3.0, easingOption: .easeInOutBack)
+        lineChart.pinchZoomEnabled = false
+        lineChart.doubleTapToZoomEnabled = false
     }
 }
 
+class ChartMarker: MarkerView {
+    private var text = String()
+
+    private let drawAttributes: [NSAttributedString.Key: Any] = [
+        .font: UIFont.systemFont(ofSize: 10),
+        .foregroundColor: UIColor.black
+    ]
+
+    override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {
+        text = String(entry.y)
+    }
+
+    override func draw(context: CGContext, point: CGPoint) {
+        super.draw(context: context, point: point)
+
+        let sizeForDrawing = text.size(withAttributes: drawAttributes)
+        bounds.size = sizeForDrawing
+        offset = CGPoint(x: -sizeForDrawing.width / 2, y: -sizeForDrawing.height - 4)
+
+        let offset = offsetForDrawing(atPoint: point)
+        let originPoint = CGPoint(x: point.x + offset.x, y: point.y + offset.y)
+        let rectForText = CGRect(origin: originPoint, size: sizeForDrawing)
+        drawText(text: text, rect: rectForText, withAttributes: drawAttributes)
+    }
+
+    private func drawText(text: String, rect: CGRect, withAttributes attributes: [NSAttributedString.Key: Any]? = nil) {
+        let size = bounds.size
+        let centeredRect = CGRect(
+            x: rect.origin.x + (rect.size.width - size.width) / 2,
+            y: rect.origin.y + (rect.size.height - size.height) / 2,
+            width: size.width,
+            height: size.height
+        )
+        text.draw(in: centeredRect, withAttributes: attributes)
+    }
+}

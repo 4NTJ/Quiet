@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		212C1DF928B675B900728F24 /* NoiseLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1DF828B675B900728F24 /* NoiseLineChartView.swift */; };
 		212C1DFC28B6760900728F24 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 212C1DFB28B6760900728F24 /* Charts */; };
-		212C1E0028B6767F00728F24 /* NoiseLineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1DFF28B6767F00728F24 /* NoiseLineChartViewController.swift */; };
 		212C1E0228B6774B00728F24 /* NoiseBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1E0128B6774B00728F24 /* NoiseBarChartView.swift */; };
-		212C1E0428B6779300728F24 /* NoiseBarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1E0328B6779300728F24 /* NoiseBarChartViewController.swift */; };
 		212C1E0628B680D600728F24 /* UIView+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1E0528B680D600728F24 /* UIView+Preview.swift */; };
 		212C1E0828B6813600728F24 /* UIViewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1E0728B6813600728F24 /* UIViewController+Preview.swift */; };
 		3558D91728B71541000D1925 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D91628B71541000D1925 /* CircleButton.swift */; };
@@ -51,9 +49,7 @@
 
 /* Begin PBXFileReference section */
 		212C1DF828B675B900728F24 /* NoiseLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseLineChartView.swift; sourceTree = "<group>"; };
-		212C1DFF28B6767F00728F24 /* NoiseLineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseLineChartViewController.swift; sourceTree = "<group>"; };
 		212C1E0128B6774B00728F24 /* NoiseBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseBarChartView.swift; sourceTree = "<group>"; };
-		212C1E0328B6779300728F24 /* NoiseBarChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseBarChartViewController.swift; sourceTree = "<group>"; };
 		212C1E0528B680D600728F24 /* UIView+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Preview.swift"; sourceTree = "<group>"; };
 		212C1E0728B6813600728F24 /* UIViewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Preview.swift"; sourceTree = "<group>"; };
 		3558D91628B71541000D1925 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
@@ -244,9 +240,7 @@
 			children = (
 				B51F1A0F28B5283D00B82CAD /* DetailViewController.swift */,
 				212C1E0128B6774B00728F24 /* NoiseBarChartView.swift */,
-				212C1E0328B6779300728F24 /* NoiseBarChartViewController.swift */,
 				212C1DF828B675B900728F24 /* NoiseLineChartView.swift */,
-				212C1DFF28B6767F00728F24 /* NoiseLineChartViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -400,7 +394,6 @@
 				212C1E0028B6767F00728F24 /* NoiseLineChartViewController.swift in Sources */,
 				B51F1A8328B78F4A00B82CAD /* SheetContainerViewController.swift in Sources */,
 				B51F1A1F28B5299B00B82CAD /* UIViewController+Extension.swift in Sources */,
-				212C1E0428B6779300728F24 /* NoiseBarChartViewController.swift in Sources */,
 				212C1E0828B6813600728F24 /* UIViewController+Preview.swift in Sources */,
 				212C1E0228B6774B00728F24 /* NoiseBarChartView.swift in Sources */,
 				B51F1A1928B5296400B82CAD /* UIViewController+Alert.swift in Sources */,
@@ -579,7 +572,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = AJK25G55CT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Quiet/Global/Supports/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -611,7 +604,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = AJK25G55CT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Quiet/Global/Supports/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
