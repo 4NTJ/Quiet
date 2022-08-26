@@ -7,11 +7,14 @@
 
 import UIKit
 
+import Lottie
+
 class BaseViewController: UIViewController {
     
     // MARK: - Properties
     
     lazy var backButton = BackButton()
+    var lottieView: AnimationView?
     
     // MARK: - Init
     
@@ -66,5 +69,25 @@ class BaseViewController: UIViewController {
         offsetView.bounds = offsetView.bounds.offsetBy(dx: offsetX, dy: offsetY)
         offsetView.addSubview(button)
         return offsetView
+    }
+    
+    func setupLottieView() {
+        guard let url = URL(string: "https://lottiefiles.com/98194-loading") else { return }
+        lottieView = AnimationView(url: url, closure: { _ in })
+        guard let lottieView = lottieView else { return }
+        lottieView.frame = CGRect(origin: .zero, size: CGSize(width: 100, height: 100))
+        
+        view.addSubview(lottieView)
+        lottieView.constraint(centerX: view.centerXAnchor,
+                              centerY: view.centerYAnchor)
+        
+        lottieView.contentMode = .scaleAspectFit
+        lottieView.loopMode = .loop
+        lottieView.play()
+    }
+    
+    func stopLottieAnimation() {
+        lottieView?.stop()
+        lottieView?.removeFromSuperview()
     }
 }
