@@ -131,11 +131,13 @@ final class SearchViewController: BaseViewController {
                 return
             }
             
-            self.presentSearchResultView(with: placeMark)
+            self.fetchLocationNoiseData(location: placeMark.subLocality ?? "") { [weak self] data in
+                self?.presentSearchResultView(with: placeMark, installModel: data)
+            }
         }
     }
     
-    private func presentSearchResultView(with placeMark: MKPlacemark) {
+    private func presentSearchResultView(with placeMark: MKPlacemark, installModel: [InstallInfo]) {
         let viewController = SearchResultViewController(
             contentViewController: SearchMapViewController(),
             bottomSheetViewController: SheetContainerViewController(),
@@ -144,20 +146,20 @@ final class SearchViewController: BaseViewController {
                 initialOffset: Size.guOffset
             )
         )
-        
+
         if let subLocality = placeMark.subLocality {
             viewController.locationText = subLocality
         } else {
             viewController.locationText = placeMark.title ?? ""
         }
-        
+
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .fullScreen
         navigationController.modalTransitionStyle = .crossDissolve
         present(navigationController, animated: true)
     }
     
-    // MARK: - selector
+    // MARK: - Selector
     
     @objc
     private func keyboardWillShow(_ notification:NSNotification) {
@@ -165,6 +167,19 @@ final class SearchViewController: BaseViewController {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             self.tableViewBottomConstraint?.constant = -keyboardHeight
+        }
+    }
+    
+    // MARK: - Network
+    
+    private func fetchLocationNoiseData(location: String, completion: @escaping (([InstallInfo]) -> ())) {
+        IoTAPI().fetchInstlInfo(datasetNo: GeneralAPI.noiseDatasetNo) { data in
+            let installModel = data.filter {
+                guard let address = $0.address else { return false }
+                let splitTexts = address.split(separator: " ").map { String($0) }
+                return splitTexts.contains(location)
+            }
+            completion(installModel)
         }
     }
 }
