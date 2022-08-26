@@ -71,7 +71,7 @@ final class SearchViewController: BaseViewController {
     
     // MARK: - Func
     
-    private func setupLayout() {
+    override func setupLayout() {
         view.addSubview(separatorView)
         separatorView.constraint(separatorView.heightAnchor, constant: 5)
         separatorView.constraint(top: view.safeAreaLayoutGuide.topAnchor,
