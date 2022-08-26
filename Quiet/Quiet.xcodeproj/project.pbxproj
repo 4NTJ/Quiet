@@ -56,6 +56,7 @@
 		B548F22028B8A24200C4E24F /* IoTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F21F28B8A24200C4E24F /* IoTAPI.swift */; };
 		B548F22228B8A83900C4E24F /* DatasetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F22128B8A83900C4E24F /* DatasetInfo.swift */; };
 		B548F22428B8AB3400C4E24F /* ColDescInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F22328B8AB3400C4E24F /* ColDescInfo.swift */; };
+		B548F22628B8AE0F00C4E24F /* InstallInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F22528B8AE0F00C4E24F /* InstallInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +109,7 @@
 		B548F21F28B8A24200C4E24F /* IoTAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoTAPI.swift; sourceTree = "<group>"; };
 		B548F22128B8A83900C4E24F /* DatasetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasetInfo.swift; sourceTree = "<group>"; };
 		B548F22328B8AB3400C4E24F /* ColDescInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColDescInfo.swift; sourceTree = "<group>"; };
+		B548F22528B8AE0F00C4E24F /* InstallInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -366,6 +368,7 @@
 				B548F21A28B8A09900C4E24F /* Inquiry.swift */,
 				B548F22128B8A83900C4E24F /* DatasetInfo.swift */,
 				B548F22328B8AB3400C4E24F /* ColDescInfo.swift */,
+				B548F22528B8AE0F00C4E24F /* InstallInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				3558D91928B74030000D1925 /* SearchBarView.swift in Sources */,
 				B548F21328B8983F00C4E24F /* GeneralAPI.swift in Sources */,
 				B51F19EF28B5276200B82CAD /* SceneDelegate.swift in Sources */,
+				B548F22628B8AE0F00C4E24F /* InstallInfo.swift in Sources */,
 				B51F1A1728B5294F00B82CAD /* UIView+Constraints.swift in Sources */,
 				B51F1A7428B681F300B82CAD /* UserDefaultHandler.swift in Sources */,
 				B51F1A6828B6674600B82CAD /* BackButton.swift in Sources */,
