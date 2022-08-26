@@ -30,6 +30,8 @@ class MapViewController: BaseViewController {
         }
     }
     var locationText: String = ""
+    var modelSerial = ""
+    var addressText = ""
     private var circle: MKOverlay?
 
     private var noiseLevel: NoiseLevel = .level_1
@@ -241,7 +243,7 @@ class MapViewController: BaseViewController {
     @objc
     private func selectedInfoViewTapped() {
         guard !locationData.isEmpty else { return }
-        let viewController = DetailViewController(title: "", noiseLevel: .level_1, deviceModel: "")
+        let viewController = DetailViewController(title: locationText, noiseLevel: noiseLevel, deviceModel: modelSerial)
         navigationController?.pushViewController(viewController, animated: true)
     }
   
@@ -311,8 +313,7 @@ extension MapViewController: MKMapViewDelegate {
             self?.manualButton.transform = .init(translationX: 0, y:-(Size.infoViewHeight + Size.infoViewBottomOffset + view.safeAreaInsets.bottom))
         }, completion: nil)
         
-        var modelSerial = ""
-        var addressText = ""
+
         
         locationData.forEach {
 
