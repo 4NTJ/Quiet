@@ -8,7 +8,7 @@
 import MapKit
 import UIKit
 
-class MapViewController: UIViewController {
+class MapViewController: BaseViewController {
     
     private enum Size {
         static let infoViewWidth: CGFloat = UIScreen.main.bounds.size.width - 64
@@ -30,8 +30,6 @@ class MapViewController: UIViewController {
         }
     }
     var locationText: String = ""
-    var noiseText: String = ""
-    var addressText: String = ""
     
     private var noiseLevel: NoiseLevel = .level_1
 
@@ -72,6 +70,7 @@ class MapViewController: UIViewController {
         btnAddTargets()
         setAnnotation()
         setMapRegion()
+        setupNavigationPopGesture()
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
@@ -80,7 +79,6 @@ class MapViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
         locationManager.stopUpdatingLocation()
     }
-    
     
     // MARK: - Func
     
@@ -91,7 +89,7 @@ class MapViewController: UIViewController {
         searchBarView.delegate = self
     }
     
-    private func setupLayout() {
+     override func setupLayout() {
         view.addSubview(mapView)
         mapView.constraint(to: view)
         
@@ -147,9 +145,15 @@ class MapViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
     }
     
+    private func setupNavigationPopGesture() {
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
+    }
+    
     private func btnAddTargets() {
         manualButton.addTarget(self, action: #selector(manualButtonTapped), for: .touchUpInside)
         locationButton.addTarget(self, action: #selector(locationButtonTapped), for: .touchUpInside)
+        selectedInfoView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectedInfoViewTapped)))
     }
     
     private func setAnnotation() {
@@ -188,11 +192,11 @@ class MapViewController: UIViewController {
             DispatchQueue.main.async {
                 guard let currentNoise = data.last?.column14 else { return }
                 let noiseLevel = getNoiseLevel(dbValue: Double(currentNoise) ?? 0.0)
-                self.noiseText = "\(noiseLevel.sheetComment)\n\(noiseLevel.level)"
+                let noiseText = "\(noiseLevel.sheetComment)\n\(noiseLevel.level)"
 
-                self.selectedInfoView.setLocationData(title: self.locationText,
-                                                      content: self.noiseText,
-                                                      address: address)
+                self.selectedInfoView.setLocationData(content: noiseText,
+                                                       address: address)
+                                                     
             }
         }
     }
@@ -215,6 +219,13 @@ class MapViewController: UIViewController {
         } else {
             mapView.setUserTrackingMode(.none, animated: true)
         }
+    }
+    
+    @objc
+    private func selectedInfoViewTapped() {
+        guard !locationData.isEmpty else { return }
+        let viewController = DetailViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
   
 }
@@ -273,8 +284,8 @@ extension MapViewController: MKMapViewDelegate {
         guard let coordinate = view.annotation?.coordinate else { return }
         mapView.setCenter(coordinate, animated: true)
         selectedInfoView.isHidden = false
-        
-        selectedInfoView.setLocationData(title: "", content: "", address: "")
+        selectedInfoView.setLocationTitle(title: "")
+        selectedInfoView.setLocationData(content: "", address: "")
 
         
         UIView.animate(withDuration: 0.5, animations: { [weak self] in
@@ -301,7 +312,7 @@ extension MapViewController: MKMapViewDelegate {
                 return
             }
         }
-        
+        selectedInfoView.setLocationTitle(title: locationText)
         fetchSpecificLocationData(modelSerial: modelSerial, address: addressText, coordinate2D: coordinate)
 
     }
@@ -313,7 +324,8 @@ extension MapViewController: MKMapViewDelegate {
             self?.manualButton.transform = .identity
         }, completion: nil)
         
-        selectedInfoView.setLocationData(title: "", content: "", address: "")
+        selectedInfoView.setLocationTitle(title: "")
+        selectedInfoView.setLocationData(content: "", address: "")
 
     }
 }

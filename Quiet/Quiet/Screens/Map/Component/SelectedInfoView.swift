@@ -84,10 +84,14 @@ class SelectedInfoView: UIView {
         self.layer.shadowOffset = CGSize(width: 0, height: 4)
         self.layer.shadowOpacity = 1
         self.layer.shadowRadius = 10
+        self.isUserInteractionEnabled = true
+
     }
     
-    func setLocationData(title: String, content: String, address: String) {
+    func setLocationTitle(title: String) {
         locationLabel.text = title
+    }
+    func setLocationData(content: String, address: String) {
         soundLabel.text = content
         soundLabel.setLineSpacing(lineSpacing: 6.0, lineHeightMultiple: 0.0)
         soundLabel.textColor = UIColor(red: 66/255, green: 66/255, blue: 66/255, alpha: 1.0)
