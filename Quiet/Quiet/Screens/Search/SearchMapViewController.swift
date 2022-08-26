@@ -212,6 +212,8 @@ final class SearchMapViewController: BaseViewController {
                 let noiseText = "\(noiseLevel.sheetComment)\n\(noiseLevel.level)"
                 NotificationCenter.default.post(name: .noiseDetail, object: noiseText)
                 NotificationCenter.default.post(name: .address, object: address)
+                NotificationCenter.default.post(name: .deviceModel, object: modelSerial)
+                NotificationCenter.default.post(name: .noiseLevel, object: noiseLevel)
                 
                 self.noiseLevel = noiseLevel
                 self.setupAnnoationCircle(with: coordinate2D)

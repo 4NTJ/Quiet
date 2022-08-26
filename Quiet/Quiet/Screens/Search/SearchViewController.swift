@@ -148,6 +148,9 @@ final class SearchViewController: BaseViewController {
     }
     
     private func presentSearchResultView(with placeMark: MKPlacemark, installModel: [InstallInfo]) {
+        UserDefaultHandler.setLocality(subLocality: placeMark.subLocality)
+        UserDefaultHandler.setCLLocation2D(latitude: placeMark.coordinate.latitude, longitude: placeMark.coordinate.longitude)
+        
         let coordinate2D = placeMark.coordinate
         let locationType = checkLocationType(placeMark.subLocality ?? "")
         let sheetContainerViewController = SheetContainerViewController(locationType: locationType, locationData: installModel)
@@ -168,6 +171,30 @@ final class SearchViewController: BaseViewController {
             sheetContainerViewController.locationText = placeMark.title ?? ""
         }
 
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        navigationController.modalTransitionStyle = .crossDissolve
+        present(navigationController, animated: true)
+    }
+    
+    private func presentSearchResultView(index: Int, installModel: [InstallInfo]) {
+        let coordinate2D = CLLocationCoordinate2D(latitude: Array(UserDefaultStorage.latitude.reversed())[index], longitude: Array(UserDefaultStorage.longitude.reversed())[index])
+        let locationType = checkLocationType(Array(UserDefaultStorage.subLocality.reversed())[index] ?? "")
+        let sheetContainerViewController = SheetContainerViewController(locationType: locationType, locationData: installModel)
+        let viewController = SearchResultViewController(
+            contentViewController: SearchMapViewController(locationType: locationType, locationData: installModel, currentCoordinator: coordinate2D),
+            bottomSheetViewController: sheetContainerViewController,
+            bottomSheetConfiguration: .init(
+                height: UIScreen.main.bounds.height * 0.8,
+                initialOffset: locationType == .gu ? Size.guOffset : Size.dongOffset
+            )
+        )
+
+        if let subLocality = Array(UserDefaultStorage.subLocality.reversed())[index] {
+            viewController.locationText = subLocality
+            sheetContainerViewController.locationText = subLocality
+        }
+        
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .fullScreen
         navigationController.modalTransitionStyle = .crossDissolve
@@ -277,9 +304,18 @@ extension SearchViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        switch searchType {
+        case .search:
+            fetchPlaceMark(with: indexPath)
+        default:
+            fetchLocationNoiseData(location: Array(UserDefaultStorage.subLocality.reversed())[indexPath.row] ?? "") { [weak self] data in
+                DispatchQueue.main.async {
+                    self?.presentSearchResultView(index: indexPath.row, installModel: data)
+                }
+            }
+        }
         
-        fetchPlaceMark(with: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

@@ -10,11 +10,26 @@ import Foundation
 enum DataKeys: String, CaseIterable {
     case keywords = "keywords"
     case playing = "play"
+    case subLocality = "subLocality"
+    case latitude = "latitude"
+    case longitude = "longitude"
 }
 
 struct UserDefaultStorage {
     static var keywords: [String] {
         return UserData<[String]>.getValue(forKey: .keywords) ?? []
+    }
+    
+    static var subLocality: [String?] {
+        return UserData<[String?]>.getValue(forKey: .subLocality) ?? []
+    }
+    
+    static var latitude: [Double] {
+        return UserData<[Double]>.getValue(forKey: .latitude) ?? []
+    }
+    
+    static var longitude: [Double] {
+        return UserData<[Double]>.getValue(forKey: .longitude) ?? []
     }
 }
 

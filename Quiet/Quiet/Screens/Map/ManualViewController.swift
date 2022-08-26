@@ -8,7 +8,7 @@
 import SafariServices
 import UIKit
 
-class ManualViewController: UIViewController {
+final class ManualViewController: BaseViewController {
     // MARK: - Properties
     
 
@@ -21,7 +21,7 @@ class ManualViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        label.text = "콰이어트에서는 ‘국가소음정보시스템’의 \n소음 크기 분류를 기준으로 각 지역 색깔을 \n다르게 나타냈어요! \n아래 분류를 통해 서울시 지역별 소음 정도를 \n확인해보세요 👀"
+        label.text = "콰이어트에서는 ‘국가소음정보시스템’의 소음 크기 분류를 기준으로 각 지역 색깔을 다르게 나타냈어요! 아래 분류를 통해 서울시 지역별 소음 정도를 확인해보세요 👀"
         label.textColor = .systemGray
         label.setLineSpacing(lineHeightMultiple: 1.4)
         return label
@@ -88,13 +88,11 @@ class ManualViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
         linkButton.addTarget(self,
                              action: #selector(linkTapped),
                              for: .touchUpInside)
         setDelegation()
-        setupLayout()
-        configureUI()
-        
     }
     
     
@@ -109,7 +107,7 @@ class ManualViewController: UIViewController {
 
     }
     
-    func setupLayout() {
+    override func setupLayout() {
         view.addSubview(scrollView)
         scrollView.constraint(to: view)
         
@@ -154,17 +152,19 @@ class ManualViewController: UIViewController {
         
         
     }
-    func configureUI() {
-        view.backgroundColor = .systemBackground
+    override func configureUI() {
+        super.configureUI()
         
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .semibold)]
+        
         title = "소음 분류"
+    }
+    
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
     }
     
     @objc func linkTapped() {

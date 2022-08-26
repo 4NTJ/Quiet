@@ -39,7 +39,7 @@ enum NoiseLevel {
             case .level_2:
                 return "“🥱 조용한 도서관 정도의 소음이 있어요”"
             case .level_3:
-                return "“🥱 시끄러운 사무실 정도의 소음이 있어요”"
+                return "“🙄 시끄러운 사무실 정도의 소음이 있어요”"
             case .level_4:
                 return "“😨 공사장만큼 시끄러울 가능성이 있어요”"
             case .level_5:
@@ -72,7 +72,7 @@ enum NoiseLevel {
         case .level_2:
             return "🥱 “조용한 도서관 정도의 소음이 있어요”"
         case .level_3:
-            return "🥱 “시끄러운 사무실 정도의 소음이 있어요”"
+            return "🙄 “시끄러운 사무실 정도의 소음이 있어요”"
         case .level_4:
             return "😨 “공사장만큼 시끄러울 가능성이 있어요”"
         case .level_5:
@@ -100,7 +100,6 @@ class DetailViewController: UIViewController {
 
     // MARK: - Properties
     
-    var locationName: String = "증산동"
     var averageNoiseDb: Double = 30.0
     
     let hours: [String] = (0...24).map{ num in
@@ -124,20 +123,16 @@ class DetailViewController: UIViewController {
     }()
     private lazy var infoBoxView: UIStackView = {
         let noiseInfo = UILabel()
-        
-        // 값이 범위 내에 없다면?
-        let noiseLevelEnum = getNoiseLevel(dbValue: averageNoiseDb)
-        noiseInfo.text = noiseLevelEnum.comment
+        noiseInfo.text = noiseLevel.comment
         noiseInfo.font = .systemFont(ofSize: 16)
         noiseInfo.numberOfLines = 0
         noiseInfo.lineBreakMode = .byCharWrapping
         
+        let noiseLabel = UILabel()
+        noiseLabel.text = noiseLevel.level
+        noiseLabel.font = .systemFont(ofSize: 16)
         
-        let noiseLevel = UILabel()
-        noiseLevel.text = noiseLevelEnum.level
-        noiseLevel.font = .systemFont(ofSize: 16)
-        
-        let infoBox = UIStackView(arrangedSubviews: [noiseInfo, noiseLevel])
+        let infoBox = UIStackView(arrangedSubviews: [noiseInfo, noiseLabel])
         infoBox.axis = .vertical
         infoBox.spacing = 10
         infoBox.widthAnchor.constraint(equalToConstant: screenWidth - 40).isActive = true
@@ -188,6 +183,23 @@ class DetailViewController: UIViewController {
     }()
     private let scrollContentView = UIView()
     
+    var navigationTitle: String
+    var noiseLevel: NoiseLevel
+    var deviceModel: String
+    
+    // MARK: - Init
+    
+    init(title: String, noiseLevel: NoiseLevel, deviceModel: String) {
+        self.navigationTitle = title
+        self.noiseLevel = noiseLevel
+        self.deviceModel = deviceModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Life cycle
     
     override func viewDidLoad() {
@@ -205,7 +217,7 @@ class DetailViewController: UIViewController {
         var days: [Int] = Array(repeating: 0, count: 7)
 
         for i in 0...30 {
-            IoTAPI().fetchInquiry(datasetNo: 48, modelSerial: "OC3CL200011", inqDt: String(startingDateInt+i), currPageNo: 1) { data in
+            IoTAPI().fetchInquiry(datasetNo: 48, modelSerial: deviceModel, inqDt: String(startingDateInt+i), currPageNo: 1) { data in
                 let newData = data.map { Int($0.column14 ?? "0") ?? 0 }
                 times = zip(times, newData).map(+)
                 days[((startingDateInt+i)%100 + 3)%7] = times.reduce(0, +)/24
@@ -285,6 +297,8 @@ class DetailViewController: UIViewController {
     
     private func configureUI() {
         view.backgroundColor = .white
+        
+        title = navigationTitle
     }
     
     private func setupLineChartView() {
@@ -301,8 +315,6 @@ class DetailViewController: UIViewController {
         let backButton = makeBarButtonItem(with: leftOffsetBackButton)
         
         navigationItem.leftBarButtonItem = backButton
-        
-        title = locationName
     }
     
     private func makeBarButtonItem<T: UIView>(with view: T) -> UIBarButtonItem {
