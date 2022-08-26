@@ -213,7 +213,7 @@ class MapViewController: BaseViewController {
                 self.selectedInfoView.setLocationData(content: noiseText,
                                                        address: address)
                 self.setupAnnoationCircle(with: coordinate2D)
-
+                self.stopLottieAnimation()
             }
         }
     }
@@ -298,6 +298,7 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        setupLottieView()
         guard let coordinate = view.annotation?.coordinate else { return }
         mapView.setCenter(coordinate, animated: true)
         selectedInfoView.isHidden = false
