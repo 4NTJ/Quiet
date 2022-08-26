@@ -50,6 +50,8 @@ class MapViewController: UIViewController {
         setDelegation()
         setupLayout()
         btnAddTargets()
+        
+        IoTAPI().fetchDatasetInfo()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

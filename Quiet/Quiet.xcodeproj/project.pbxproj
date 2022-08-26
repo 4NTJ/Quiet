@@ -44,6 +44,10 @@
 		B548F21128B897C200C4E24F /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = B548F21028B897C200C4E24F /* Moya */; };
 		B548F21328B8983F00C4E24F /* GeneralAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F21228B8983F00C4E24F /* GeneralAPI.swift */; };
 		B548F21528B8989E00C4E24F /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F21428B8989E00C4E24F /* NetworkLoggerPlugin.swift */; };
+		B548F21828B8998300C4E24F /* IoTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F21728B8998300C4E24F /* IoTService.swift */; };
+		B548F21B28B8A09900C4E24F /* Inquiry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F21A28B8A09900C4E24F /* Inquiry.swift */; };
+		B548F21D28B8A19800C4E24F /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F21C28B8A19800C4E24F /* Encodable+Extension.swift */; };
+		B548F22028B8A24200C4E24F /* IoTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F21F28B8A24200C4E24F /* IoTAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +88,10 @@
 		B51F1A7528B73B5400B82CAD /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		B548F21228B8983F00C4E24F /* GeneralAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralAPI.swift; sourceTree = "<group>"; };
 		B548F21428B8989E00C4E24F /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
+		B548F21728B8998300C4E24F /* IoTService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoTService.swift; sourceTree = "<group>"; };
+		B548F21A28B8A09900C4E24F /* Inquiry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inquiry.swift; sourceTree = "<group>"; };
+		B548F21C28B8A19800C4E24F /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
+		B548F21F28B8A24200C4E24F /* IoTAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoTAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +191,7 @@
 				B51F1A1E28B5299B00B82CAD /* UIViewController+Extension.swift */,
 				B51F1A2028B52A0700B82CAD /* UITableView+Extension.swift */,
 				3558D92228B79DE0000D1925 /* UILabel+Extension.swift */,
+				B548F21C28B8A19800C4E24F /* Encodable+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -278,6 +287,9 @@
 		B51F1A6F28B6819500B82CAD /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B548F21928B8A08900C4E24F /* Model */,
+				B548F21E28B8A21C00C4E24F /* API */,
+				B548F21628B8995000C4E24F /* APIService */,
 				B548F20E28B8975700C4E24F /* Foundation */,
 				B51F1A7028B681B200B82CAD /* Storage */,
 			);
@@ -300,6 +312,30 @@
 				B548F21428B8989E00C4E24F /* NetworkLoggerPlugin.swift */,
 			);
 			path = Foundation;
+			sourceTree = "<group>";
+		};
+		B548F21628B8995000C4E24F /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+				B548F21728B8998300C4E24F /* IoTService.swift */,
+			);
+			path = APIService;
+			sourceTree = "<group>";
+		};
+		B548F21928B8A08900C4E24F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B548F21A28B8A09900C4E24F /* Inquiry.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B548F21E28B8A21C00C4E24F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				B548F21F28B8A24200C4E24F /* IoTAPI.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,8 +418,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				212C1E0028B6767F00728F24 /* NoiseLineChartViewController.swift in Sources */,
+				B548F22028B8A24200C4E24F /* IoTAPI.swift in Sources */,
 				B51F1A1F28B5299B00B82CAD /* UIViewController+Extension.swift in Sources */,
 				212C1E0428B6779300728F24 /* NoiseBarChartViewController.swift in Sources */,
+				B548F21D28B8A19800C4E24F /* Encodable+Extension.swift in Sources */,
 				212C1E0828B6813600728F24 /* UIViewController+Preview.swift in Sources */,
 				212C1E0228B6774B00728F24 /* NoiseBarChartView.swift in Sources */,
 				B51F1A1928B5296400B82CAD /* UIViewController+Alert.swift in Sources */,
@@ -391,6 +429,7 @@
 				B51F1A7228B681EA00B82CAD /* UserDefaultStorage.swift in Sources */,
 				B51F19ED28B5276200B82CAD /* AppDelegate.swift in Sources */,
 				B51F1A6B28B6714600B82CAD /* RecentKeywordTableViewCell.swift in Sources */,
+				B548F21828B8998300C4E24F /* IoTService.swift in Sources */,
 				B51F1A1328B5292200B82CAD /* ImageLiteral.swift in Sources */,
 				B51F1A1528B5293600B82CAD /* StringLiteral.swift in Sources */,
 				3558D92128B79CF7000D1925 /* NoiseInfoView.swift in Sources */,
@@ -405,6 +444,7 @@
 				B51F1A7628B73B5400B82CAD /* SearchTableViewCell.swift in Sources */,
 				B51F1A1028B5283D00B82CAD /* DetailViewController.swift in Sources */,
 				B51F1A0E28B5283400B82CAD /* SearchViewController.swift in Sources */,
+				B548F21B28B8A09900C4E24F /* Inquiry.swift in Sources */,
 				3558D91928B74030000D1925 /* SearchBarView.swift in Sources */,
 				B548F21328B8983F00C4E24F /* GeneralAPI.swift in Sources */,
 				B51F19EF28B5276200B82CAD /* SceneDelegate.swift in Sources */,
