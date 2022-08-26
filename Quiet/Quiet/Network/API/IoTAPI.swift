@@ -17,14 +17,20 @@ protocol IoTAPIType {
 final class IoTAPI: IoTAPIType {
     
     private let provider = MoyaProvider<IoTService>(plugins: [NetworkLoggerPlugin(verbose: true)])
+    private var datasetInfoResponse: DatasetInfoDTO?
     
     func fetchDatasetInfo() {
         provider.request(.datasetInfo, callbackQueue: .global()) { response in
             switch response {
             case .success(let data):
-                print(response)
+                do {
+                    self.datasetInfoResponse = try data.map(DatasetInfoDTO.self)
+                    dump(self.datasetInfoResponse?.resultData)
+                } catch(let err) {
+                    print(err.localizedDescription)
+                }
             case .failure(let err):
-                print(err.errorDescription)
+                print(err.localizedDescription)
             }
         }
     }

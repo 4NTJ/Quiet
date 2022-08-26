@@ -54,6 +54,7 @@
 		B548F21B28B8A09900C4E24F /* Inquiry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F21A28B8A09900C4E24F /* Inquiry.swift */; };
 		B548F21D28B8A19800C4E24F /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F21C28B8A19800C4E24F /* Encodable+Extension.swift */; };
 		B548F22028B8A24200C4E24F /* IoTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F21F28B8A24200C4E24F /* IoTAPI.swift */; };
+		B548F22228B8A83900C4E24F /* DatasetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F22128B8A83900C4E24F /* DatasetInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,7 @@
 		B548F21A28B8A09900C4E24F /* Inquiry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inquiry.swift; sourceTree = "<group>"; };
 		B548F21C28B8A19800C4E24F /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
 		B548F21F28B8A24200C4E24F /* IoTAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoTAPI.swift; sourceTree = "<group>"; };
+		B548F22128B8A83900C4E24F /* DatasetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasetInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -360,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				B548F21A28B8A09900C4E24F /* Inquiry.swift */,
+				B548F22128B8A83900C4E24F /* DatasetInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				212C1E0228B6774B00728F24 /* NoiseBarChartView.swift in Sources */,
 				B51F1A1928B5296400B82CAD /* UIViewController+Alert.swift in Sources */,
 				B51F1A7F28B781C700B82CAD /* SheetViewController.swift in Sources */,
+				B548F22228B8A83900C4E24F /* DatasetInfo.swift in Sources */,
 				B51F1A7828B756C300B82CAD /* SearchResultViewController.swift in Sources */,
 				B51F1A6E28B6739900B82CAD /* RecentKeywordHeaderView.swift in Sources */,
 				B51F1A7228B681EA00B82CAD /* UserDefaultStorage.swift in Sources */,
