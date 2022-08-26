@@ -150,10 +150,10 @@ final class SearchMapViewController: BaseViewController {
     private func calculateAverageLocation() -> CLLocationCoordinate2D {
         guard !locationData.isEmpty
         else { return CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0) }
-        let latitude = (locationData.map { Double($0.latitude ?? "0") ?? 0.0 }.reduce(0.0, +)) / Double(locationData.count)
-        let longitude = (locationData.map { Double($0.longitude ?? "0") ?? 0.0 }.reduce(0.0, +)) / Double(locationData.count)
+        let averageLatitude = (locationData.map { Double($0.latitude ?? "0") ?? 0.0 }.reduce(0.0, +)) / Double(locationData.count)
+        let averageLongitude = (locationData.map { Double($0.longitude ?? "0") ?? 0.0 }.reduce(0.0, +)) / Double(locationData.count)
         
-        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        return CLLocationCoordinate2D(latitude: averageLatitude, longitude: averageLongitude)
     }
     
     // MARK: - Selector
