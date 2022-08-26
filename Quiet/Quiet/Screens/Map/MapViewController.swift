@@ -121,19 +121,20 @@ class MapViewController: UIViewController {
         locationButton.addTarget(self, action: #selector(locationButtonTapped), for: .touchUpInside)
     }
     
-    @objc private func manualButtonTapped() {
+    @objc
+    private func manualButtonTapped() {
         let vc = ManualViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc private func locationButtonTapped() {
+    @objc
+    private func locationButtonTapped() {
         mapView.showsUserLocation.toggle()
         locationBtnCliked.toggle()
         if mapView.showsUserLocation {
             mapView.setUserTrackingMode(.follow, animated: true)
         } else {
             mapView.setUserTrackingMode(.none, animated: true)
-
         }
     }
     
