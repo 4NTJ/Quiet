@@ -18,6 +18,8 @@
 		3558D92128B79CF7000D1925 /* NoiseInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D92028B79CF7000D1925 /* NoiseInfoView.swift */; };
 		3558D92328B79DE0000D1925 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D92228B79DE0000D1925 /* UILabel+Extension.swift */; };
 		3558D92528B79E4E000D1925 /* ManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D92428B79E4E000D1925 /* ManualViewController.swift */; };
+		3558D91728B71541000D1925 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D91628B71541000D1925 /* CircleButton.swift */; };
+		3558D91928B74030000D1925 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D91828B74030000D1925 /* SearchBarView.swift */; };
 		B51F19ED28B5276200B82CAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F19EC28B5276200B82CAD /* AppDelegate.swift */; };
 		B51F19EF28B5276200B82CAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F19EE28B5276200B82CAD /* SceneDelegate.swift */; };
 		B51F19F428B5276200B82CAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B51F19F228B5276200B82CAD /* Main.storyboard */; };
@@ -30,13 +32,14 @@
 		B51F1A1528B5293600B82CAD /* StringLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1428B5293600B82CAD /* StringLiteral.swift */; };
 		B51F1A1728B5294F00B82CAD /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1628B5294F00B82CAD /* UIView+Constraints.swift */; };
 		B51F1A1928B5296400B82CAD /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1828B5296400B82CAD /* UIViewController+Alert.swift */; };
-		B51F1A1B28B5297500B82CAD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1A28B5297500B82CAD /* UIColor+Extension.swift */; };
 		B51F1A1D28B5298B00B82CAD /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1C28B5298B00B82CAD /* NSObject+Extension.swift */; };
 		B51F1A1F28B5299B00B82CAD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1E28B5299B00B82CAD /* UIViewController+Extension.swift */; };
 		B51F1A2128B52A0700B82CAD /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A2028B52A0700B82CAD /* UITableView+Extension.swift */; };
 		B51F1A6828B6674600B82CAD /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A6728B6674600B82CAD /* BackButton.swift */; };
 		B51F1A6B28B6714600B82CAD /* RecentKeywordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A6A28B6714600B82CAD /* RecentKeywordTableViewCell.swift */; };
 		B51F1A6E28B6739900B82CAD /* RecentKeywordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A6D28B6739900B82CAD /* RecentKeywordHeaderView.swift */; };
+		B51F1A7228B681EA00B82CAD /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7128B681EA00B82CAD /* UserDefaultStorage.swift */; };
+		B51F1A7428B681F300B82CAD /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7328B681F300B82CAD /* UserDefaultHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,8 @@
 		3558D92028B79CF7000D1925 /* NoiseInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseInfoView.swift; sourceTree = "<group>"; };
 		3558D92228B79DE0000D1925 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		3558D92428B79E4E000D1925 /* ManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualViewController.swift; sourceTree = "<group>"; };
+		3558D91628B71541000D1925 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		3558D91828B74030000D1925 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		B51F19E928B5276200B82CAD /* Quiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B51F19EC28B5276200B82CAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B51F19EE28B5276200B82CAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,13 +69,14 @@
 		B51F1A1428B5293600B82CAD /* StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiteral.swift; sourceTree = "<group>"; };
 		B51F1A1628B5294F00B82CAD /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		B51F1A1828B5296400B82CAD /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
-		B51F1A1A28B5297500B82CAD /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		B51F1A1C28B5298B00B82CAD /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		B51F1A1E28B5299B00B82CAD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B51F1A2028B52A0700B82CAD /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		B51F1A6728B6674600B82CAD /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		B51F1A6A28B6714600B82CAD /* RecentKeywordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentKeywordTableViewCell.swift; sourceTree = "<group>"; };
 		B51F1A6D28B6739900B82CAD /* RecentKeywordHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentKeywordHeaderView.swift; sourceTree = "<group>"; };
+		B51F1A7128B681EA00B82CAD /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
+		B51F1A7328B681F300B82CAD /* UserDefaultHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,7 @@
 		B51F19EB28B5276200B82CAD /* Quiet */ = {
 			isa = PBXGroup;
 			children = (
+				B51F1A6F28B6819500B82CAD /* Network */,
 				B51F1A0228B5277200B82CAD /* Screens */,
 				B51F1A0128B5276D00B82CAD /* Global */,
 			);
@@ -164,7 +171,6 @@
 		B51F1A0428B5278600B82CAD /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				B51F1A1A28B5297500B82CAD /* UIColor+Extension.swift */,
 				B51F1A1C28B5298B00B82CAD /* NSObject+Extension.swift */,
 				B51F1A1E28B5299B00B82CAD /* UIViewController+Extension.swift */,
 				B51F1A2028B52A0700B82CAD /* UITableView+Extension.swift */,
@@ -199,6 +205,7 @@
 				3558D91D28B79C91000D1925 /* Component */,
 				B51F1A0A28B5282300B82CAD /* MapViewController.swift */,
 				3558D92428B79E4E000D1925 /* ManualViewController.swift */,
+				3558D91828B74030000D1925 /* SearchBarView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -237,6 +244,7 @@
 		B51F1A6628B666E800B82CAD /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				3558D91628B71541000D1925 /* CircleButton.swift */,
 				B51F1A6728B6674600B82CAD /* BackButton.swift */,
 			);
 			path = UIComponents;
@@ -256,6 +264,23 @@
 				B51F1A6D28B6739900B82CAD /* RecentKeywordHeaderView.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		B51F1A6F28B6819500B82CAD /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B51F1A7028B681B200B82CAD /* Storage */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		B51F1A7028B681B200B82CAD /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				B51F1A7128B681EA00B82CAD /* UserDefaultStorage.swift */,
+				B51F1A7328B681F300B82CAD /* UserDefaultHandler.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +367,7 @@
 				212C1E0228B6774B00728F24 /* NoiseBarChartView.swift in Sources */,
 				B51F1A1928B5296400B82CAD /* UIViewController+Alert.swift in Sources */,
 				B51F1A6E28B6739900B82CAD /* RecentKeywordHeaderView.swift in Sources */,
+				B51F1A7228B681EA00B82CAD /* UserDefaultStorage.swift in Sources */,
 				B51F19ED28B5276200B82CAD /* AppDelegate.swift in Sources */,
 				B51F1A6B28B6714600B82CAD /* RecentKeywordTableViewCell.swift in Sources */,
 				B51F1A1328B5292200B82CAD /* ImageLiteral.swift in Sources */,
@@ -350,14 +376,16 @@
 				B51F1A1D28B5298B00B82CAD /* NSObject+Extension.swift in Sources */,
 				212C1DF928B675B900728F24 /* NoiseLineChartView.swift in Sources */,
 				B51F1A0B28B5282300B82CAD /* MapViewController.swift in Sources */,
+				3558D91728B71541000D1925 /* CircleButton.swift in Sources */,
 				212C1E0628B680D600728F24 /* UIView+Preview.swift in Sources */,
 				3558D91F28B79C98000D1925 /* Noise.swift in Sources */,
 				3558D92328B79DE0000D1925 /* UILabel+Extension.swift in Sources */,
 				B51F1A1028B5283D00B82CAD /* DetailViewController.swift in Sources */,
 				B51F1A0E28B5283400B82CAD /* SearchViewController.swift in Sources */,
+				3558D91928B74030000D1925 /* SearchBarView.swift in Sources */,
 				B51F19EF28B5276200B82CAD /* SceneDelegate.swift in Sources */,
 				B51F1A1728B5294F00B82CAD /* UIView+Constraints.swift in Sources */,
-				B51F1A1B28B5297500B82CAD /* UIColor+Extension.swift in Sources */,
+				B51F1A7428B681F300B82CAD /* UserDefaultHandler.swift in Sources */,
 				B51F1A6828B6674600B82CAD /* BackButton.swift in Sources */,
 				3558D92528B79E4E000D1925 /* ManualViewController.swift in Sources */,
 				B51F1A2128B52A0700B82CAD /* UITableView+Extension.swift in Sources */,
@@ -507,6 +535,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Quiet/Global/Supports/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -538,6 +567,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Quiet/Global/Supports/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

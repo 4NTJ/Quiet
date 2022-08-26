@@ -12,6 +12,14 @@ enum ImageLiteral {
     // MARK: - Button
     
     static var btnBack: UIImage { .load(systemName: "chevron.backward") }
+    static var btnXmark: UIImage { .load(systemName: "xmark") }
+
+    // MARK: - Icon
+
+    static var icMagnifyingglass: UIImage { .load(systemName: "magnifyingglass") }
+    static var icLocation: UIImage { .load(systemName: "location") }
+    static var icLocationFill: UIImage { .load(systemName: "location.fill") }
+
 }
 
 extension UIImage {
