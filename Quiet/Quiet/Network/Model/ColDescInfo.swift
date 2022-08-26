@@ -7,6 +7,9 @@
 
 import Foundation
 
+/// 도시 환경 데이터 13번 column - 소음
+/// 유동 인구 데이터 7번 column - 방문자 수
+
 struct ColDescInfoDTO: Codable {
     let datasetNo: String?
     let dataNo: String?

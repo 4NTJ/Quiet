@@ -8,10 +8,10 @@
 import Moya
 
 protocol IoTAPIType {
-    func fetchDatasetInfo()
-    func fetchColDesc(datasetNo: Int)
-    func fetchInstlInfo(datasetNo: Int)
-    func fetchInquiry(datasetNo: Int, modelSerial: String, inqDt: String, currPageNo: Int)
+    func fetchDatasetInfo(completion: @escaping (([DatasetInfo]) -> ()))
+    func fetchColDesc(datasetNo: Int, completion: @escaping (([ColDescInfo]) -> ()))
+    func fetchInstlInfo(datasetNo: Int, completion: @escaping (([InstallInfo]) -> ()))
+    func fetchInquiry(datasetNo: Int, modelSerial: String, inqDt: String, currPageNo: Int, completion: @escaping (([InquiryInfo]) -> ()))
 }
 
 final class IoTAPI: IoTAPIType {
@@ -22,13 +22,14 @@ final class IoTAPI: IoTAPIType {
     private var installInfoResponse: InstallInfoDTO?
     private var inquiryInfoResponse: InquiryInfoDTO?
     
-    func fetchDatasetInfo() {
+    func fetchDatasetInfo(completion: @escaping (([DatasetInfo]) -> ())) {
         provider.request(.datasetInfo, callbackQueue: .global()) { response in
             switch response {
             case .success(let data):
                 do {
                     self.datasetInfoResponse = try data.map(DatasetInfoDTO.self)
                     dump(self.datasetInfoResponse?.resultData)
+                    completion(self.datasetInfoResponse?.resultData ?? [])
                 } catch(let err) {
                     print(err.localizedDescription)
                 }
@@ -38,13 +39,14 @@ final class IoTAPI: IoTAPIType {
         }
     }
     
-    func fetchColDesc(datasetNo: Int) {
+    func fetchColDesc(datasetNo: Int, completion: @escaping (([ColDescInfo]) -> ())) {
         provider.request(.colDesc(datasetNo: datasetNo), callbackQueue: .global()) { response in
             switch response {
             case .success(let data):
                 do {
                     self.colDescInfoResponse = try data.map(ColDescInfoDTO.self)
                     dump(self.colDescInfoResponse?.resultData)
+                    completion(self.colDescInfoResponse?.resultData ?? [])
                 } catch(let err) {
                     print(err.localizedDescription)
                 }
@@ -54,13 +56,14 @@ final class IoTAPI: IoTAPIType {
         }
     }
     
-    func fetchInstlInfo(datasetNo: Int) {
+    func fetchInstlInfo(datasetNo: Int, completion: @escaping (([InstallInfo]) -> ())) {
         provider.request(.instlInfo(datasetNo: datasetNo), callbackQueue: .global()) { response in
             switch response {
             case .success(let data):
                 do {
                     self.installInfoResponse = try data.map(InstallInfoDTO.self)
                     dump(self.installInfoResponse?.resultData)
+                    completion(self.installInfoResponse?.resultData ?? [])
                 } catch(let err) {
                     print(err.localizedDescription)
                 }
@@ -70,13 +73,14 @@ final class IoTAPI: IoTAPIType {
         }
     }
     
-    func fetchInquiry(datasetNo: Int, modelSerial: String, inqDt: String, currPageNo: Int) {
+    func fetchInquiry(datasetNo: Int, modelSerial: String, inqDt: String, currPageNo: Int, completion: @escaping (([InquiryInfo]) -> ())) {
         provider.request(.inquiry(datasetNo: datasetNo, modelSerial: modelSerial, inqDt: inqDt, currPageNo: currPageNo), callbackQueue: .global()) { response in
             switch response {
             case .success(let data):
                 do {
                     self.inquiryInfoResponse = try data.map(InquiryInfoDTO.self)
                     dump(self.inquiryInfoResponse?.resultData)
+                    completion(self.inquiryInfoResponse?.resultData ?? [])
                 } catch(let err) {
                     print(err.localizedDescription)
                 }

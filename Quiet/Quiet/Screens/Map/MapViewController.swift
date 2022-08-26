@@ -51,8 +51,6 @@ class MapViewController: UIViewController {
         setupLayout()
         btnAddTargets()
         configureUI()
-        
-        IoTAPI().fetchInquiry(datasetNo: 30, modelSerial: "OC3CL200010", inqDt: "20220801", currPageNo: 1)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
