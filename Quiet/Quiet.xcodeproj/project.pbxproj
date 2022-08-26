@@ -55,6 +55,7 @@
 		B548F21D28B8A19800C4E24F /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F21C28B8A19800C4E24F /* Encodable+Extension.swift */; };
 		B548F22028B8A24200C4E24F /* IoTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F21F28B8A24200C4E24F /* IoTAPI.swift */; };
 		B548F22228B8A83900C4E24F /* DatasetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F22128B8A83900C4E24F /* DatasetInfo.swift */; };
+		B548F22428B8AB3400C4E24F /* ColDescInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F22328B8AB3400C4E24F /* ColDescInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		B548F21C28B8A19800C4E24F /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
 		B548F21F28B8A24200C4E24F /* IoTAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoTAPI.swift; sourceTree = "<group>"; };
 		B548F22128B8A83900C4E24F /* DatasetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasetInfo.swift; sourceTree = "<group>"; };
+		B548F22328B8AB3400C4E24F /* ColDescInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColDescInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -363,6 +365,7 @@
 			children = (
 				B548F21A28B8A09900C4E24F /* Inquiry.swift */,
 				B548F22128B8A83900C4E24F /* DatasetInfo.swift */,
+				B548F22328B8AB3400C4E24F /* ColDescInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				B51F1A7B28B7583800B82CAD /* BaseViewController.swift in Sources */,
 				B51F1A8128B78EE400B82CAD /* SearchMapViewController.swift in Sources */,
 				B51F19ED28B5276200B82CAD /* AppDelegate.swift in Sources */,
+				B548F22428B8AB3400C4E24F /* ColDescInfo.swift in Sources */,
 				B51F1A6B28B6714600B82CAD /* RecentKeywordTableViewCell.swift in Sources */,
 				B548F21828B8998300C4E24F /* IoTService.swift in Sources */,
 				B51F1A1328B5292200B82CAD /* ImageLiteral.swift in Sources */,

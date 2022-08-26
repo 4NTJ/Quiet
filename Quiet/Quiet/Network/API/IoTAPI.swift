@@ -18,6 +18,7 @@ final class IoTAPI: IoTAPIType {
     
     private let provider = MoyaProvider<IoTService>(plugins: [NetworkLoggerPlugin(verbose: true)])
     private var datasetInfoResponse: DatasetInfoDTO?
+    private var colDescInfoResponse: ColDescInfoDTO?
     
     func fetchDatasetInfo() {
         provider.request(.datasetInfo, callbackQueue: .global()) { response in
@@ -39,11 +40,15 @@ final class IoTAPI: IoTAPIType {
         provider.request(.colDesc(datasetNo: datasetNo), callbackQueue: .global()) { response in
             switch response {
             case .success(let data):
-                print(response)
+                do {
+                    self.colDescInfoResponse = try data.map(ColDescInfoDTO.self)
+                    dump(self.colDescInfoResponse?.resultData)
+                } catch(let err) {
+                    print(err.localizedDescription)
+                }
             case .failure(let err):
-                print(err.errorDescription)
-            }
-        }
+                print(err.localizedDescription)
+            }        }
     }
     
     func fetchInstlInfo(datasetNo: Int) {
