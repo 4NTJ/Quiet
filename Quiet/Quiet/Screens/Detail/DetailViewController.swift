@@ -97,14 +97,20 @@ class DetailViewController: UIViewController {
         // 값이 범위 내에 없다면?
         let noiseLevelEnum = getNoiseLevel(dbValue: averageNoiseDb)
         noiseInfo.text = noiseLevelEnum.comment
+        noiseInfo.font = .systemFont(ofSize: 16)
+        noiseInfo.numberOfLines = 0
+        noiseInfo.lineBreakMode = .byCharWrapping
+        
+        
         let noiseLevel = UILabel()
         noiseLevel.text = noiseLevelEnum.level
+        noiseLevel.font = .systemFont(ofSize: 16)
         
         let infoBox = UIStackView(arrangedSubviews: [noiseInfo, noiseLevel])
         infoBox.axis = .vertical
         infoBox.spacing = 10
         infoBox.widthAnchor.constraint(equalToConstant: screenWidth - 40).isActive = true
-        infoBox.layoutMargins = UIEdgeInsets(top: 15, left: 16, bottom: 15, right: .zero)
+        infoBox.layoutMargins = UIEdgeInsets(top: 15, left: 16, bottom: 15, right: 15)
         infoBox.isLayoutMarginsRelativeArrangement = true
         infoBox.backgroundColor = UIColor.white
         infoBox.layer.shadowColor = UIColor.gray.cgColor
@@ -186,9 +192,14 @@ class DetailViewController: UIViewController {
                                  leading: scrollContentView.leadingAnchor,
                                  padding: .init(top: 30.0, left: 20.0, bottom: 0, right: 0))
         
+        scrollContentView.addSubview(dayChartDescriptionLabel)
+        dayChartDescriptionLabel.constraint(top: dayChartLabel.bottomAnchor,
+                                 leading: scrollContentView.leadingAnchor,
+                                 padding: .init(top: 10.0, left: 20.0, bottom: 0, right: 0))
+        
         scrollContentView.addSubview(lineChartView)
-        lineChartView.constraint(top: dayChartLabel.bottomAnchor,
-                                 leading: dayChartLabel.leadingAnchor,
+        lineChartView.constraint(top: dayChartDescriptionLabel.bottomAnchor,
+                                 leading: dayChartDescriptionLabel.leadingAnchor,
                                  trailing: infoBoxView.trailingAnchor,
                                  padding: .init(top: 20, left: 0, bottom: 0, right: 0))
         lineChartView.constraint(lineChartView.heightAnchor, constant: 200)
@@ -205,10 +216,15 @@ class DetailViewController: UIViewController {
                                     leading: scrollContentView.leadingAnchor,
                                     padding: .init(top: 30.0, left: 20.0, bottom: 0, right: 0))
         
+        scrollContentView.addSubview(weeklyChartDescriptionLabel)
+        weeklyChartDescriptionLabel.constraint(top: weeklyChartLabel.bottomAnchor,
+                                 leading: scrollContentView.leadingAnchor,
+                                 padding: .init(top: 10.0, left: 20.0, bottom: 0, right: 0))
+        
         scrollContentView.addSubview(self.barChartView)
         barChartView.constraint(barChartView.heightAnchor, constant: 200)
         barChartView.constraint(
-            top: weeklyChartLabel.bottomAnchor,
+            top: weeklyChartDescriptionLabel.bottomAnchor,
             leading: infoBoxView.leadingAnchor,
             bottom: scrollContentView.bottomAnchor,
             trailing: infoBoxView.trailingAnchor,
