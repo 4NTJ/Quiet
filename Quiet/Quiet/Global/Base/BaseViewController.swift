@@ -14,7 +14,8 @@ class BaseViewController: UIViewController {
     // MARK: - Properties
     
     lazy var backButton = BackButton()
-    var lottieView: AnimationView?
+    private var lottieView: AnimationView?
+    private let backgroundView = UIView()
     
     // MARK: - Init
     
@@ -74,6 +75,10 @@ class BaseViewController: UIViewController {
     func setupLottieView() {
         lottieView = AnimationView(name: "loading")
         guard let lottieView = lottieView else { return }
+        backgroundView.frame = view.frame
+        
+        view.addSubview(backgroundView)
+        backgroundView.constraint(to: view)
         
         view.addSubview(lottieView)
         lottieView.constraint(lottieView.widthAnchor, constant: 200)
@@ -87,5 +92,6 @@ class BaseViewController: UIViewController {
     func stopLottieAnimation() {
         lottieView?.stop()
         lottieView?.removeFromSuperview()
+        backgroundView.removeFromSuperview()
     }
 }
