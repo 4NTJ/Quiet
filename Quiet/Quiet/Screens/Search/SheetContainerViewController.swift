@@ -39,6 +39,8 @@ final class SheetContainerViewController: BaseViewController {
             detailTableView.reloadData()
         }
     }
+    var deviceValue: String = ""
+    var noiseLevel: NoiseLevel = .level_1
     
     private var locationType: LocationType
     private var locationData: [InstallInfo]
@@ -98,6 +100,8 @@ final class SheetContainerViewController: BaseViewController {
     private func setupNotificationCenter() {
         NotificationCenter.default.addObserver(self, selector: #selector(changeNoiseLabelValue(notification:)), name: .noiseDetail, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(changeAddressLabelValue(notification:)), name: .address, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeDeviceValue(notification:)), name: .deviceModel, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeNoiseLevelValue(notification:)), name: .noiseLevel, object: nil)
     }
     
     // MARK: - Selector
@@ -115,6 +119,21 @@ final class SheetContainerViewController: BaseViewController {
             addressText = text
         } else {
             addressText = nil
+        }
+    }
+    
+    @objc
+    private func changeDeviceValue(notification: NSNotification) {
+        if let text = notification.object as? String {
+            deviceValue = text
+        }
+    }
+    
+    @objc
+    private func changeNoiseLevelValue(notification: NSNotification) {
+        if let level = notification.object as? NoiseLevel {
+
+            noiseLevel = level
         }
     }
 }
@@ -136,7 +155,7 @@ extension SheetContainerViewController: UITableViewDataSource {
 extension SheetContainerViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard !locationData.isEmpty, noiseText != "" else { return }
-        let viewController = DetailViewController()
+        let viewController = DetailViewController(title: locationText, noiseLevel: noiseLevel, deviceModel: deviceValue)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
