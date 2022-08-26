@@ -213,7 +213,7 @@ class DetailViewController: UIViewController {
         var days: [Int] = Array(repeating: 0, count: 7)
 
         for i in 0...30 {
-            IoTAPI().fetchInquiry(datasetNo: 48, modelSerial: "OC3CL200011", inqDt: String(startingDateInt+i), currPageNo: 1) { data in
+            IoTAPI().fetchInquiry(datasetNo: 48, modelSerial: deviceModel, inqDt: String(startingDateInt+i), currPageNo: 1) { data in
                 let newData = data.map { Int($0.column14 ?? "0") ?? 0 }
                 times = zip(times, newData).map(+)
                 days[((startingDateInt+i)%100 + 3)%7] = times.reduce(0, +)/24

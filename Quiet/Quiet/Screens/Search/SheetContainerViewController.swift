@@ -101,7 +101,7 @@ final class SheetContainerViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(changeNoiseLabelValue(notification:)), name: .noiseDetail, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(changeAddressLabelValue(notification:)), name: .address, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(changeDeviceValue(notification:)), name: .deviceModel, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(changeDeviceValue(notification:)), name: .noiseLevel, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeNoiseLevelValue(notification:)), name: .noiseLevel, object: nil)
     }
     
     // MARK: - Selector
@@ -132,6 +132,7 @@ final class SheetContainerViewController: BaseViewController {
     @objc
     private func changeNoiseLevelValue(notification: NSNotification) {
         if let level = notification.object as? NoiseLevel {
+
             noiseLevel = level
         }
     }
