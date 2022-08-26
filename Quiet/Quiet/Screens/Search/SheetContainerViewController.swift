@@ -135,7 +135,7 @@ extension SheetContainerViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension SheetContainerViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard !locationData.isEmpty else { return }
+        guard !locationData.isEmpty, noiseText != "" else { return }
         let viewController = DetailViewController()
         navigationController?.pushViewController(viewController, animated: true)
     }
