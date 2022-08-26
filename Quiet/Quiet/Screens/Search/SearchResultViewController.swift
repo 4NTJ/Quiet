@@ -29,6 +29,7 @@ final class SearchResultViewController: SheetViewController<SearchMapViewControl
         super.viewDidLoad()
         setupNavigationBar()
         setupNavigationPopGesture()
+        setupNotificationCenter()
     }
     
     override func configureUI() {
@@ -53,5 +54,22 @@ final class SearchResultViewController: SheetViewController<SearchMapViewControl
     private func setupNavigationPopGesture() {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
+    }
+    
+    private func setupNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(playLottie), name: .playLottie, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(stopLottie), name: .stopLottie, object: nil)
+    }
+    
+    // MARK: - Selector
+    
+    @objc
+    private func playLottie() {
+        setupLottieView()
+    }
+    
+    @objc
+    private func stopLottie() {
+        stopLottieAnimation()
     }
 }

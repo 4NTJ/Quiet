@@ -72,16 +72,14 @@ class BaseViewController: UIViewController {
     }
     
     func setupLottieView() {
-        guard let url = URL(string: "https://lottiefiles.com/98194-loading") else { return }
-        lottieView = AnimationView(url: url, closure: { _ in })
+        lottieView = AnimationView(name: "loading")
         guard let lottieView = lottieView else { return }
-        lottieView.frame = CGRect(origin: .zero, size: CGSize(width: 100, height: 100))
         
         view.addSubview(lottieView)
-        lottieView.constraint(centerX: view.centerXAnchor,
-                              centerY: view.centerYAnchor)
+        lottieView.constraint(lottieView.widthAnchor, constant: 200)
+        lottieView.constraint(lottieView.heightAnchor, constant: 200)
+        lottieView.constraint(centerX: view.centerXAnchor, centerY: view.centerYAnchor)
         
-        lottieView.contentMode = .scaleAspectFit
         lottieView.loopMode = .loop
         lottieView.play()
     }

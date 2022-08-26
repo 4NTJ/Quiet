@@ -65,6 +65,7 @@
 		B594BA2F28B90D250000BF43 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594BA2E28B90D250000BF43 /* Date+Extension.swift */; };
 		B594BA3128B919350000BF43 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594BA3028B919350000BF43 /* Notification+Extension.swift */; };
 		B594BA3428B9306C0000BF43 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B594BA3328B9306C0000BF43 /* Lottie */; };
+		B594BA3728B938150000BF43 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = B594BA3628B938150000BF43 /* loading.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +126,7 @@
 		B594BA2C28B8F5030000BF43 /* AnnoationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoationView.swift; sourceTree = "<group>"; };
 		B594BA2E28B90D250000BF43 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		B594BA3028B919350000BF43 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
+		B594BA3628B938150000BF43 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 		B51F1A0028B5276700B82CAD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B594BA3528B938090000BF43 /* Lottie */,
 				3558D92A28B8AA30000D1925 /* Sound */,
 				B51F1A0628B527AE00B82CAD /* Storyboard */,
 				B51F19F528B5276300B82CAD /* Assets.xcassets */,
@@ -412,6 +415,14 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		B594BA3528B938090000BF43 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				B594BA3628B938150000BF43 /* loading.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -488,6 +499,7 @@
 				B51F19F628B5276300B82CAD /* Assets.xcassets in Resources */,
 				3558D93428B8AA6F000D1925 /* Blue.mp3 in Resources */,
 				B51F19F428B5276200B82CAD /* Main.storyboard in Resources */,
+				B594BA3728B938150000BF43 /* loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

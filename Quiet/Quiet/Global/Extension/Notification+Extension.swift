@@ -10,4 +10,6 @@ import Foundation
 extension NSNotification.Name {
     static let noiseDetail = Notification.Name("noiseDetail")
     static let address = Notification.Name("address")
+    static let playLottie = Notification.Name("play")
+    static let stopLottie = Notification.Name("stop")
 }

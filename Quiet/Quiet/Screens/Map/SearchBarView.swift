@@ -82,7 +82,7 @@ class SearchBarView: UIView {
     }
     
     private func setGestureRecognizer() {
-        searchField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(searchTapped)))
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(searchTapped)))
 
     }
     @objc private func searchTapped() {
