@@ -115,7 +115,8 @@ final class SearchMapViewController: BaseViewController {
     
     @objc
     private func manualButtonTapped() {
-        
+        let vc = ManualViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc
