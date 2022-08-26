@@ -7,9 +7,13 @@
 
 import UIKit
 
+protocol SearchTappedDelegate: AnyObject {
+    func tapSearch()
+}
+
 class SearchBarView: UIView {
     // MARK: - Properties
-    
+    weak var delegate : SearchTappedDelegate?
     
     private let searchImage: UIImageView = {
         let view = UIImageView(image: ImageLiteral.icMagnifyingglass)
@@ -17,16 +21,14 @@ class SearchBarView: UIView {
         return view
     }()
     
-    private let searchField: UITextField = {
-        let textfield = UITextField()
-        textfield.placeholder = "지역구 혹은 동을 입력해주세요"
-        textfield.font = .systemFont(ofSize: 18, weight: .medium)
-        textfield.borderStyle = .none
-        textfield.clearButtonMode = .whileEditing
-        textfield.autocorrectionType = .no
-        textfield.autocapitalizationType = .none
-        textfield.returnKeyType = .search
-        return textfield
+    private let searchField: UILabel = {
+        let label = UILabel()
+        label.text = "지역구 혹은 동을 입력해주세요"
+        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.textColor = .systemGray2
+        label.isUserInteractionEnabled = true
+       
+        return label
     }()
     
     
@@ -37,6 +39,7 @@ class SearchBarView: UIView {
         super.init(frame: .zero)
         setupLayout()
         configureUI()
+        setGestureRecognizer()
     }
     
     required init?(coder: NSCoder) {
@@ -77,4 +80,14 @@ class SearchBarView: UIView {
         
         self.backgroundColor = .white
     }
+    
+    private func setGestureRecognizer() {
+        searchField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(searchTapped)))
+
+    }
+    @objc private func searchTapped() {
+        delegate?.tapSearch()
+    }
 }
+
+

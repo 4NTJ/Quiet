@@ -9,7 +9,7 @@ import UIKit
 
 final class SearchTableViewCell: UITableViewCell {
 
-    // MARK: - properties
+    // MARK: - Properties
     
     private let keywordLabel: UILabel = {
         let label = UILabel()
@@ -17,7 +17,7 @@ final class SearchTableViewCell: UITableViewCell {
         return label
     }()
     
-    // MARK: - init
+    // MARK: - Init
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -28,7 +28,7 @@ final class SearchTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - func
+    // MARK: - Func
     
     private func setupLayout() {
         contentView.addSubview(keywordLabel)

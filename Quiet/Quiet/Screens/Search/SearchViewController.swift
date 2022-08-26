@@ -9,7 +9,7 @@ import CoreLocation
 import MapKit
 import UIKit
 
-final class SearchViewController: UIViewController {
+final class SearchViewController: BaseViewController {
     
     private enum SearchType {
         case recentSearch, search, noResult
@@ -20,18 +20,12 @@ final class SearchViewController: UIViewController {
         static let textFieldHeight = 44.0
         static let headerHeight = 66.0
         static let cellHeight = 56.0
+        static let guOffset = 250.0
+        static let dongOffset = 184.0
     }
     
     // MARK: - Properties
     
-    private lazy var backButton: UIButton = {
-        let button = BackButton()
-        let buttonAction = UIAction { [weak self] _ in
-            self?.dismiss(animated: true)
-        }
-        button.addAction(buttonAction, for: .touchUpInside)
-        return button
-    }()
     private lazy var searchTextField: UITextField = {
         let textfield = UITextField(frame: CGRect(origin: .zero,
                                                   size: CGSize(width: Size.textFieldWidth, height: Size.textFieldHeight)))
@@ -70,15 +64,14 @@ final class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLayout()
+        setupNavigationBar()
         setupNotificationCenter()
         setupSearchCompleter()
-        setupNavigationBar()
     }
     
     // MARK: - Func
     
-    private func setupLayout() {
+    override func setupLayout() {
         view.addSubview(separatorView)
         separatorView.constraint(separatorView.heightAnchor, constant: 5)
         separatorView.constraint(top: view.safeAreaLayoutGuide.topAnchor,
@@ -95,6 +88,25 @@ final class SearchViewController: UIViewController {
         tableViewBottomConstraint = constraint[.bottom]
     }
     
+    override func setupNavigationBar() {
+        let leftOffsetBackButton = removeBarButtonItemOffset(with: backButton, offsetX: 10)
+        let backButton = makeBarButtonItem(with: leftOffsetBackButton)
+        let searchTextField = makeBarButtonItem(with: searchTextField)
+        
+        navigationItem.leftBarButtonItems = [backButton, searchTextField]
+    }
+    
+    override func configureUI() {
+        super.configureUI()
+        
+        let dismissAction = UIAction { [weak self] _ in
+            self?.dismiss(animated: true)
+        }
+        setupBackAction(dismissAction)
+    }
+    
+    // MARK: - Func
+    
     private func setupNotificationCenter() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow(_:)),
@@ -107,23 +119,42 @@ final class SearchViewController: UIViewController {
         searchCompleter.resultTypes = .address
     }
     
-    private func setupNavigationBar() {
-        let leftOffsetBackButton = removeBarButtonItemOffset(with: backButton, offsetX: 10)
-        let backButton = makeBarButtonItem(with: leftOffsetBackButton)
-        let searchTextField = makeBarButtonItem(with: searchTextField)
+    private func fetchPlaceMark(with indexPath: IndexPath) {
+        let selectedResult = searchResults[indexPath.row]
+        let searchRequest = MKLocalSearch.Request(completion: selectedResult)
+        let search = MKLocalSearch(request: searchRequest)
+        search.start { (response, error) in
+            guard error == nil else {
+                return
+            }
+            guard let placeMark = response?.mapItems[0].placemark else {
+                return
+            }
+            
+            self.presentSearchResultView(with: placeMark)
+        }
+    }
+    
+    private func presentSearchResultView(with placeMark: MKPlacemark) {
+        let viewController = SearchResultViewController(
+            contentViewController: SearchMapViewController(),
+            bottomSheetViewController: SheetContainerViewController(),
+            bottomSheetConfiguration: .init(
+                height: UIScreen.main.bounds.height * 0.8,
+                initialOffset: Size.guOffset
+            )
+        )
         
-        navigationItem.leftBarButtonItems = [backButton, searchTextField]
-    }
-    
-    private func makeBarButtonItem<T: UIView>(with view: T) -> UIBarButtonItem {
-        return UIBarButtonItem(customView: view)
-    }
-    
-    private func removeBarButtonItemOffset(with button: UIButton, offsetX: CGFloat = 0, offsetY: CGFloat = 0) -> UIView {
-        let offsetView = UIView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
-        offsetView.bounds = offsetView.bounds.offsetBy(dx: offsetX, dy: offsetY)
-        offsetView.addSubview(button)
-        return offsetView
+        if let subLocality = placeMark.subLocality {
+            viewController.locationText = subLocality
+        } else {
+            viewController.locationText = placeMark.title ?? ""
+        }
+        
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        navigationController.modalTransitionStyle = .crossDissolve
+        present(navigationController, animated: true)
     }
     
     // MARK: - selector
@@ -199,6 +230,8 @@ extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        fetchPlaceMark(with: indexPath)
     }
 }
 
