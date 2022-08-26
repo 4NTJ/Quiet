@@ -53,6 +53,7 @@ class MapViewController: UIViewController {
         setDelegation()
         setupLayout()
         btnAddTargets()
+        setAnnotation()
         setMapRegion()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -69,6 +70,7 @@ class MapViewController: UIViewController {
     
     private func setDelegation() {
         locationManager.delegate = self
+        mapView.delegate = self
         searchBarView.delegate = self
     }
     
@@ -121,6 +123,18 @@ class MapViewController: UIViewController {
         locationButton.addTarget(self, action: #selector(locationButtonTapped), for: .touchUpInside)
     }
     
+    private func setAnnotation() {
+        fetchLocationNoiseData { data in
+            data.forEach { [weak self] in
+                let annotation = MKPointAnnotation()
+                guard let latitude = Double($0.latitude ?? "0"),
+                      let longitude = Double($0.longitude ?? "0") else { return }
+                annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+                self?.mapView.addAnnotation(annotation)
+            }
+        }
+    }
+
     @objc
     private func manualButtonTapped() {
         let vc = ManualViewController()
@@ -144,7 +158,13 @@ class MapViewController: UIViewController {
         mapView.setRegion(region, animated: true)
     }
 }
+// MARK: - Network
 
+private func fetchLocationNoiseData(completion: @escaping (([InstallInfo]) -> ())) {
+    IoTAPI().fetchInstlInfo(datasetNo: GeneralAPI.noiseDatasetNo) { data in
+        completion(data)
+    }
+}
 
 // MARK: - CLLocationManagerDelegate
 extension MapViewController : CLLocationManagerDelegate {
@@ -181,4 +201,25 @@ extension MapViewController: SearchTappedDelegate {
     }
     
     
+}
+
+
+// MARK: - MKMapViewDelegate
+extension MapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let _ = annotation as? MKUserLocation {
+            return MKUserLocationView()
+        }
+        
+        guard let marker = mapView.dequeueReusableAnnotationView(withIdentifier: AnnotationView.className) as? AnnotationView else {
+            return AnnotationView()
+        }
+        
+        return marker
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let coordinate = view.annotation?.coordinate else { return }
+        mapView.setCenter(coordinate, animated: true)
+    }
 }
