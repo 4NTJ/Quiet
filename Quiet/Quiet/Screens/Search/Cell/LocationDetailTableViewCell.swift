@@ -33,6 +33,7 @@ final class LocationDetailTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupLayout()
+        configureUI()
     }
     
     required init?(coder: NSCoder) {
@@ -45,7 +46,7 @@ final class LocationDetailTableViewCell: UITableViewCell {
         addSubview(locationLabel)
         locationLabel.constraint(top: topAnchor,
                                  leading: leadingAnchor,
-                                 padding: UIEdgeInsets(top: 21, left: 20, bottom: 0, right: 0))
+                                 padding: UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0))
         
         addSubview(nextIconImageView)
         nextIconImageView.constraint(leading: locationLabel.trailingAnchor,
@@ -59,8 +60,14 @@ final class LocationDetailTableViewCell: UITableViewCell {
                               padding: UIEdgeInsets(top: 12, left: 20, bottom: 20, right: 0))
     }
     
-    func setLocationData(_ data: String) {
-        locationLabel.text = "공덕동"
-        soundLabel.text = "수면질이 안좋아져요\n사진을찍고 마무리~"
+    private func configureUI() {
+        selectionStyle = .none
+    }
+    
+    func setLocationData(title: String, content: String?) {
+        locationLabel.text = title
+        if let content = content {
+            soundLabel.text = content
+        }
     }
 }

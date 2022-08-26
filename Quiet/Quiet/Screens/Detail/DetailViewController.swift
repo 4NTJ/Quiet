@@ -86,7 +86,7 @@ class DetailViewController: UIViewController {
     private lazy var backButton: UIButton = {
         let button = BackButton()
         let buttonAction = UIAction { [weak self] _ in
-            self?.dismiss(animated: true)
+            self?.navigationController?.popViewController(animated: true)
         }
         button.addAction(buttonAction, for: .touchUpInside)
         return button
@@ -146,6 +146,7 @@ class DetailViewController: UIViewController {
         setupLineChartView()
         setupBarChartView()
         setupLayout()
+        configureUI()
         setupNavigationBar()
     }
     
@@ -204,6 +205,10 @@ class DetailViewController: UIViewController {
 
     }
     
+    private func configureUI() {
+        view.backgroundColor = .white
+    }
+    
     private func setupLineChartView() {
         self.lineChartView.setupLineChart(dataPoints: hours, values: dbValues)
         self.lineChartView.setupAverageLineChart(dataPoints: hours, values: dbValues)
@@ -232,16 +237,4 @@ class DetailViewController: UIViewController {
         offsetView.addSubview(button)
         return offsetView
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

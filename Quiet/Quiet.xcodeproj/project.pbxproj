@@ -61,6 +61,7 @@
 		B548F22428B8AB3400C4E24F /* ColDescInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F22328B8AB3400C4E24F /* ColDescInfo.swift */; };
 		B548F22628B8AE0F00C4E24F /* InstallInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F22528B8AE0F00C4E24F /* InstallInfo.swift */; };
 		B594BA2B28B8B1560000BF43 /* InquiryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594BA2A28B8B1560000BF43 /* InquiryInfo.swift */; };
+		B594BA2D28B8F5030000BF43 /* AnnoationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594BA2C28B8F5030000BF43 /* AnnoationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,7 @@
 		B548F22328B8AB3400C4E24F /* ColDescInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColDescInfo.swift; sourceTree = "<group>"; };
 		B548F22528B8AE0F00C4E24F /* InstallInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallInfo.swift; sourceTree = "<group>"; };
 		B594BA2A28B8B1560000BF43 /* InquiryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryInfo.swift; sourceTree = "<group>"; };
+		B594BA2C28B8F5030000BF43 /* AnnoationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				B51F1A6D28B6739900B82CAD /* RecentKeywordHeaderView.swift */,
+				B594BA2C28B8F5030000BF43 /* AnnoationView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				B548F22428B8AB3400C4E24F /* ColDescInfo.swift in Sources */,
 				B51F1A6B28B6714600B82CAD /* RecentKeywordTableViewCell.swift in Sources */,
 				B548F21828B8998300C4E24F /* IoTService.swift in Sources */,
+				B594BA2D28B8F5030000BF43 /* AnnoationView.swift in Sources */,
 				B51F1A1328B5292200B82CAD /* ImageLiteral.swift in Sources */,
 				B51F1A1528B5293600B82CAD /* StringLiteral.swift in Sources */,
 				3558D92128B79CF7000D1925 /* NoiseInfoView.swift in Sources */,

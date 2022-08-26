@@ -41,11 +41,13 @@ final class SearchMapViewController: BaseViewController {
         }
     }
     private var locationType: LocationType
+    private var locationData: [InstallInfo]
     
     // MARK: - Init
     
-    init(locationType: LocationType) {
+    init(locationType: LocationType, locationData: [InstallInfo]) {
         self.locationType = locationType
+        self.locationData = locationData
         super.init()
     }
     
@@ -57,6 +59,9 @@ final class SearchMapViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupMapView()
+        setAnnotation()
+        moveLocation()
         setupButtonAction()
     }
     
@@ -116,6 +121,41 @@ final class SearchMapViewController: BaseViewController {
         locationManager.requestWhenInUseAuthorization()
     }
     
+    private func setupMapView() {
+        mapView.register(AnnotationView.self, forAnnotationViewWithReuseIdentifier: AnnotationView.className)
+        mapView.delegate = self
+    }
+    
+    private func setAnnotation() {
+        mapView.removeAnnotations(mapView.annotations)
+        
+        locationData.forEach {
+            let annotation = MKPointAnnotation()
+            guard let latitude = Double($0.latitude ?? "0"),
+                  let longitude = Double($0.longitude ?? "0") else { return }
+            annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+            
+            mapView.addAnnotation(annotation)
+        }
+    }
+    
+    private func moveLocation() {
+        let averageLocation = calculateAverageLocation()
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: averageLocation, span: span)
+        mapView.setRegion(region, animated: true)
+        mapView.setCenter(CLLocationCoordinate2D(latitude: Double(locationData[0].latitude ?? "0") ?? 0.0, longitude: Double(locationData[0].longitude ?? "0") ?? 0.0), animated: true)
+    }
+    
+    private func calculateAverageLocation() -> CLLocationCoordinate2D {
+        guard !locationData.isEmpty
+        else { return CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0) }
+        let averageLatitude = (locationData.map { Double($0.latitude ?? "0") ?? 0.0 }.reduce(0.0, +)) / Double(locationData.count)
+        let averageLongitude = (locationData.map { Double($0.longitude ?? "0") ?? 0.0 }.reduce(0.0, +)) / Double(locationData.count)
+        
+        return CLLocationCoordinate2D(latitude: averageLatitude, longitude: averageLongitude)
+    }
+    
     // MARK: - Selector
     
     @objc
@@ -151,5 +191,25 @@ extension SearchMapViewController : CLLocationManagerDelegate {
         default:
             print("GPS: Default")
         }
+    }
+}
+
+// MARK: - MKMapViewDelegate
+extension SearchMapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let _ = annotation as? MKUserLocation {
+            return MKUserLocationView()
+        }
+        
+        guard let marker = mapView.dequeueReusableAnnotationView(withIdentifier: AnnotationView.className) as? AnnotationView else {
+            return AnnotationView()
+        }
+        
+        return marker
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let coordinate = view.annotation?.coordinate else { return }
+        mapView.setCenter(coordinate, animated: true)
     }
 }

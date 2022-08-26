@@ -26,6 +26,7 @@ enum ImageLiteral {
     static var icMagnifyingglass: UIImage { .load(systemName: "magnifyingglass") }
     static var icLocation: UIImage { .load(systemName: "location") }
     static var icLocationFill: UIImage { .load(systemName: "location.fill") }
+    static var icMeasurement: UIImage { .load(systemName: "lines.measurement.horizontal")}
 
 }
 
