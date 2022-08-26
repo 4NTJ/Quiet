@@ -39,12 +39,26 @@ final class NoiseBarChartView: UIView {
             dataEntries.append(dataEntry)
         }
 
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "데시벨 정보")
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "소음레벨 평균")
 
-        chartDataSet.colors = [.systemBlue]
+        chartDataSet.colors = [.systemCyan]
 
         let chartData = BarChartData(dataSet: chartDataSet)
         horizontalBarChart.data = chartData
+        
+        horizontalBarChart.legend.xEntrySpace = 20
+        horizontalBarChart.extraBottomOffset = 15
+        horizontalBarChart.legend.font = .systemFont(ofSize: 12)
+        
+        horizontalBarChart.xAxis.drawGridLinesEnabled = false
+        horizontalBarChart.xAxis.labelPosition = .bottom
+        horizontalBarChart.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
+        horizontalBarChart.xAxis.granularity = 1.0
+        horizontalBarChart.extraLeftOffset = -10
+        horizontalBarChart.barData?.barWidth = 0.3
+        
+        horizontalBarChart.pinchZoomEnabled = false
+        horizontalBarChart.doubleTapToZoomEnabled = false
     }
 }
 

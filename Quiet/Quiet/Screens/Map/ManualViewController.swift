@@ -83,17 +83,6 @@ class ManualViewController: UIViewController {
         return button
     }()
     
-    private let titleLabel: UILabel = {
-            let label = UILabel()
-            label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-            label.text = "소음 분류"
-            label.textColor = .black
-            label.sizeToFit()
-            label.textAlignment = .center
-            return label
-    }()
-    
-    
     // MARK: - Life Cycle
     
     
@@ -174,8 +163,8 @@ class ManualViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.titleView = titleLabel
-        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .semibold)]
+        title = "소음 분류"
     }
     
     @objc func linkTapped() {
