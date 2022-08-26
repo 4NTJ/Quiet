@@ -223,11 +223,12 @@ class DetailViewController: BaseViewController {
             IoTAPI().fetchInquiry(datasetNo: 48, modelSerial: deviceModel, inqDt: String(startingDateInt+i), currPageNo: 1) { data in
                 let newData = data.map { Int($0.column14 ?? "0") ?? 0 }
                 times = zip(times, newData).map(+)
-                days[((startingDateInt + i) % 100 + 3)%7] = times.reduce(0, +)/24
+                days[((startingDateInt + i) % 100)%7] = times.reduce(0, +)/24
                 self.dbValues = times.map{ hourVal in
                     return Double(hourVal/7)
                 }
-                self.barDbValues = [Double(((days[5] + days[6])/7)/2), Double(((days[0] + days[1] + days[2] + days[3] + days[4])/7)/5)]
+                self.barDbValues = [Double((days[5] + days[6])/2)/7, Double((days[0] + days[1] + days[2] + days[3] + days[4])/5)/7]
+                print("barDbValues: \(self.barDbValues)")
             }
         }
     }
