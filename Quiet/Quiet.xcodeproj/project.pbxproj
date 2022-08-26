@@ -9,17 +9,15 @@
 /* Begin PBXBuildFile section */
 		212C1DF928B675B900728F24 /* NoiseLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1DF828B675B900728F24 /* NoiseLineChartView.swift */; };
 		212C1DFC28B6760900728F24 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 212C1DFB28B6760900728F24 /* Charts */; };
-		212C1E0028B6767F00728F24 /* NoiseLineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1DFF28B6767F00728F24 /* NoiseLineChartViewController.swift */; };
 		212C1E0228B6774B00728F24 /* NoiseBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1E0128B6774B00728F24 /* NoiseBarChartView.swift */; };
-		212C1E0428B6779300728F24 /* NoiseBarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1E0328B6779300728F24 /* NoiseBarChartViewController.swift */; };
 		212C1E0628B680D600728F24 /* UIView+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1E0528B680D600728F24 /* UIView+Preview.swift */; };
 		212C1E0828B6813600728F24 /* UIViewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1E0728B6813600728F24 /* UIViewController+Preview.swift */; };
+		3558D91728B71541000D1925 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D91628B71541000D1925 /* CircleButton.swift */; };
+		3558D91928B74030000D1925 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D91828B74030000D1925 /* SearchBarView.swift */; };
 		3558D91F28B79C98000D1925 /* Noise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D91E28B79C98000D1925 /* Noise.swift */; };
 		3558D92128B79CF7000D1925 /* NoiseInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D92028B79CF7000D1925 /* NoiseInfoView.swift */; };
 		3558D92328B79DE0000D1925 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D92228B79DE0000D1925 /* UILabel+Extension.swift */; };
 		3558D92528B79E4E000D1925 /* ManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D92428B79E4E000D1925 /* ManualViewController.swift */; };
-		3558D91728B71541000D1925 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D91628B71541000D1925 /* CircleButton.swift */; };
-		3558D91928B74030000D1925 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D91828B74030000D1925 /* SearchBarView.swift */; };
 		B51F19ED28B5276200B82CAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F19EC28B5276200B82CAD /* AppDelegate.swift */; };
 		B51F19EF28B5276200B82CAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F19EE28B5276200B82CAD /* SceneDelegate.swift */; };
 		B51F19F428B5276200B82CAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B51F19F228B5276200B82CAD /* Main.storyboard */; };
@@ -44,17 +42,15 @@
 
 /* Begin PBXFileReference section */
 		212C1DF828B675B900728F24 /* NoiseLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseLineChartView.swift; sourceTree = "<group>"; };
-		212C1DFF28B6767F00728F24 /* NoiseLineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseLineChartViewController.swift; sourceTree = "<group>"; };
 		212C1E0128B6774B00728F24 /* NoiseBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseBarChartView.swift; sourceTree = "<group>"; };
-		212C1E0328B6779300728F24 /* NoiseBarChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseBarChartViewController.swift; sourceTree = "<group>"; };
 		212C1E0528B680D600728F24 /* UIView+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Preview.swift"; sourceTree = "<group>"; };
 		212C1E0728B6813600728F24 /* UIViewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Preview.swift"; sourceTree = "<group>"; };
+		3558D91628B71541000D1925 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		3558D91828B74030000D1925 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		3558D91E28B79C98000D1925 /* Noise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Noise.swift; sourceTree = "<group>"; };
 		3558D92028B79CF7000D1925 /* NoiseInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseInfoView.swift; sourceTree = "<group>"; };
 		3558D92228B79DE0000D1925 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		3558D92428B79E4E000D1925 /* ManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualViewController.swift; sourceTree = "<group>"; };
-		3558D91628B71541000D1925 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
-		3558D91828B74030000D1925 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		B51F19E928B5276200B82CAD /* Quiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B51F19EC28B5276200B82CAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B51F19EE28B5276200B82CAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -225,9 +221,7 @@
 			children = (
 				B51F1A0F28B5283D00B82CAD /* DetailViewController.swift */,
 				212C1E0128B6774B00728F24 /* NoiseBarChartView.swift */,
-				212C1E0328B6779300728F24 /* NoiseBarChartViewController.swift */,
 				212C1DF828B675B900728F24 /* NoiseLineChartView.swift */,
-				212C1DFF28B6767F00728F24 /* NoiseLineChartViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -360,9 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				212C1E0028B6767F00728F24 /* NoiseLineChartViewController.swift in Sources */,
 				B51F1A1F28B5299B00B82CAD /* UIViewController+Extension.swift in Sources */,
-				212C1E0428B6779300728F24 /* NoiseBarChartViewController.swift in Sources */,
 				212C1E0828B6813600728F24 /* UIViewController+Preview.swift in Sources */,
 				212C1E0228B6774B00728F24 /* NoiseBarChartView.swift in Sources */,
 				B51F1A1928B5296400B82CAD /* UIViewController+Alert.swift in Sources */,
@@ -535,7 +527,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = AJK25G55CT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Quiet/Global/Supports/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -567,7 +559,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = AJK25G55CT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Quiet/Global/Supports/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
