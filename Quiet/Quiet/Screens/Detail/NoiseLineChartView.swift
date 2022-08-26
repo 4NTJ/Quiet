@@ -39,7 +39,7 @@ final class NoiseLineChartView: UIView {
         let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "시간별 소음레벨")
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         
-        lineChart.noDataText = "데이터가 없습니다"
+        lineChart.noDataText = NSLocalizedString("chart_no_data", comment: "Loading...")
         lineChart.noDataFont = .systemFont(ofSize: 20)
         lineChart.noDataTextColor = .lightGray
         

@@ -96,7 +96,7 @@ enum NoiseLevel {
     }
 }
 
-class DetailViewController: UIViewController {
+class DetailViewController: BaseViewController {
 
     // MARK: - Properties
     
@@ -105,7 +105,7 @@ class DetailViewController: UIViewController {
     let hours: [String] = (0...24).map{ num in
         String(num)
     }
-    var dbValues: [Double] = [68, 54, 56, 70, 80, 46, 55, 60, 64, 50, 55, 56, 68, 54, 56, 70, 80, 46, 55, 60, 64, 50, 55, 56, 68]
+    var dbValues: [Double] = [68, 54, 56, 70, 80, 46, 55, 60, 64, 50, 55, 56, 68, 54, 56, 70, 80, 46, 55, 60, 64, 50, 55, 56, 68, 45]
     
     let weekLabels = ["주말", "평일"]
     var barDbValues: [Double] = [68, 54]
@@ -113,14 +113,6 @@ class DetailViewController: UIViewController {
     var lineChartView = NoiseLineChartView()
     var barChartView = NoiseBarChartView()
     
-    private lazy var backButton: UIButton = {
-        let button = BackButton()
-        let buttonAction = UIAction { [weak self] _ in
-            self?.navigationController?.popViewController(animated: true)
-        }
-        button.addAction(buttonAction, for: .touchUpInside)
-        return button
-    }()
     private lazy var infoBoxView: UIStackView = {
         let noiseInfo = UILabel()
         noiseInfo.text = noiseLevel.comment
@@ -185,15 +177,14 @@ class DetailViewController: UIViewController {
     
     var navigationTitle: String
     var noiseLevel: NoiseLevel
-    var deviceModel: String
     
     // MARK: - Init
     
     init(title: String, noiseLevel: NoiseLevel, deviceModel: String) {
         self.navigationTitle = title
         self.noiseLevel = noiseLevel
-        self.deviceModel = deviceModel
-        super.init(nibName: nil, bundle: nil)
+        super.init()
+        self.fetchData(deviceModel: deviceModel)
     }
     
     required init?(coder: NSCoder) {
@@ -207,24 +198,36 @@ class DetailViewController: UIViewController {
         setupLayout()
         configureUI()
         setupNavigationBar()
-        self.setupLineChartView()
-        self.setupBarChartView()
+        let action = UIAction { _ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        setupBackAction(action)
     }
     
-    private func fetchData() {
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.asyncAfter(deadline: .now()+5.0, execute: {
+            self.setupLineChartView()
+            self.setupBarChartView()
+            self.stopLottieAnimation()
+        })
+    }
+    
+    private func fetchData(deviceModel: String) {
         let startingDateInt = 20220701
         var times: [Int] = Array(repeating: 0, count: 25)
         var days: [Int] = Array(repeating: 0, count: 7)
 
-        for i in 0...30 {
+        setupLottieView()
+        
+        for i in 0...7 {
             IoTAPI().fetchInquiry(datasetNo: 48, modelSerial: deviceModel, inqDt: String(startingDateInt+i), currPageNo: 1) { data in
                 let newData = data.map { Int($0.column14 ?? "0") ?? 0 }
                 times = zip(times, newData).map(+)
-                days[((startingDateInt+i)%100 + 3)%7] = times.reduce(0, +)/24
+                days[((startingDateInt + i) % 100 + 3)%7] = times.reduce(0, +)/24
                 self.dbValues = times.map{ hourVal in
-                    Double(hourVal/30)
+                    return Double(hourVal/7)
                 }
-                self.barDbValues = [Double(((days[5] + days[6])/30)/2), Double(((days[0] + days[1] + days[2] + days[3] + days[4])/30)/5)]
+                self.barDbValues = [Double(((days[5] + days[6])/7)/2), Double(((days[0] + days[1] + days[2] + days[3] + days[4])/7)/5)]
             }
         }
     }
@@ -232,7 +235,7 @@ class DetailViewController: UIViewController {
     
     // MARK: - Func
     
-    private func setupLayout() {
+    override func setupLayout() {
         view.addSubview(scrollView)
         scrollView.constraint(top: view.safeAreaLayoutGuide.topAnchor,
                               leading: view.leadingAnchor,
@@ -295,7 +298,7 @@ class DetailViewController: UIViewController {
 
     }
     
-    private func configureUI() {
+    override func configureUI() {
         view.backgroundColor = .white
         
         title = navigationTitle
@@ -308,23 +311,5 @@ class DetailViewController: UIViewController {
     
     private func setupBarChartView() {
         self.barChartView.setupBarChart(dataPoints: weekLabels, values: barDbValues)
-    }
-    
-    private func setupNavigationBar() {
-        let leftOffsetBackButton = removeBarButtonItemOffset(with: backButton, offsetX: 10)
-        let backButton = makeBarButtonItem(with: leftOffsetBackButton)
-        
-        navigationItem.leftBarButtonItem = backButton
-    }
-    
-    private func makeBarButtonItem<T: UIView>(with view: T) -> UIBarButtonItem {
-        return UIBarButtonItem(customView: view)
-    }
-    
-    private func removeBarButtonItemOffset(with button: UIButton, offsetX: CGFloat = 0, offsetY: CGFloat = 0) -> UIView {
-        let offsetView = UIView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
-        offsetView.bounds = offsetView.bounds.offsetBy(dx: offsetX, dy: offsetY)
-        offsetView.addSubview(button)
-        return offsetView
     }
 }
