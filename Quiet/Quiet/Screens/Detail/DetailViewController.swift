@@ -105,9 +105,10 @@ class DetailViewController: UIViewController {
     let hours: [String] = (0...24).map{ num in
         String(num)
     }
-    let dbValues: [Double] = [68, 54, 56, 70, 80, 46, 55, 60, 64, 50, 55, 56, 68, 54, 56, 70, 80, 46, 55, 60, 64, 50, 55, 56, 68]
+    var dbValues: [Double] = [68, 54, 56, 70, 80, 46, 55, 60, 64, 50, 55, 56, 68, 54, 56, 70, 80, 46, 55, 60, 64, 50, 55, 56, 68]
+    
     let weekLabels = ["주말", "평일"]
-    let barDbValues: [Double] = [68, 54]
+    var barDbValues: [Double] = [68, 54]
     
     var lineChartView = NoiseLineChartView()
     var barChartView = NoiseBarChartView()
@@ -203,13 +204,30 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        setupLineChartView()
-        setupBarChartView()
         setupLayout()
         configureUI()
         setupNavigationBar()
+
+        let startingDateInt = 20220701
+        var times: [Int] = Array(repeating: 0, count: 25)
+        var days: [Int] = Array(repeating: 0, count: 7)
+
+        for i in 0...30 {
+            IoTAPI().fetchInquiry(datasetNo: 48, modelSerial: "OC3CL200011", inqDt: String(startingDateInt+i), currPageNo: 1) { data in
+                let newData = data.map { Int($0.column14 ?? "0") ?? 0 }
+                times = zip(times, newData).map(+)
+                days[((startingDateInt+i)%100 + 3)%7] = times.reduce(0, +)/24
+                self.dbValues = times.map{ hourVal in
+                    Double(hourVal/30)
+                }
+                self.barDbValues = [Double(((days[5] + days[6])/30)/2), Double(((days[0] + days[1] + days[2] + days[3] + days[4])/30)/5)]
+                
+                DispatchQueue.main.async {
+                    self.setupLineChartView()
+                    self.setupBarChartView()
+                }
+            }
+        }
     }
     
     // MARK: - Func

@@ -56,9 +56,9 @@ final class NoiseBarChartView: UIView {
         horizontalBarChart.xAxis.granularity = 1.0
         horizontalBarChart.extraLeftOffset = -10
         horizontalBarChart.barData?.barWidth = 0.3
-        horizontalBarChart.leftAxis.drawLabelsEnabled = false
-        horizontalBarChart.rightAxis.axisMinimum = 20
-        horizontalBarChart.rightAxis.axisMaximum = 90
+        horizontalBarChart.rightAxis.drawLabelsEnabled = false
+        horizontalBarChart.leftAxis.axisMinimum = 0
+        horizontalBarChart.leftAxis.axisMaximum = 90
         
         horizontalBarChart.pinchZoomEnabled = false
         horizontalBarChart.doubleTapToZoomEnabled = false
