@@ -35,7 +35,7 @@ final class SearchViewController: BaseViewController {
         textfield.clearButtonMode = .whileEditing
         textfield.autocorrectionType = .no
         textfield.autocapitalizationType = .none
-        textfield.returnKeyType = .search
+        textfield.returnKeyType = .done
         textfield.delegate = self
         return textfield
     }()
@@ -256,6 +256,11 @@ extension SearchViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
         self.tableViewBottomConstraint?.constant = 0
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
