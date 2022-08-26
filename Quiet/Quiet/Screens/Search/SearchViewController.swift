@@ -9,6 +9,10 @@ import CoreLocation
 import MapKit
 import UIKit
 
+enum LocationType {
+    case dong, gu
+}
+
 final class SearchViewController: BaseViewController {
     
     private enum SearchType {
@@ -21,7 +25,7 @@ final class SearchViewController: BaseViewController {
         static let headerHeight = 66.0
         static let cellHeight = 56.0
         static let guOffset = 250.0
-        static let dongOffset = 184.0
+        static let dongOffset = 160.0
     }
     
     // MARK: - Properties
@@ -140,12 +144,13 @@ final class SearchViewController: BaseViewController {
     }
     
     private func presentSearchResultView(with placeMark: MKPlacemark) {
+        let locationType = checkLocationType(placeMark.subLocality ?? "")
         let viewController = SearchResultViewController(
-            contentViewController: SearchMapViewController(),
-            bottomSheetViewController: SheetContainerViewController(),
+            contentViewController: SearchMapViewController(locationType: locationType),
+            bottomSheetViewController: SheetContainerViewController(locationType: locationType),
             bottomSheetConfiguration: .init(
                 height: UIScreen.main.bounds.height * 0.8,
-                initialOffset: Size.guOffset
+                initialOffset: locationType == .gu ? Size.guOffset : Size.dongOffset
             )
         )
         
@@ -159,6 +164,14 @@ final class SearchViewController: BaseViewController {
         navigationController.modalPresentationStyle = .fullScreen
         navigationController.modalTransitionStyle = .crossDissolve
         present(navigationController, animated: true)
+    }
+    
+    private func checkLocationType(_ subLocality: String) -> LocationType {
+        if subLocality.last == "동" {
+            return .dong
+        } else {
+            return .gu
+        }
     }
     
     private func makeAddressWithoutCountry(with splitedKeyword: [String.SubSequence]) -> String {

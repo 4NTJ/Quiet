@@ -23,7 +23,19 @@ final class SheetContainerViewController: BaseViewController {
         view.layer.cornerRadius = 4
         return view
     }()
-
+    private var locationType: LocationType
+    
+    // MARK: - Init
+    
+    init(locationType: LocationType) {
+        self.locationType = locationType
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Func
     
     override func setupLayout() {
@@ -51,6 +63,10 @@ final class SheetContainerViewController: BaseViewController {
         view.layer.shadowOffset = .init(width: 0, height: -2)
         view.layer.shadowRadius = 20
         view.layer.shadowOpacity = 0.5
+        
+        if locationType == .dong {
+            indicatorView.isHidden = true
+        }
     }
 }
 

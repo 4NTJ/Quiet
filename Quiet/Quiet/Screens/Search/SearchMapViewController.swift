@@ -11,7 +11,8 @@ import UIKit
 final class SearchMapViewController: BaseViewController {
     
     private enum Size {
-        static let locationBottomConstant: CGFloat = 240
+        static let gulocationBottomConstant: CGFloat = 240
+        static let donglocationBottomConstant: CGFloat = 150
     }
     
     // MARK: - Properties
@@ -33,6 +34,18 @@ final class SearchMapViewController: BaseViewController {
             let image = locationBtnCliked ? ImageLiteral.icLocationFill : ImageLiteral.icLocation
             locationButton.setImage(image, for: .normal)
         }
+    }
+    private var locationType: LocationType
+    
+    // MARK: - Init
+    
+    init(locationType: LocationType) {
+        self.locationType = locationType
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Life Cycle
@@ -67,7 +80,7 @@ final class SearchMapViewController: BaseViewController {
                                 trailing: mapView.trailingAnchor,
                                 padding: UIEdgeInsets(top: 0,
                                                       left: 0,
-                                                      bottom: Size.locationBottomConstant,
+                                                      bottom: locationType == .dong ? Size.donglocationBottomConstant : Size.gulocationBottomConstant,
                                                       right: 20))
         
         mapView.addSubview(locationButton)
