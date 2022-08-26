@@ -197,7 +197,7 @@ class DetailViewController: UIViewController {
         setupNavigationBar()
 
         let startingDateInt = 20220701
-        var times: [Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        var times: [Int] = Array(repeating: 0, count: 25)
         var days: [Int] = Array(repeating: 0, count: 7)
 
         for i in 0...30 {
