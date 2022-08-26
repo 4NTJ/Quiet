@@ -181,6 +181,8 @@ class DetailViewController: UIViewController {
     }()
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
         return scrollView
     }()
     private let scrollContentView = UIView()
