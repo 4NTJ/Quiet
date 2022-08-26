@@ -50,6 +50,7 @@ class MapViewController: UIViewController {
         setDelegation()
         setupLayout()
         btnAddTargets()
+        configureUI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -62,12 +63,12 @@ class MapViewController: UIViewController {
     
     private func setDelegation() {
         locationManager.delegate = self
+        searchBarView.delegate = self
     }
     
     private func setupLayout() {
         view.addSubview(mapView)
         mapView.constraint(to: view)
-        
         
         mapView.addSubview(searchBarView)
         searchBarView.constraint(searchBarView.widthAnchor, constant: 350)
@@ -80,13 +81,12 @@ class MapViewController: UIViewController {
                                                        bottom: 0,
                                                        right: 20))
         
-        
         mapView.addSubview(manualButton)
         manualButton.constraint(manualButton.widthAnchor,
                                 constant: 50)
         manualButton.constraint(manualButton.heightAnchor,
                                 constant: 50)
-        manualButton.constraint(bottom: mapView.bottomAnchor,
+        manualButton.constraint(bottom: view.safeAreaLayoutGuide.bottomAnchor,
                                 trailing: mapView.trailingAnchor,
                                 padding: UIEdgeInsets(top: 0,
                                                       left: 0,
@@ -106,6 +106,10 @@ class MapViewController: UIViewController {
                                                         right: 20))
     }
     
+    private func configureUI() {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     private func getLocationUsagePermission() {
         locationManager.requestWhenInUseAuthorization()
     }
@@ -116,6 +120,8 @@ class MapViewController: UIViewController {
     }
     
     @objc private func manualButtonTapped() {
+        let vc = ManualViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func locationButtonTapped() {
@@ -127,9 +133,7 @@ class MapViewController: UIViewController {
 }
 
 
-// MARK: - Extension
-
-
+// MARK: - CLLocationManagerDelegate
 extension MapViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
@@ -148,6 +152,19 @@ extension MapViewController : CLLocationManagerDelegate {
         default:
             print("GPS: Default")
         }
+    }
+    
+    
+}
+
+
+// MARK: - SearchTappedDelegate
+extension MapViewController: SearchTappedDelegate {
+    func tapSearch() {
+        guard let searchVC = storyboard?.instantiateViewController(withIdentifier: "SearchNavController") as? UINavigationController else {return}
+        searchVC.modalPresentationStyle = .fullScreen
+        searchVC.modalTransitionStyle = .crossDissolve
+        present(searchVC, animated: true)
     }
     
     
