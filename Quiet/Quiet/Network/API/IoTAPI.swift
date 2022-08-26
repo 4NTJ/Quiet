@@ -78,7 +78,6 @@ final class IoTAPI: IoTAPIType {
             case .success(let data):
                 do {
                     self.inquiryInfoResponse = try data.map(InquiryInfoDTO.self)
-                    dump(self.inquiryInfoResponse?.resultData)
                     completion(self.inquiryInfoResponse?.resultData ?? [])
                 } catch(let err) {
                     print(err.localizedDescription)

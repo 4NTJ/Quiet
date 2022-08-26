@@ -25,7 +25,7 @@ final class SearchViewController: BaseViewController {
         static let headerHeight = 66.0
         static let cellHeight = 56.0
         static let guOffset = 250.0
-        static let dongOffset = 160.0
+        static let dongOffset = 180.0
     }
     
     // MARK: - Properties

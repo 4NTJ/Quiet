@@ -68,6 +68,11 @@ final class LocationDetailTableViewCell: UITableViewCell {
         locationLabel.text = title
         if let content = content {
             soundLabel.text = content
+            soundLabel.setLineSpacing(lineSpacing: 6.0, lineHeightMultiple: 0.0)
+            soundLabel.textColor = UIColor(red: 66/255, green: 66/255, blue: 66/255, alpha: 1.0)
+        } else {
+            soundLabel.text = "소음 측정기가 존재하지 않는 지역입니다."
+            soundLabel.textColor = .systemGray
         }
     }
 }

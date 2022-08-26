@@ -29,6 +29,11 @@ final class SheetContainerViewController: BaseViewController {
     }()
     
     var locationText: String = ""
+    var noiseText: String? = "" {
+        willSet {
+            detailTableView.reloadData()
+        }
+    }
     
     private var locationType: LocationType
     private var locationData: [InstallInfo]
@@ -39,6 +44,7 @@ final class SheetContainerViewController: BaseViewController {
         self.locationType = locationType
         self.locationData = locationData
         super.init()
+        setupNotificationCenter()
     }
     
     required init?(coder: NSCoder) {
@@ -76,6 +82,24 @@ final class SheetContainerViewController: BaseViewController {
         if locationType == .dong {
             indicatorView.isHidden = true
         }
+        
+        if locationData.isEmpty {
+            noiseText = nil
+        }
+    }
+    
+    // MARK: - Func
+    
+    private func setupNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(changeNoiseLabelValue(notification:)), name: .noiseDetail, object: nil)
+    }
+    
+    // MARK: - Selector
+    
+    @objc private func changeNoiseLabelValue(notification: NSNotification) {
+        if let text = notification.object as? String {
+            noiseText = text
+        }
     }
 }
 
@@ -87,7 +111,7 @@ extension SheetContainerViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: LocationDetailTableViewCell = tableView.dequeueReusableCell(withType: LocationDetailTableViewCell.self, for: indexPath)
-        cell.setLocationData(title: locationText, content: "")
+        cell.setLocationData(title: locationText, content: noiseText)
         return cell
     }
 }

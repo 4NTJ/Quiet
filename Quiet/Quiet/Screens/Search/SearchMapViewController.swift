@@ -12,7 +12,7 @@ final class SearchMapViewController: BaseViewController {
     
     private enum Size {
         static let gulocationBottomConstant: CGFloat = 240
-        static let donglocationBottomConstant: CGFloat = 150
+        static let donglocationBottomConstant: CGFloat = 165
     }
     
     // MARK: - Properties
@@ -184,7 +184,12 @@ final class SearchMapViewController: BaseViewController {
     
     private func fetchSpecificLocationData(modelSerial: String, completion: @escaping (([InquiryInfo]) -> ())) {
         IoTAPI().fetchInquiry(datasetNo: GeneralAPI.noiseDatasetNo, modelSerial: modelSerial, inqDt: Date.getCurrentDate(with: "20220801"), currPageNo: 1) { data in
-            
+            DispatchQueue.main.async {
+                guard let currentNoise = data.last?.column14 else { return }
+                let noiseLevel = getNoiseLevel(dbValue: Double(currentNoise) ?? 0.0)
+                let noiseText = "\(noiseLevel.sheetComment)\n\(noiseLevel.level)"
+                NotificationCenter.default.post(name: .noiseDetail, object: noiseText)
+            }
         }
     }
 }

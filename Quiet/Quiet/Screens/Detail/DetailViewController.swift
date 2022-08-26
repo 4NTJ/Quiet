@@ -64,6 +64,21 @@ enum NoiseLevel {
             }
         }
     }
+    
+    var sheetComment: String {
+        switch self {
+        case .level_1:
+            return "😌 “수면에 영향이 없는 조용한 지역이에요”"
+        case .level_2:
+            return "🥱 “조용한 도서관 정도의 소음이 있어요”"
+        case .level_3:
+            return "🥱 “시끄러운 사무실 정도의 소음이 있어요”"
+        case .level_4:
+            return "😨 “공사장만큼 시끄러울 가능성이 있어요”"
+        case .level_5:
+            return "😱 “소음이 인체에 영향을 주는 위험 지역이에요”"
+        }
+    }
 }
 
 class DetailViewController: UIViewController {

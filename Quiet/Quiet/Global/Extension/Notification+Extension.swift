@@ -1,0 +1,12 @@
+//
+//  Notification+Extension.swift
+//  Quiet
+//
+//  Created by SHIN YOON AH on 2022/08/27.
+//
+
+import Foundation
+
+extension NSNotification.Name {
+    static let noiseDetail = Notification.Name("noiseDetail")
+}
