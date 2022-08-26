@@ -195,7 +195,11 @@ class DetailViewController: UIViewController {
         setupLayout()
         configureUI()
         setupNavigationBar()
-
+        self.setupLineChartView()
+        self.setupBarChartView()
+    }
+    
+    private func fetchData() {
         let startingDateInt = 20220701
         var times: [Int] = Array(repeating: 0, count: 25)
         var days: [Int] = Array(repeating: 0, count: 7)
@@ -209,14 +213,10 @@ class DetailViewController: UIViewController {
                     Double(hourVal/30)
                 }
                 self.barDbValues = [Double(((days[5] + days[6])/30)/2), Double(((days[0] + days[1] + days[2] + days[3] + days[4])/30)/5)]
-                
-                DispatchQueue.main.async {
-                    self.setupLineChartView()
-                    self.setupBarChartView()
-                }
             }
         }
     }
+    
     
     // MARK: - Func
     
