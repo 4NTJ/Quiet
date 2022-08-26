@@ -10,4 +10,6 @@ import Foundation
 struct GeneralAPI {
     static let baseURL = "http://api.seoulhackathon.kr"
     static let apiKey = "U2VvdWxIYWNrYXRob24yMDIy"
+    static let noiseDatasetNo = 48
+    static let populationDatasetNo = 32
 }
