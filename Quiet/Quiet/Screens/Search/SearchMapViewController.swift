@@ -31,7 +31,12 @@ final class SearchMapViewController: BaseViewController {
     
     private var locationBtnCliked = false {
         didSet {
-            let image = locationBtnCliked ? ImageLiteral.icLocationFill : ImageLiteral.icLocation
+            let image = locationBtnCliked ?
+            ImageLiteral.icLocationFill
+                .resize(to: CGSize(width: 25, height: 25)) :
+                 
+            ImageLiteral.icLocation
+                .resize(to: CGSize(width: 25, height: 25))
             locationButton.setImage(image, for: .normal)
         }
     }

@@ -485,7 +485,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				212C1E0028B6767F00728F24 /* NoiseLineChartViewController.swift in Sources */,
 				B51F1A8328B78F4A00B82CAD /* SheetContainerViewController.swift in Sources */,
 				B548F22028B8A24200C4E24F /* IoTAPI.swift in Sources */,
 				B51F1A1F28B5299B00B82CAD /* UIViewController+Extension.swift in Sources */,
@@ -676,7 +675,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AJK25G55CT;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Quiet/Global/Supports/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -708,7 +707,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AJK25G55CT;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Quiet/Global/Supports/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -15,7 +15,10 @@ class CircleButton: UIButton {
     init(buttonImage: String) {
         super.init(frame: .zero)
         
-        self.setImage(UIImage.load(systemName: buttonImage), for: .normal)
+        self.setImage(UIImage.load(systemName: buttonImage)
+            .resize(to: CGSize(width: 25, height: 25))
+                      , for: .normal)
+
         setupLayout()
         configureUI()
     }
