@@ -100,7 +100,6 @@ class DetailViewController: UIViewController {
 
     // MARK: - Properties
     
-    var locationName: String = "증산동"
     var averageNoiseDb: Double = 30.0
     
     let hours: [String] = (0...24).map{ num in
@@ -123,20 +122,16 @@ class DetailViewController: UIViewController {
     }()
     private lazy var infoBoxView: UIStackView = {
         let noiseInfo = UILabel()
-        
-        // 값이 범위 내에 없다면?
-        let noiseLevelEnum = getNoiseLevel(dbValue: averageNoiseDb)
-        noiseInfo.text = noiseLevelEnum.comment
+        noiseInfo.text = noiseLevel.comment
         noiseInfo.font = .systemFont(ofSize: 16)
         noiseInfo.numberOfLines = 0
         noiseInfo.lineBreakMode = .byCharWrapping
         
+        let noiseLabel = UILabel()
+        noiseLabel.text = noiseLevel.level
+        noiseLabel.font = .systemFont(ofSize: 16)
         
-        let noiseLevel = UILabel()
-        noiseLevel.text = noiseLevelEnum.level
-        noiseLevel.font = .systemFont(ofSize: 16)
-        
-        let infoBox = UIStackView(arrangedSubviews: [noiseInfo, noiseLevel])
+        let infoBox = UIStackView(arrangedSubviews: [noiseInfo, noiseLabel])
         infoBox.axis = .vertical
         infoBox.spacing = 10
         infoBox.widthAnchor.constraint(equalToConstant: screenWidth - 40).isActive = true
@@ -284,6 +279,8 @@ class DetailViewController: UIViewController {
     
     private func configureUI() {
         view.backgroundColor = .white
+        
+        title = navigationTitle
     }
     
     private func setupLineChartView() {
@@ -300,8 +297,6 @@ class DetailViewController: UIViewController {
         let backButton = makeBarButtonItem(with: leftOffsetBackButton)
         
         navigationItem.leftBarButtonItem = backButton
-        
-        title = locationName
     }
     
     private func makeBarButtonItem<T: UIView>(with view: T) -> UIBarButtonItem {
