@@ -54,6 +54,7 @@ final class SearchMapViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupMapView()
         setAnnotation()
         moveLocation()
         setupButtonAction()
@@ -115,6 +116,11 @@ final class SearchMapViewController: BaseViewController {
         locationManager.requestWhenInUseAuthorization()
     }
     
+    private func setupMapView() {
+        mapView.register(AnnotationView.self, forAnnotationViewWithReuseIdentifier: AnnotationView.className)
+        mapView.delegate = self
+    }
+    
     private func setAnnotation() {
         mapView.removeAnnotations(mapView.annotations)
         
@@ -124,6 +130,7 @@ final class SearchMapViewController: BaseViewController {
                   let longitude = Double($0.longitude ?? "0") else { return }
             annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
             annotation.title = $0.addressDtl
+            
             mapView.addAnnotation(annotation)
         }
     }
@@ -179,5 +186,20 @@ extension SearchMapViewController : CLLocationManagerDelegate {
         default:
             print("GPS: Default")
         }
+    }
+}
+
+// MARK: - MKMapViewDelegate
+extension SearchMapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let _ = annotation as? MKUserLocation {
+            return MKUserLocationView()
+        }
+        
+        guard let marker = mapView.dequeueReusableAnnotationView(withIdentifier: AnnotationView.className) as? AnnotationView else {
+            return AnnotationView()
+        }
+        
+        return marker
     }
 }
