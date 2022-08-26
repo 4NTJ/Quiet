@@ -23,7 +23,7 @@ class SearchBarView: UIView {
     
     private let searchField: UILabel = {
         let label = UILabel()
-        label.text = "지역구 혹은 동을 입력해주세요"
+        label.text = "행정동을 입력해주세요"
         label.font = .systemFont(ofSize: 18, weight: .medium)
         label.textColor = .systemGray2
         label.isUserInteractionEnabled = true

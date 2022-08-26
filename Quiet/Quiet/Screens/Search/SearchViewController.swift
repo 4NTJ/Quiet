@@ -33,7 +33,7 @@ final class SearchViewController: BaseViewController {
     private lazy var searchTextField: UITextField = {
         let textfield = UITextField(frame: CGRect(origin: .zero,
                                                   size: CGSize(width: Size.textFieldWidth, height: Size.textFieldHeight)))
-        textfield.placeholder = "지역구 혹은 동을 입력해주세요"
+        textfield.placeholder = "행정동을 입력해주세요"
         textfield.font = .systemFont(ofSize: 18, weight: .medium)
         textfield.borderStyle = .none
         textfield.clearButtonMode = .whileEditing
