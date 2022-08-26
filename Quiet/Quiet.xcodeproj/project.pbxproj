@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		212C1DF928B675B900728F24 /* NoiseLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1DF828B675B900728F24 /* NoiseLineChartView.swift */; };
+		212C1DFC28B6760900728F24 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 212C1DFB28B6760900728F24 /* Charts */; };
+		212C1E0028B6767F00728F24 /* NoiseLineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1DFF28B6767F00728F24 /* NoiseLineChartViewController.swift */; };
+		212C1E0228B6774B00728F24 /* NoiseBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1E0128B6774B00728F24 /* NoiseBarChartView.swift */; };
+		212C1E0428B6779300728F24 /* NoiseBarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1E0328B6779300728F24 /* NoiseBarChartViewController.swift */; };
+		212C1E0628B680D600728F24 /* UIView+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1E0528B680D600728F24 /* UIView+Preview.swift */; };
+		212C1E0828B6813600728F24 /* UIViewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C1E0728B6813600728F24 /* UIViewController+Preview.swift */; };
+		3558D91728B71541000D1925 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D91628B71541000D1925 /* CircleButton.swift */; };
+		3558D91928B74030000D1925 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D91828B74030000D1925 /* SearchBarView.swift */; };
+		3558D91F28B79C98000D1925 /* Noise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D91E28B79C98000D1925 /* Noise.swift */; };
+		3558D92128B79CF7000D1925 /* NoiseInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D92028B79CF7000D1925 /* NoiseInfoView.swift */; };
+		3558D92328B79DE0000D1925 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D92228B79DE0000D1925 /* UILabel+Extension.swift */; };
+		3558D92528B79E4E000D1925 /* ManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D92428B79E4E000D1925 /* ManualViewController.swift */; };
 		B51F19ED28B5276200B82CAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F19EC28B5276200B82CAD /* AppDelegate.swift */; };
 		B51F19EF28B5276200B82CAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F19EE28B5276200B82CAD /* SceneDelegate.swift */; };
 		B51F19F428B5276200B82CAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B51F19F228B5276200B82CAD /* Main.storyboard */; };
@@ -19,7 +32,6 @@
 		B51F1A1528B5293600B82CAD /* StringLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1428B5293600B82CAD /* StringLiteral.swift */; };
 		B51F1A1728B5294F00B82CAD /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1628B5294F00B82CAD /* UIView+Constraints.swift */; };
 		B51F1A1928B5296400B82CAD /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1828B5296400B82CAD /* UIViewController+Alert.swift */; };
-		B51F1A1B28B5297500B82CAD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1A28B5297500B82CAD /* UIColor+Extension.swift */; };
 		B51F1A1D28B5298B00B82CAD /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1C28B5298B00B82CAD /* NSObject+Extension.swift */; };
 		B51F1A1F28B5299B00B82CAD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A1E28B5299B00B82CAD /* UIViewController+Extension.swift */; };
 		B51F1A2128B52A0700B82CAD /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A2028B52A0700B82CAD /* UITableView+Extension.swift */; };
@@ -38,6 +50,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		212C1DF828B675B900728F24 /* NoiseLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseLineChartView.swift; sourceTree = "<group>"; };
+		212C1DFF28B6767F00728F24 /* NoiseLineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseLineChartViewController.swift; sourceTree = "<group>"; };
+		212C1E0128B6774B00728F24 /* NoiseBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseBarChartView.swift; sourceTree = "<group>"; };
+		212C1E0328B6779300728F24 /* NoiseBarChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseBarChartViewController.swift; sourceTree = "<group>"; };
+		212C1E0528B680D600728F24 /* UIView+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Preview.swift"; sourceTree = "<group>"; };
+		212C1E0728B6813600728F24 /* UIViewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Preview.swift"; sourceTree = "<group>"; };
+		3558D91628B71541000D1925 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		3558D91828B74030000D1925 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		3558D91E28B79C98000D1925 /* Noise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Noise.swift; sourceTree = "<group>"; };
+		3558D92028B79CF7000D1925 /* NoiseInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseInfoView.swift; sourceTree = "<group>"; };
+		3558D92228B79DE0000D1925 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		3558D92428B79E4E000D1925 /* ManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualViewController.swift; sourceTree = "<group>"; };
 		B51F19E928B5276200B82CAD /* Quiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B51F19EC28B5276200B82CAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B51F19EE28B5276200B82CAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,7 +76,6 @@
 		B51F1A1428B5293600B82CAD /* StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiteral.swift; sourceTree = "<group>"; };
 		B51F1A1628B5294F00B82CAD /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		B51F1A1828B5296400B82CAD /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
-		B51F1A1A28B5297500B82CAD /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		B51F1A1C28B5298B00B82CAD /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		B51F1A1E28B5299B00B82CAD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B51F1A2028B52A0700B82CAD /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
@@ -75,12 +98,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				212C1DFC28B6760900728F24 /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3558D91D28B79C91000D1925 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				3558D91E28B79C98000D1925 /* Noise.swift */,
+				3558D92028B79CF7000D1925 /* NoiseInfoView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		B51F19E028B5276200B82CAD = {
 			isa = PBXGroup;
 			children = (
@@ -153,10 +186,10 @@
 		B51F1A0428B5278600B82CAD /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				B51F1A1A28B5297500B82CAD /* UIColor+Extension.swift */,
 				B51F1A1C28B5298B00B82CAD /* NSObject+Extension.swift */,
 				B51F1A1E28B5299B00B82CAD /* UIViewController+Extension.swift */,
 				B51F1A2028B52A0700B82CAD /* UITableView+Extension.swift */,
+				3558D92228B79DE0000D1925 /* UILabel+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -165,7 +198,9 @@
 			isa = PBXGroup;
 			children = (
 				B51F1A1628B5294F00B82CAD /* UIView+Constraints.swift */,
+				212C1E0528B680D600728F24 /* UIView+Preview.swift */,
 				B51F1A1828B5296400B82CAD /* UIViewController+Alert.swift */,
+				212C1E0728B6813600728F24 /* UIViewController+Preview.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -182,7 +217,10 @@
 		B51F1A0728B527EB00B82CAD /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				3558D91D28B79C91000D1925 /* Component */,
 				B51F1A0A28B5282300B82CAD /* MapViewController.swift */,
+				3558D92428B79E4E000D1925 /* ManualViewController.swift */,
+				3558D91828B74030000D1925 /* SearchBarView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -205,6 +243,10 @@
 			isa = PBXGroup;
 			children = (
 				B51F1A0F28B5283D00B82CAD /* DetailViewController.swift */,
+				212C1E0128B6774B00728F24 /* NoiseBarChartView.swift */,
+				212C1E0328B6779300728F24 /* NoiseBarChartViewController.swift */,
+				212C1DF828B675B900728F24 /* NoiseLineChartView.swift */,
+				212C1DFF28B6767F00728F24 /* NoiseLineChartViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -221,6 +263,7 @@
 		B51F1A6628B666E800B82CAD /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				3558D91628B71541000D1925 /* CircleButton.swift */,
 				B51F1A6728B6674600B82CAD /* BackButton.swift */,
 			);
 			path = UIComponents;
@@ -293,6 +336,9 @@
 			dependencies = (
 			);
 			name = Quiet;
+			packageProductDependencies = (
+				212C1DFB28B6760900728F24 /* Charts */,
+			);
 			productName = Quiet;
 			productReference = B51F19E928B5276200B82CAD /* Quiet.app */;
 			productType = "com.apple.product-type.application";
@@ -321,6 +367,9 @@
 				Base,
 			);
 			mainGroup = B51F19E028B5276200B82CAD;
+			packageReferences = (
+				212C1DFA28B6760900728F24 /* XCRemoteSwiftPackageReference "Charts" */,
+			);
 			productRefGroup = B51F19EA28B5276200B82CAD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -348,8 +397,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				212C1E0028B6767F00728F24 /* NoiseLineChartViewController.swift in Sources */,
 				B51F1A8328B78F4A00B82CAD /* SheetContainerViewController.swift in Sources */,
 				B51F1A1F28B5299B00B82CAD /* UIViewController+Extension.swift in Sources */,
+				212C1E0428B6779300728F24 /* NoiseBarChartViewController.swift in Sources */,
+				212C1E0828B6813600728F24 /* UIViewController+Preview.swift in Sources */,
+				212C1E0228B6774B00728F24 /* NoiseBarChartView.swift in Sources */,
 				B51F1A1928B5296400B82CAD /* UIViewController+Alert.swift in Sources */,
 				B51F1A7F28B781C700B82CAD /* SheetViewController.swift in Sources */,
 				B51F1A7828B756C300B82CAD /* SearchResultViewController.swift in Sources */,
@@ -361,17 +414,24 @@
 				B51F1A6B28B6714600B82CAD /* RecentKeywordTableViewCell.swift in Sources */,
 				B51F1A1328B5292200B82CAD /* ImageLiteral.swift in Sources */,
 				B51F1A1528B5293600B82CAD /* StringLiteral.swift in Sources */,
+				3558D92128B79CF7000D1925 /* NoiseInfoView.swift in Sources */,
 				B51F1A1D28B5298B00B82CAD /* NSObject+Extension.swift in Sources */,
+				212C1DF928B675B900728F24 /* NoiseLineChartView.swift in Sources */,
 				B548F20D28B7C69000C4E24F /* LocationDetailTableViewCell.swift in Sources */,
 				B51F1A0B28B5282300B82CAD /* MapViewController.swift in Sources */,
+				3558D91728B71541000D1925 /* CircleButton.swift in Sources */,
+				212C1E0628B680D600728F24 /* UIView+Preview.swift in Sources */,
+				3558D91F28B79C98000D1925 /* Noise.swift in Sources */,
+				3558D92328B79DE0000D1925 /* UILabel+Extension.swift in Sources */,
 				B51F1A7628B73B5400B82CAD /* SearchTableViewCell.swift in Sources */,
 				B51F1A1028B5283D00B82CAD /* DetailViewController.swift in Sources */,
 				B51F1A0E28B5283400B82CAD /* SearchViewController.swift in Sources */,
+				3558D91928B74030000D1925 /* SearchBarView.swift in Sources */,
 				B51F19EF28B5276200B82CAD /* SceneDelegate.swift in Sources */,
 				B51F1A1728B5294F00B82CAD /* UIView+Constraints.swift in Sources */,
-				B51F1A1B28B5297500B82CAD /* UIColor+Extension.swift in Sources */,
 				B51F1A7428B681F300B82CAD /* UserDefaultHandler.swift in Sources */,
 				B51F1A6828B6674600B82CAD /* BackButton.swift in Sources */,
+				3558D92528B79E4E000D1925 /* ManualViewController.swift in Sources */,
 				B51F1A2128B52A0700B82CAD /* UITableView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -598,6 +658,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		212C1DFA28B6760900728F24 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		212C1DFB28B6760900728F24 /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 212C1DFA28B6760900728F24 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B51F19E128B5276200B82CAD /* Project object */;
 }

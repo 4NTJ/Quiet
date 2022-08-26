@@ -11,7 +11,7 @@ final class RecentKeywordHeaderView: UIView {
     
     var didTappedClearAll: (() -> ())?
     
-    // MARK: - properties
+    // MARK: - Properties
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -33,7 +33,7 @@ final class RecentKeywordHeaderView: UIView {
         return view
     }()
     
-    // MARK: - init
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,7 +46,7 @@ final class RecentKeywordHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - func
+    // MARK: - Func
     
     private func setupLayout() {
         addSubview(titleLabel)

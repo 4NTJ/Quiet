@@ -16,7 +16,6 @@ final class RecentKeywordTableViewCell: UITableViewCell {
     private let keywordLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .light)
-        label.text = "강남구"
         return label
     }()
     private let removeButton: UIButton = {

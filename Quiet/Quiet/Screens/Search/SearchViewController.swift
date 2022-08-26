@@ -24,7 +24,7 @@ final class SearchViewController: BaseViewController {
         static let dongOffset = 184.0
     }
     
-    // MARK: - properties
+    // MARK: - Properties
     
     private lazy var searchTextField: UITextField = {
         let textfield = UITextField(frame: CGRect(origin: .zero,
@@ -60,14 +60,16 @@ final class SearchViewController: BaseViewController {
     private var searchResults: [MKLocalSearchCompletion] = []
     private var searchType: SearchType = .recentSearch
     
-    // MARK: - life cycle
-    
+    // MARK: - Life cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         setupNotificationCenter()
         setupSearchCompleter()
     }
+    
+    // MARK: - Func
     
     override func setupLayout() {
         view.addSubview(separatorView)
