@@ -150,7 +150,7 @@ final class SearchViewController: BaseViewController {
     private func presentSearchResultView(with placeMark: MKPlacemark, installModel: [InstallInfo]) {
         let locationType = checkLocationType(placeMark.subLocality ?? "")
         let viewController = SearchResultViewController(
-            contentViewController: SearchMapViewController(locationType: locationType),
+            contentViewController: SearchMapViewController(locationType: locationType, locationData: installModel),
             bottomSheetViewController: SheetContainerViewController(locationType: locationType),
             bottomSheetConfiguration: .init(
                 height: UIScreen.main.bounds.height * 0.8,
