@@ -165,6 +165,13 @@ final class SearchMapViewController: BaseViewController {
         return CLLocationCoordinate2D(latitude: averageLatitude, longitude: averageLongitude)
     }
     
+    private func setupAnnoationCircle(with center: CLLocationCoordinate2D) {
+        let distance = CLLocationDistance(300)
+        let circle = MKCircle(center: center, radius: distance)
+        
+        mapView.addOverlay(circle)
+    }
+    
     // MARK: - Selector
     
     @objc
@@ -186,7 +193,7 @@ final class SearchMapViewController: BaseViewController {
     
     // MARK: - Network
     
-    private func fetchSpecificLocationData(modelSerial: String, address: String) {
+    private func fetchSpecificLocationData(modelSerial: String, address: String, coordinate2D: CLLocationCoordinate2D) {
         IoTAPI().fetchInquiry(datasetNo: GeneralAPI.noiseDatasetNo, modelSerial: modelSerial, inqDt: Date.getCurrentDate(with: "20220801"), currPageNo: 1) { data in
             DispatchQueue.main.async {
                 guard let currentNoise = data.last?.column14 else { return }
@@ -194,6 +201,8 @@ final class SearchMapViewController: BaseViewController {
                 let noiseText = "\(noiseLevel.sheetComment)\n\(noiseLevel.level)"
                 NotificationCenter.default.post(name: .noiseDetail, object: noiseText)
                 NotificationCenter.default.post(name: .address, object: address)
+                
+                self.setupAnnoationCircle(with: coordinate2D)
             }
         }
     }
@@ -256,6 +265,12 @@ extension SearchMapViewController: MKMapViewDelegate {
             }
         }
         
-        fetchSpecificLocationData(modelSerial: modelSerial, address: addressText)
+        fetchSpecificLocationData(modelSerial: modelSerial, address: addressText, coordinate2D: coordinate)
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let circleRenderer : MKCircleRenderer = MKCircleRenderer(overlay: overlay)
+        circleRenderer.fillColor = .green.withAlphaComponent(0.5)
+        return circleRenderer
     }
 }

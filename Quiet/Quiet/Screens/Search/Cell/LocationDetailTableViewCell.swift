@@ -62,7 +62,8 @@ final class LocationDetailTableViewCell: UITableViewCell {
         addSubview(addressLabel)
         addressLabel.constraint(top: locationLabel.bottomAnchor,
                                 leading: leadingAnchor,
-                                padding: UIEdgeInsets(top: 6, left: 20, bottom: 0, right: 0))
+                                trailing: trailingAnchor,
+                                padding: UIEdgeInsets(top: 6, left: 20, bottom: 0, right: 20))
         
         addSubview(soundLabel)
         soundLabel.constraint(top: addressLabel.bottomAnchor,
