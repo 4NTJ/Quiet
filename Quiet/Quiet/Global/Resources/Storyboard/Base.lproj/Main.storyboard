@@ -8,20 +8,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller-->
+        <!--Manual View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" id="BYZ-38-t0r" customClass="MapViewController" customModule="Quiet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ManualViewController" id="BYZ-38-t0r" customClass="ManualViewController" customModule="Quiet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="qG2-nv-Adb"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="42" y="-2"/>
+            <point key="canvasLocation" x="970.76923076923072" y="-2.1327014218009479"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="NBN-IU-loT">
@@ -37,7 +38,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCE-L0-fXs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2070.7692307692305" y="-2.1327014218009479"/>
+            <point key="canvasLocation" x="2998.4615384615386" y="-2.1327014218009479"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XSM-Q0-AZ9">
@@ -55,7 +56,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ufJ-IT-eEg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1141.5384615384614" y="-2.1327014218009479"/>
+            <point key="canvasLocation" x="2070.7692307692305" y="-2.1327014218009479"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NpI-CF-clC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xUI-sz-D0D" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qku-r4-asg">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="xV8-bv-gQV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="euA-Zg-74c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="41.53846153846154" y="-2.1327014218009479"/>
         </scene>
     </scenes>
     <resources>
