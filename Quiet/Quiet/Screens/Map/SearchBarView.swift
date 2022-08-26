@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol SearchTappedDelegate {
+protocol SearchTappedDelegate: AnyObject {
     func tapSearch()
 }
 
 class SearchBarView: UIView {
     // MARK: - Properties
-    var delegate : SearchTappedDelegate?
+    weak var delegate : SearchTappedDelegate?
     
     private let searchImage: UIImageView = {
         let view = UIImageView(image: ImageLiteral.icMagnifyingglass)
