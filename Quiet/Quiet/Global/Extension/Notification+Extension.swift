@@ -9,4 +9,5 @@ import Foundation
 
 extension NSNotification.Name {
     static let noiseDetail = Notification.Name("noiseDetail")
+    static let address = Notification.Name("address")
 }

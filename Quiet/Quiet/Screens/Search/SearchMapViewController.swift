@@ -182,13 +182,14 @@ final class SearchMapViewController: BaseViewController {
     
     // MARK: - Network
     
-    private func fetchSpecificLocationData(modelSerial: String, completion: @escaping (([InquiryInfo]) -> ())) {
+    private func fetchSpecificLocationData(modelSerial: String, address: String) {
         IoTAPI().fetchInquiry(datasetNo: GeneralAPI.noiseDatasetNo, modelSerial: modelSerial, inqDt: Date.getCurrentDate(with: "20220801"), currPageNo: 1) { data in
             DispatchQueue.main.async {
                 guard let currentNoise = data.last?.column14 else { return }
                 let noiseLevel = getNoiseLevel(dbValue: Double(currentNoise) ?? 0.0)
                 let noiseText = "\(noiseLevel.sheetComment)\n\(noiseLevel.level)"
                 NotificationCenter.default.post(name: .noiseDetail, object: noiseText)
+                NotificationCenter.default.post(name: .address, object: address)
             }
         }
     }
@@ -234,20 +235,23 @@ extension SearchMapViewController: MKMapViewDelegate {
         guard let coordinate = view.annotation?.coordinate else { return }
         mapView.setCenter(coordinate, animated: true)
         var modelSerial = ""
+        var addressText = ""
         
         locationData.forEach {
             let isSameLongitude = Double($0.longitude ?? "0") == view.annotation?.coordinate.longitude
             let isSameLatitude = Double($0.latitude ?? "0") == view.annotation?.coordinate.latitude
             
             if isSameLatitude && isSameLongitude {
-                guard let modlSerial = $0.modlSerial else { return }
+                guard let modlSerial = $0.modlSerial,
+                      let address = $0.address
+                else { return }
                 modelSerial = modlSerial
+                addressText = address
+                
                 return
             }
         }
         
-        fetchSpecificLocationData(modelSerial: modelSerial) { data in
-            dump(data)
-        }
+        fetchSpecificLocationData(modelSerial: modelSerial, address: addressText)
     }
 }

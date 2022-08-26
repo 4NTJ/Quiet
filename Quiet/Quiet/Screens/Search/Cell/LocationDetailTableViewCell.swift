@@ -16,6 +16,12 @@ final class LocationDetailTableViewCell: UITableViewCell {
         label.font = .systemFont(ofSize: 18, weight: .semibold)
         return label
     }()
+    private let addressLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.textColor = .systemGray
+        return label
+    }()
     private let nextIconImageView: UIImageView = {
         let imageView = UIImageView(image: ImageLiteral.imgRightChevron)
         imageView.tintColor = .systemCyan
@@ -53,8 +59,13 @@ final class LocationDetailTableViewCell: UITableViewCell {
                                      centerY: locationLabel.centerYAnchor,
                                      padding: UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0))
         
+        addSubview(addressLabel)
+        addressLabel.constraint(top: locationLabel.bottomAnchor,
+                                leading: leadingAnchor,
+                                padding: UIEdgeInsets(top: 6, left: 20, bottom: 0, right: 0))
+        
         addSubview(soundLabel)
-        soundLabel.constraint(top: locationLabel.bottomAnchor,
+        soundLabel.constraint(top: addressLabel.bottomAnchor,
                               leading: leadingAnchor,
                               bottom: bottomAnchor,
                               padding: UIEdgeInsets(top: 12, left: 20, bottom: 20, right: 0))
@@ -64,8 +75,9 @@ final class LocationDetailTableViewCell: UITableViewCell {
         selectionStyle = .none
     }
     
-    func setLocationData(title: String, content: String?) {
+    func setLocationData(title: String, content: String?, address: String?) {
         locationLabel.text = title
+        
         if let content = content {
             soundLabel.text = content
             soundLabel.setLineSpacing(lineSpacing: 6.0, lineHeightMultiple: 0.0)
@@ -73,6 +85,12 @@ final class LocationDetailTableViewCell: UITableViewCell {
         } else {
             soundLabel.text = "소음 측정기가 존재하지 않는 지역입니다."
             soundLabel.textColor = .systemGray
+        }
+        
+        if let address = address {
+            addressLabel.text = address
+        } else {
+            addressLabel.text = "위치 정보 없음"
         }
     }
 }

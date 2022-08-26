@@ -34,6 +34,11 @@ final class SheetContainerViewController: BaseViewController {
             detailTableView.reloadData()
         }
     }
+    var addressText: String? = "" {
+        willSet {
+            detailTableView.reloadData()
+        }
+    }
     
     private var locationType: LocationType
     private var locationData: [InstallInfo]
@@ -92,13 +97,24 @@ final class SheetContainerViewController: BaseViewController {
     
     private func setupNotificationCenter() {
         NotificationCenter.default.addObserver(self, selector: #selector(changeNoiseLabelValue(notification:)), name: .noiseDetail, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeAddressLabelValue(notification:)), name: .address, object: nil)
     }
     
     // MARK: - Selector
     
-    @objc private func changeNoiseLabelValue(notification: NSNotification) {
+    @objc
+    private func changeNoiseLabelValue(notification: NSNotification) {
         if let text = notification.object as? String {
             noiseText = text
+        }
+    }
+    
+    @objc
+    private func changeAddressLabelValue(notification: NSNotification) {
+        if let text = notification.object as? String {
+            addressText = text
+        } else {
+            addressText = nil
         }
     }
 }
@@ -111,7 +127,7 @@ extension SheetContainerViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: LocationDetailTableViewCell = tableView.dequeueReusableCell(withType: LocationDetailTableViewCell.self, for: indexPath)
-        cell.setLocationData(title: locationText, content: noiseText)
+        cell.setLocationData(title: locationText, content: noiseText, address: addressText)
         return cell
     }
 }
