@@ -102,13 +102,23 @@ class ManualViewController: UIViewController {
         linkButton.addTarget(self,
                              action: #selector(linkTapped),
                              for: .touchUpInside)
+        setDelegation()
         setupLayout()
         configureUI()
+        
     }
     
     
     // MARK: - Func
     
+    private func setDelegation() {
+        firstNoiseInfoView.delegate = self
+        secondNoiseInfoView.delegate = self
+        thirdNoiseInfoView.delegate = self
+        fourthNoiseInfoView.delegate = self
+        fifthNoiseInfoView.delegate = self
+
+    }
     
     func setupLayout() {
         view.addSubview(scrollView)
@@ -135,10 +145,10 @@ class ManualViewController: UIViewController {
         
         lastView.addArrangedSubview(secondLastLabel)
         lastView.addArrangedSubview(linkButton)
-
+        
         secondLastLabel.constraint(leading: lastView.leadingAnchor,
                                    trailing: lastView.trailingAnchor)
-    
+        
         linkButton.constraint(leading: lastView.leadingAnchor,
                               trailing: lastView.trailingAnchor)
         
@@ -151,7 +161,7 @@ class ManualViewController: UIViewController {
                                    left: 20,
                                    bottom: 0,
                                    right: 20))
-       
+        
         
         
     }
@@ -165,12 +175,34 @@ class ManualViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.titleView = titleLabel
-
+        
     }
     
     @objc func linkTapped() {
         let linkUrl = NSURL(string: "https://www.noiseinfo.or.kr/inform/noise.do")
         let safariView = SFSafariViewController(url: linkUrl! as URL)
         self.present(safariView, animated: true, completion: nil)
+    }
+}
+
+// MARK: -
+
+extension ManualViewController: ListeningDelegate {
+    func pausePreviusSound(id: Int) {
+        switch id {
+        case 1:
+            firstNoiseInfoView.isSoundClicked = false
+        case 2:
+            secondNoiseInfoView.isSoundClicked = false
+        case 3:
+            thirdNoiseInfoView.isSoundClicked = false
+        case 4:
+            fourthNoiseInfoView.isSoundClicked = false
+        case 5:
+            fifthNoiseInfoView.isSoundClicked = false
+        default:
+            break
+        }
+        
     }
 }

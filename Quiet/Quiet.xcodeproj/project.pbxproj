@@ -20,6 +20,11 @@
 		3558D92128B79CF7000D1925 /* NoiseInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D92028B79CF7000D1925 /* NoiseInfoView.swift */; };
 		3558D92328B79DE0000D1925 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D92228B79DE0000D1925 /* UILabel+Extension.swift */; };
 		3558D92528B79E4E000D1925 /* ManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558D92428B79E4E000D1925 /* ManualViewController.swift */; };
+		3558D92C28B8AA40000D1925 /* Gray.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3558D92B28B8AA40000D1925 /* Gray.mp3 */; };
+		3558D93128B8AA6F000D1925 /* Yellow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3558D92D28B8AA6F000D1925 /* Yellow.mp3 */; };
+		3558D93228B8AA6F000D1925 /* Red.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3558D92E28B8AA6F000D1925 /* Red.mp3 */; };
+		3558D93328B8AA6F000D1925 /* Green.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3558D92F28B8AA6F000D1925 /* Green.mp3 */; };
+		3558D93428B8AA6F000D1925 /* Blue.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3558D93028B8AA6F000D1925 /* Blue.mp3 */; };
 		B51F19ED28B5276200B82CAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F19EC28B5276200B82CAD /* AppDelegate.swift */; };
 		B51F19EF28B5276200B82CAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F19EE28B5276200B82CAD /* SceneDelegate.swift */; };
 		B51F19F428B5276200B82CAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B51F19F228B5276200B82CAD /* Main.storyboard */; };
@@ -62,6 +67,11 @@
 		3558D92028B79CF7000D1925 /* NoiseInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseInfoView.swift; sourceTree = "<group>"; };
 		3558D92228B79DE0000D1925 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		3558D92428B79E4E000D1925 /* ManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualViewController.swift; sourceTree = "<group>"; };
+		3558D92B28B8AA40000D1925 /* Gray.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gray.mp3; sourceTree = "<group>"; };
+		3558D92D28B8AA6F000D1925 /* Yellow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Yellow.mp3; sourceTree = "<group>"; };
+		3558D92E28B8AA6F000D1925 /* Red.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Red.mp3; sourceTree = "<group>"; };
+		3558D92F28B8AA6F000D1925 /* Green.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Green.mp3; sourceTree = "<group>"; };
+		3558D93028B8AA6F000D1925 /* Blue.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Blue.mp3; sourceTree = "<group>"; };
 		B51F19E928B5276200B82CAD /* Quiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B51F19EC28B5276200B82CAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B51F19EE28B5276200B82CAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +124,18 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		3558D92A28B8AA30000D1925 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				3558D93028B8AA6F000D1925 /* Blue.mp3 */,
+				3558D92F28B8AA6F000D1925 /* Green.mp3 */,
+				3558D92E28B8AA6F000D1925 /* Red.mp3 */,
+				3558D92D28B8AA6F000D1925 /* Yellow.mp3 */,
+				3558D92B28B8AA40000D1925 /* Gray.mp3 */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
 		B51F19E028B5276200B82CAD = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +165,7 @@
 		B51F1A0028B5276700B82CAD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3558D92A28B8AA30000D1925 /* Sound */,
 				B51F1A0628B527AE00B82CAD /* Storyboard */,
 				B51F19F528B5276300B82CAD /* Assets.xcassets */,
 			);
@@ -384,8 +407,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3558D93328B8AA6F000D1925 /* Green.mp3 in Resources */,
+				3558D93228B8AA6F000D1925 /* Red.mp3 in Resources */,
 				B51F19F928B5276300B82CAD /* LaunchScreen.storyboard in Resources */,
+				3558D93128B8AA6F000D1925 /* Yellow.mp3 in Resources */,
+				3558D92C28B8AA40000D1925 /* Gray.mp3 in Resources */,
 				B51F19F628B5276300B82CAD /* Assets.xcassets in Resources */,
+				3558D93428B8AA6F000D1925 /* Blue.mp3 in Resources */,
 				B51F19F428B5276200B82CAD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
