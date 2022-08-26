@@ -132,7 +132,9 @@ final class SearchViewController: BaseViewController {
             }
             
             self.fetchLocationNoiseData(location: placeMark.subLocality ?? "") { [weak self] data in
-                self?.presentSearchResultView(with: placeMark, installModel: data)
+                DispatchQueue.main.async {
+                    self?.presentSearchResultView(with: placeMark, installModel: data)
+                }
             }
         }
     }
