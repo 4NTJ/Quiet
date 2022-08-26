@@ -20,6 +20,8 @@ final class SearchViewController: BaseViewController {
         static let textFieldHeight = 44.0
         static let headerHeight = 66.0
         static let cellHeight = 56.0
+        static let guOffset = 250.0
+        static let dongOffset = 184.0
     }
     
     // MARK: - properties
@@ -137,7 +139,7 @@ final class SearchViewController: BaseViewController {
             bottomSheetViewController: SheetContainerViewController(),
             bottomSheetConfiguration: .init(
                 height: UIScreen.main.bounds.height * 0.8,
-                initialOffset: 60
+                initialOffset: Size.guOffset
             )
         )
         
