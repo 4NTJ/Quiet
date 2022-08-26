@@ -86,7 +86,7 @@ class MapViewController: UIViewController {
                                 constant: 50)
         manualButton.constraint(manualButton.heightAnchor,
                                 constant: 50)
-        manualButton.constraint(bottom: mapView.bottomAnchor,
+        manualButton.constraint(bottom: view.safeAreaLayoutGuide.bottomAnchor,
                                 trailing: mapView.trailingAnchor,
                                 padding: UIEdgeInsets(top: 0,
                                                       left: 0,
