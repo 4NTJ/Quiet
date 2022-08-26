@@ -42,6 +42,8 @@
 		B51F1A7428B681F300B82CAD /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7328B681F300B82CAD /* UserDefaultHandler.swift */; };
 		B51F1A7628B73B5400B82CAD /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7528B73B5400B82CAD /* SearchTableViewCell.swift */; };
 		B548F21128B897C200C4E24F /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = B548F21028B897C200C4E24F /* Moya */; };
+		B548F21328B8983F00C4E24F /* GeneralAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F21228B8983F00C4E24F /* GeneralAPI.swift */; };
+		B548F21528B8989E00C4E24F /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F21428B8989E00C4E24F /* NetworkLoggerPlugin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +82,8 @@
 		B51F1A7128B681EA00B82CAD /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
 		B51F1A7328B681F300B82CAD /* UserDefaultHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
 		B51F1A7528B73B5400B82CAD /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		B548F21228B8983F00C4E24F /* GeneralAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralAPI.swift; sourceTree = "<group>"; };
+		B548F21428B8989E00C4E24F /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +296,8 @@
 		B548F20E28B8975700C4E24F /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				B548F21228B8983F00C4E24F /* GeneralAPI.swift */,
+				B548F21428B8989E00C4E24F /* NetworkLoggerPlugin.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -388,6 +394,7 @@
 				B51F1A1328B5292200B82CAD /* ImageLiteral.swift in Sources */,
 				B51F1A1528B5293600B82CAD /* StringLiteral.swift in Sources */,
 				3558D92128B79CF7000D1925 /* NoiseInfoView.swift in Sources */,
+				B548F21528B8989E00C4E24F /* NetworkLoggerPlugin.swift in Sources */,
 				B51F1A1D28B5298B00B82CAD /* NSObject+Extension.swift in Sources */,
 				212C1DF928B675B900728F24 /* NoiseLineChartView.swift in Sources */,
 				B51F1A0B28B5282300B82CAD /* MapViewController.swift in Sources */,
@@ -399,6 +406,7 @@
 				B51F1A1028B5283D00B82CAD /* DetailViewController.swift in Sources */,
 				B51F1A0E28B5283400B82CAD /* SearchViewController.swift in Sources */,
 				3558D91928B74030000D1925 /* SearchBarView.swift in Sources */,
+				B548F21328B8983F00C4E24F /* GeneralAPI.swift in Sources */,
 				B51F19EF28B5276200B82CAD /* SceneDelegate.swift in Sources */,
 				B51F1A1728B5294F00B82CAD /* UIView+Constraints.swift in Sources */,
 				B51F1A7428B681F300B82CAD /* UserDefaultHandler.swift in Sources */,
