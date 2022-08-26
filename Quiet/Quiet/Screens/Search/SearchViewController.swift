@@ -5,9 +5,15 @@
 //  Created by SHIN YOON AH on 2022/08/24.
 //
 
+import CoreLocation
+import MapKit
 import UIKit
 
 final class SearchViewController: UIViewController {
+    
+    private enum SearchType {
+        case recentSearch, search, noResult
+    }
     
     private enum Size {
         static let textFieldWidth = UIScreen.main.bounds.size.width - 64
@@ -51,10 +57,14 @@ final class SearchViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(cell: RecentKeywordTableViewCell.self)
+        tableView.register(cell: SearchTableViewCell.self)
         return tableView
     }()
     
     private var tableViewBottomConstraint: NSLayoutConstraint?
+    private var searchCompleter = MKLocalSearchCompleter()
+    private var searchResults: [MKLocalSearchCompletion] = []
+    private var searchType: SearchType = .recentSearch
     
     // MARK: - Life cycle
 
@@ -62,6 +72,7 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
         setupNotificationCenter()
+        setupSearchCompleter()
         setupNavigationBar()
     }
     
@@ -77,10 +88,10 @@ final class SearchViewController: UIViewController {
         
         view.addSubview(searchTableView)
         let constraint = searchTableView.constraint(top: separatorView.bottomAnchor,
-                                   leading: view.leadingAnchor,
-                                   bottom: view.bottomAnchor,
-                                   trailing: view.trailingAnchor,
-                                   padding: .zero)
+                                                    leading: view.leadingAnchor,
+                                                    bottom: view.bottomAnchor,
+                                                    trailing: view.trailingAnchor,
+                                                    padding: .zero)
         tableViewBottomConstraint = constraint[.bottom]
     }
     
@@ -91,6 +102,11 @@ final class SearchViewController: UIViewController {
                                                object: nil)
     }
     
+    private func setupSearchCompleter() {
+        searchCompleter.delegate = self
+        searchCompleter.resultTypes = .address
+    }
+    
     private func setupNavigationBar() {
         let leftOffsetBackButton = removeBarButtonItemOffset(with: backButton, offsetX: 10)
         let backButton = makeBarButtonItem(with: leftOffsetBackButton)
@@ -98,7 +114,7 @@ final class SearchViewController: UIViewController {
         
         navigationItem.leftBarButtonItems = [backButton, searchTextField]
     }
-
+    
     private func makeBarButtonItem<T: UIView>(with view: T) -> UIBarButtonItem {
         return UIBarButtonItem(customView: view)
     }
@@ -125,18 +141,30 @@ final class SearchViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UserDefaultStorage.keywords.count
+        switch searchType {
+        case .recentSearch:
+            return UserDefaultStorage.keywords.count
+        default:
+            return searchResults.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: RecentKeywordTableViewCell = tableView.dequeueReusableCell(withType: RecentKeywordTableViewCell.self, for: indexPath)
-        let keywords = Array(UserDefaultStorage.keywords.reversed())
-        cell.setKeyword(to: keywords[indexPath.row])
-        cell.didTappedRemove = { [weak self] keyword in
-            UserDefaultHandler.clearKeyword(keyword: keyword)
-            self?.searchTableView.reloadData()
+        switch searchType {
+        case .recentSearch:
+            let cell: RecentKeywordTableViewCell = tableView.dequeueReusableCell(withType: RecentKeywordTableViewCell.self, for: indexPath)
+            let keywords = Array(UserDefaultStorage.keywords.reversed())
+            cell.setKeyword(to: keywords[indexPath.row])
+            cell.didTappedRemove = { [weak self] keyword in
+                UserDefaultHandler.clearKeyword(keyword: keyword)
+                self?.searchTableView.reloadData()
+            }
+            return cell
+        default:
+            let cell: SearchTableViewCell = tableView.dequeueReusableCell(withType: SearchTableViewCell.self, for: indexPath)
+            cell.setKeyword(to: searchResults[indexPath.row].title)
+            return cell
         }
-        return cell
     }
 }
 
@@ -147,16 +175,30 @@ extension SearchViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = RecentKeywordHeaderView()
-        headerView.didTappedClearAll = { [weak self] in
-            UserDefaultHandler.clearAllKeywords()
-            self?.searchTableView.reloadData()
+        switch searchType {
+        case .recentSearch:
+            let headerView = RecentKeywordHeaderView()
+            headerView.didTappedClearAll = { [weak self] in
+                UserDefaultHandler.clearAllKeywords()
+                self?.searchTableView.reloadData()
+            }
+            return headerView
+        default:
+            return nil
         }
-        return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return Size.headerHeight
+        switch searchType {
+        case .recentSearch:
+            return Size.headerHeight
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
@@ -179,5 +221,32 @@ extension SearchViewController: UITextFieldDelegate {
         searchTableView.reloadData()
         
         return true
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let searchText = textField.text, searchText != "" else {
+            searchType = .recentSearch
+            searchTableView.reloadData()
+            return
+        }
+        
+        searchType = .search
+        searchCompleter.queryFragment = searchText
+    }
+}
+
+// MARK: - MKLocalSearchCompleterDelegate
+extension SearchViewController: MKLocalSearchCompleterDelegate {
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        searchResults = completer.results.filter { result in
+            let splitTitle = result.title.split(separator: " ")
+            guard splitTitle.count > 1 else { return false }
+            return splitTitle.contains("서울특별시")
+        }
+        searchTableView.reloadData()
+    }
+    
+    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
+        print(error.localizedDescription)
     }
 }

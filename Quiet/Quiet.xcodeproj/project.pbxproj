@@ -40,6 +40,7 @@
 		B51F1A6E28B6739900B82CAD /* RecentKeywordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A6D28B6739900B82CAD /* RecentKeywordHeaderView.swift */; };
 		B51F1A7228B681EA00B82CAD /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7128B681EA00B82CAD /* UserDefaultStorage.swift */; };
 		B51F1A7428B681F300B82CAD /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7328B681F300B82CAD /* UserDefaultHandler.swift */; };
+		B51F1A7628B73B5400B82CAD /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7528B73B5400B82CAD /* SearchTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		B51F1A6D28B6739900B82CAD /* RecentKeywordHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentKeywordHeaderView.swift; sourceTree = "<group>"; };
 		B51F1A7128B681EA00B82CAD /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
 		B51F1A7328B681F300B82CAD /* UserDefaultHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
+		B51F1A7528B73B5400B82CAD /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				B51F1A6A28B6714600B82CAD /* RecentKeywordTableViewCell.swift */,
+				B51F1A7528B73B5400B82CAD /* SearchTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				212C1E0628B680D600728F24 /* UIView+Preview.swift in Sources */,
 				3558D91F28B79C98000D1925 /* Noise.swift in Sources */,
 				3558D92328B79DE0000D1925 /* UILabel+Extension.swift in Sources */,
+				B51F1A7628B73B5400B82CAD /* SearchTableViewCell.swift in Sources */,
 				B51F1A1028B5283D00B82CAD /* DetailViewController.swift in Sources */,
 				B51F1A0E28B5283400B82CAD /* SearchViewController.swift in Sources */,
 				3558D91928B74030000D1925 /* SearchBarView.swift in Sources */,
