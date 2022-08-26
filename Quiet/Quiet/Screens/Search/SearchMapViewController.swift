@@ -215,6 +215,7 @@ final class SearchMapViewController: BaseViewController {
                 
                 self.noiseLevel = noiseLevel
                 self.setupAnnoationCircle(with: coordinate2D)
+                NotificationCenter.default.post(name: .stopLottie, object: nil)
             }
         }
     }
@@ -259,6 +260,8 @@ extension SearchMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let coordinate = view.annotation?.coordinate else { return }
         mapView.setCenter(coordinate, animated: true)
+        NotificationCenter.default.post(name: .playLottie, object: nil)
+        
         var modelSerial = ""
         var addressText = ""
         
