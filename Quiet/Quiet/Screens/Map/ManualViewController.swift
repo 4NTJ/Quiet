@@ -21,7 +21,7 @@ final class ManualViewController: BaseViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        label.text = "콰이어트에서는 ‘국가소음정보시스템’의 \n소음 크기 분류를 기준으로 각 지역 색깔을 \n다르게 나타냈어요! \n아래 분류를 통해 서울시 지역별 소음 정도를 \n확인해보세요 👀"
+        label.text = "콰이어트에서는 ‘국가소음정보시스템’의 소음 크기 분류를 기준으로 각 지역 색깔을 다르게 나타냈어요! 아래 분류를 통해 서울시 지역별 소음 정도를 확인해보세요 👀"
         label.textColor = .systemGray
         label.setLineSpacing(lineHeightMultiple: 1.4)
         return label
