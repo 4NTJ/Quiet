@@ -115,6 +115,44 @@ final class SearchViewController: BaseViewController {
         searchCompleter.resultTypes = .address
     }
     
+    private func fetchPlaceMark(with indexPath: IndexPath) {
+        let selectedResult = searchResults[indexPath.row]
+        let searchRequest = MKLocalSearch.Request(completion: selectedResult)
+        let search = MKLocalSearch(request: searchRequest)
+        search.start { (response, error) in
+            guard error == nil else {
+                return
+            }
+            guard let placeMark = response?.mapItems[0].placemark else {
+                return
+            }
+            
+            self.presentSearchResultView(with: placeMark)
+        }
+    }
+    
+    private func presentSearchResultView(with placeMark: MKPlacemark) {
+        let viewController = SearchResultViewController(
+            contentViewController: SearchMapViewController(),
+            bottomSheetViewController: SheetContainerViewController(),
+            bottomSheetConfiguration: .init(
+                height: UIScreen.main.bounds.height * 0.8,
+                initialOffset: 60
+            )
+        )
+        
+        if let subLocality = placeMark.subLocality {
+            viewController.locationText = subLocality
+        } else {
+            viewController.locationText = placeMark.title ?? ""
+        }
+        
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        navigationController.modalTransitionStyle = .crossDissolve
+        present(navigationController, animated: true)
+    }
+    
     // MARK: - selector
     
     @objc
@@ -188,6 +226,8 @@ extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        fetchPlaceMark(with: indexPath)
     }
 }
 

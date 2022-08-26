@@ -17,10 +17,23 @@ final class SheetContainerViewController: BaseViewController {
         tableView.register(cell: LocationDetailTableViewCell.self)
         return tableView
     }()
+    private lazy var indicatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray2
+        view.layer.cornerRadius = 4
+        return view
+    }()
 
     // MARK: - Func
     
     override func setupLayout() {
+        view.addSubview(indicatorView)
+        indicatorView.constraint(indicatorView.heightAnchor, constant: 4)
+        indicatorView.constraint(indicatorView.widthAnchor, constant: 50)
+        indicatorView.constraint(top: view.safeAreaLayoutGuide.topAnchor,
+                                 centerX: view.centerXAnchor,
+                                 padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0))
+        
         view.addSubview(detailTableView)
         detailTableView.constraint(top: view.safeAreaLayoutGuide.topAnchor,
                                    leading: view.leadingAnchor,
