@@ -47,7 +47,7 @@ extension IoTService: TargetType {
     var task: Task {
         switch self {
         case .inquiry(_, let modelSerial, let inqDt, let currPageNo):
-            let query = Inquiry(modelSerial: modelSerial, inqDt: inqDt, currPageNo: currPageNo)
+            let query = InquiryQuery(modelSerial: modelSerial, inqDt: inqDt, currPageNo: currPageNo)
             return .requestParameters(parameters: try! query.asDictionary(), encoding: URLEncoding.default)
         default:
             return.requestPlain

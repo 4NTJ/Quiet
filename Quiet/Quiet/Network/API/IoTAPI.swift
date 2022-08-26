@@ -20,6 +20,7 @@ final class IoTAPI: IoTAPIType {
     private var datasetInfoResponse: DatasetInfoDTO?
     private var colDescInfoResponse: ColDescInfoDTO?
     private var installInfoResponse: InstallInfoDTO?
+    private var inquiryInfoResponse: InquiryInfoDTO?
     
     func fetchDatasetInfo() {
         provider.request(.datasetInfo, callbackQueue: .global()) { response in
@@ -73,9 +74,14 @@ final class IoTAPI: IoTAPIType {
         provider.request(.inquiry(datasetNo: datasetNo, modelSerial: modelSerial, inqDt: inqDt, currPageNo: currPageNo), callbackQueue: .global()) { response in
             switch response {
             case .success(let data):
-                print(response)
+                do {
+                    self.inquiryInfoResponse = try data.map(InquiryInfoDTO.self)
+                    dump(self.inquiryInfoResponse?.resultData)
+                } catch(let err) {
+                    print(err.localizedDescription)
+                }
             case .failure(let err):
-                print(err.errorDescription)
+                print(err.localizedDescription)
             }
         }
     }
