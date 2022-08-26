@@ -25,7 +25,7 @@ final class SearchViewController: BaseViewController {
         static let headerHeight = 66.0
         static let cellHeight = 56.0
         static let guOffset = 250.0
-        static let dongOffset = 160.0
+        static let dongOffset = 180.0
     }
     
     // MARK: - Properties
@@ -33,7 +33,7 @@ final class SearchViewController: BaseViewController {
     private lazy var searchTextField: UITextField = {
         let textfield = UITextField(frame: CGRect(origin: .zero,
                                                   size: CGSize(width: Size.textFieldWidth, height: Size.textFieldHeight)))
-        textfield.placeholder = "지역구 혹은 동을 입력해주세요"
+        textfield.placeholder = "행정동을 입력해주세요"
         textfield.font = .systemFont(ofSize: 18, weight: .medium)
         textfield.borderStyle = .none
         textfield.clearButtonMode = .whileEditing
@@ -148,10 +148,11 @@ final class SearchViewController: BaseViewController {
     }
     
     private func presentSearchResultView(with placeMark: MKPlacemark, installModel: [InstallInfo]) {
+        let coordinate2D = placeMark.coordinate
         let locationType = checkLocationType(placeMark.subLocality ?? "")
         let sheetContainerViewController = SheetContainerViewController(locationType: locationType, locationData: installModel)
         let viewController = SearchResultViewController(
-            contentViewController: SearchMapViewController(locationType: locationType, locationData: installModel),
+            contentViewController: SearchMapViewController(locationType: locationType, locationData: installModel, currentCoordinator: coordinate2D),
             bottomSheetViewController: sheetContainerViewController,
             bottomSheetConfiguration: .init(
                 height: UIScreen.main.bounds.height * 0.8,

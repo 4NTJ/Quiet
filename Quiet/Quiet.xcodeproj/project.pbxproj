@@ -62,6 +62,8 @@
 		B548F22628B8AE0F00C4E24F /* InstallInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F22528B8AE0F00C4E24F /* InstallInfo.swift */; };
 		B594BA2B28B8B1560000BF43 /* InquiryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594BA2A28B8B1560000BF43 /* InquiryInfo.swift */; };
 		B594BA2D28B8F5030000BF43 /* AnnoationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594BA2C28B8F5030000BF43 /* AnnoationView.swift */; };
+		B594BA2F28B90D250000BF43 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594BA2E28B90D250000BF43 /* Date+Extension.swift */; };
+		B594BA3128B919350000BF43 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594BA3028B919350000BF43 /* Notification+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +122,8 @@
 		B548F22528B8AE0F00C4E24F /* InstallInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallInfo.swift; sourceTree = "<group>"; };
 		B594BA2A28B8B1560000BF43 /* InquiryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryInfo.swift; sourceTree = "<group>"; };
 		B594BA2C28B8F5030000BF43 /* AnnoationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoationView.swift; sourceTree = "<group>"; };
+		B594BA2E28B90D250000BF43 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		B594BA3028B919350000BF43 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +238,8 @@
 				B51F1A2028B52A0700B82CAD /* UITableView+Extension.swift */,
 				3558D92228B79DE0000D1925 /* UILabel+Extension.swift */,
 				B548F21C28B8A19800C4E24F /* Encodable+Extension.swift */,
+				B594BA2E28B90D250000BF43 /* Date+Extension.swift */,
+				B594BA3028B919350000BF43 /* Notification+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -305,6 +311,7 @@
 		B51F1A6628B666E800B82CAD /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				B594BA2C28B8F5030000BF43 /* AnnoationView.swift */,
 				3558D91628B71541000D1925 /* CircleButton.swift */,
 				B51F1A6728B6674600B82CAD /* BackButton.swift */,
 			);
@@ -325,7 +332,6 @@
 			isa = PBXGroup;
 			children = (
 				B51F1A6D28B6739900B82CAD /* RecentKeywordHeaderView.swift */,
-				B594BA2C28B8F5030000BF43 /* AnnoationView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -505,6 +511,7 @@
 				B51F19ED28B5276200B82CAD /* AppDelegate.swift in Sources */,
 				B548F22428B8AB3400C4E24F /* ColDescInfo.swift in Sources */,
 				B51F1A6B28B6714600B82CAD /* RecentKeywordTableViewCell.swift in Sources */,
+				B594BA3128B919350000BF43 /* Notification+Extension.swift in Sources */,
 				B548F21828B8998300C4E24F /* IoTService.swift in Sources */,
 				B594BA2D28B8F5030000BF43 /* AnnoationView.swift in Sources */,
 				B51F1A1328B5292200B82CAD /* ImageLiteral.swift in Sources */,
@@ -517,6 +524,7 @@
 				B51F1A0B28B5282300B82CAD /* MapViewController.swift in Sources */,
 				3558D91728B71541000D1925 /* CircleButton.swift in Sources */,
 				212C1E0628B680D600728F24 /* UIView+Preview.swift in Sources */,
+				B594BA2F28B90D250000BF43 /* Date+Extension.swift in Sources */,
 				3558D91F28B79C98000D1925 /* Noise.swift in Sources */,
 				3558D92328B79DE0000D1925 /* UILabel+Extension.swift in Sources */,
 				B51F1A7628B73B5400B82CAD /* SearchTableViewCell.swift in Sources */,
