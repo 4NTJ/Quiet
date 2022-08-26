@@ -139,27 +139,34 @@ final class SearchViewController: BaseViewController {
                 return
             }
             
-            self.presentSearchResultView(with: placeMark)
+            self.fetchLocationNoiseData(location: placeMark.subLocality ?? "") { [weak self] data in
+                DispatchQueue.main.async {
+                    self?.presentSearchResultView(with: placeMark, installModel: data)
+                }
+            }
         }
     }
     
-    private func presentSearchResultView(with placeMark: MKPlacemark) {
+    private func presentSearchResultView(with placeMark: MKPlacemark, installModel: [InstallInfo]) {
         let locationType = checkLocationType(placeMark.subLocality ?? "")
+        let sheetContainerViewController = SheetContainerViewController(locationType: locationType, locationData: installModel)
         let viewController = SearchResultViewController(
-            contentViewController: SearchMapViewController(locationType: locationType),
-            bottomSheetViewController: SheetContainerViewController(locationType: locationType),
+            contentViewController: SearchMapViewController(locationType: locationType, locationData: installModel),
+            bottomSheetViewController: sheetContainerViewController,
             bottomSheetConfiguration: .init(
                 height: UIScreen.main.bounds.height * 0.8,
                 initialOffset: locationType == .gu ? Size.guOffset : Size.dongOffset
             )
         )
-        
+
         if let subLocality = placeMark.subLocality {
             viewController.locationText = subLocality
+            sheetContainerViewController.locationText = subLocality
         } else {
             viewController.locationText = placeMark.title ?? ""
+            sheetContainerViewController.locationText = placeMark.title ?? ""
         }
-        
+
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .fullScreen
         navigationController.modalTransitionStyle = .crossDissolve
@@ -192,6 +199,19 @@ final class SearchViewController: BaseViewController {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             self.tableViewBottomConstraint?.constant = -keyboardHeight
+        }
+    }
+    
+    // MARK: - Network
+    
+    private func fetchLocationNoiseData(location: String, completion: @escaping (([InstallInfo]) -> ())) {
+        IoTAPI().fetchInstlInfo(datasetNo: GeneralAPI.noiseDatasetNo) { data in
+            let installModel = data.filter {
+                guard let address = $0.address else { return false }
+                let splitTexts = address.split(separator: " ").map { String($0) }
+                return splitTexts.contains(location)
+            }
+            completion(installModel)
         }
     }
 }
