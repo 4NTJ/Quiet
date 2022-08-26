@@ -129,7 +129,6 @@ final class SearchMapViewController: BaseViewController {
             guard let latitude = Double($0.latitude ?? "0"),
                   let longitude = Double($0.longitude ?? "0") else { return }
             annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
-            annotation.title = $0.addressDtl
             
             mapView.addAnnotation(annotation)
         }
@@ -201,5 +200,10 @@ extension SearchMapViewController: MKMapViewDelegate {
         }
         
         return marker
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let coordinate = view.annotation?.coordinate else { return }
+        mapView.setCenter(coordinate, animated: true)
     }
 }
