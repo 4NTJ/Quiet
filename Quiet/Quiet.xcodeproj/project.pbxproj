@@ -41,6 +41,7 @@
 		B51F1A7228B681EA00B82CAD /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7128B681EA00B82CAD /* UserDefaultStorage.swift */; };
 		B51F1A7428B681F300B82CAD /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7328B681F300B82CAD /* UserDefaultHandler.swift */; };
 		B51F1A7628B73B5400B82CAD /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F1A7528B73B5400B82CAD /* SearchTableViewCell.swift */; };
+		B548F21128B897C200C4E24F /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = B548F21028B897C200C4E24F /* Moya */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B548F21128B897C200C4E24F /* Moya in Frameworks */,
 				212C1DFC28B6760900728F24 /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +274,7 @@
 		B51F1A6F28B6819500B82CAD /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B548F20E28B8975700C4E24F /* Foundation */,
 				B51F1A7028B681B200B82CAD /* Storage */,
 			);
 			path = Network;
@@ -284,6 +287,13 @@
 				B51F1A7328B681F300B82CAD /* UserDefaultHandler.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		B548F20E28B8975700C4E24F /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +314,7 @@
 			name = Quiet;
 			packageProductDependencies = (
 				212C1DFB28B6760900728F24 /* Charts */,
+				B548F21028B897C200C4E24F /* Moya */,
 			);
 			productName = Quiet;
 			productReference = B51F19E928B5276200B82CAD /* Quiet.app */;
@@ -335,6 +346,7 @@
 			mainGroup = B51F19E028B5276200B82CAD;
 			packageReferences = (
 				212C1DFA28B6760900728F24 /* XCRemoteSwiftPackageReference "Charts" */,
+				B548F20F28B897C200C4E24F /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = B51F19EA28B5276200B82CAD /* Products */;
 			projectDirPath = "";
@@ -628,6 +640,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		B548F20F28B897C200C4E24F /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -635,6 +655,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 212C1DFA28B6760900728F24 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
+		};
+		B548F21028B897C200C4E24F /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B548F20F28B897C200C4E24F /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
