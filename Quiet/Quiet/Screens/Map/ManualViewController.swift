@@ -154,6 +154,10 @@ final class ManualViewController: BaseViewController {
     }
     override func configureUI() {
         super.configureUI()
+        let action = UIAction { _ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        setupBackAction(action)
         
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.barTintColor = .white
