@@ -116,6 +116,8 @@ class MapViewController: UIViewController {
     }
     
     @objc private func manualButtonTapped() {
+        let vc = ManualViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func locationButtonTapped() {
