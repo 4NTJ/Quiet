@@ -53,7 +53,7 @@ class SelectedInfoView: UIView {
         addSubview(locationLabel)
         locationLabel.constraint(top: topAnchor,
                                  leading: leadingAnchor,
-                                 padding: UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0))
+                                 padding: UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0))
         
         addSubview(nextIconImageView)
         nextIconImageView.constraint(leading: locationLabel.trailingAnchor,
@@ -69,8 +69,7 @@ class SelectedInfoView: UIView {
         addSubview(soundLabel)
         soundLabel.constraint(top: addressLabel.bottomAnchor,
                               leading: leadingAnchor,
-                              bottom: bottomAnchor,
-                              padding: UIEdgeInsets(top: 12, left: 20, bottom: 20, right: 0))
+                              padding: UIEdgeInsets(top: 12, left: 20, bottom: 0, right: 0))
     }
     
     private func configureUI() {
