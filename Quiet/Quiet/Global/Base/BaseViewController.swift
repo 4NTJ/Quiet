@@ -73,7 +73,7 @@ class BaseViewController: UIViewController {
     }
     
     func setupLottieView() {
-        lottieView = AnimationView(name: "loading")
+        lottieView = AnimationView(name: "dots")
         guard let lottieView = lottieView else { return }
         backgroundView.frame = view.frame
         
@@ -81,8 +81,8 @@ class BaseViewController: UIViewController {
         backgroundView.constraint(to: view)
         
         view.addSubview(lottieView)
-        lottieView.constraint(lottieView.widthAnchor, constant: 200)
-        lottieView.constraint(lottieView.heightAnchor, constant: 200)
+        lottieView.constraint(lottieView.widthAnchor, constant: 250)
+        lottieView.constraint(lottieView.heightAnchor, constant: 250)
         lottieView.constraint(centerX: view.centerXAnchor, centerY: view.centerYAnchor)
         
         lottieView.loopMode = .loop

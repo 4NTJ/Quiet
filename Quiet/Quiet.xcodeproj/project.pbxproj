@@ -60,12 +60,12 @@
 		B548F22228B8A83900C4E24F /* DatasetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F22128B8A83900C4E24F /* DatasetInfo.swift */; };
 		B548F22428B8AB3400C4E24F /* ColDescInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F22328B8AB3400C4E24F /* ColDescInfo.swift */; };
 		B548F22628B8AE0F00C4E24F /* InstallInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B548F22528B8AE0F00C4E24F /* InstallInfo.swift */; };
+		B57FCA7228B94BED0012164F /* dots.json in Resources */ = {isa = PBXBuildFile; fileRef = B57FCA7128B94BED0012164F /* dots.json */; };
 		B594BA2B28B8B1560000BF43 /* InquiryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594BA2A28B8B1560000BF43 /* InquiryInfo.swift */; };
 		B594BA2D28B8F5030000BF43 /* AnnoationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594BA2C28B8F5030000BF43 /* AnnoationView.swift */; };
 		B594BA2F28B90D250000BF43 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594BA2E28B90D250000BF43 /* Date+Extension.swift */; };
 		B594BA3128B919350000BF43 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594BA3028B919350000BF43 /* Notification+Extension.swift */; };
 		B594BA3428B9306C0000BF43 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B594BA3328B9306C0000BF43 /* Lottie */; };
-		B594BA3728B938150000BF43 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = B594BA3628B938150000BF43 /* loading.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,11 +122,11 @@
 		B548F22128B8A83900C4E24F /* DatasetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasetInfo.swift; sourceTree = "<group>"; };
 		B548F22328B8AB3400C4E24F /* ColDescInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColDescInfo.swift; sourceTree = "<group>"; };
 		B548F22528B8AE0F00C4E24F /* InstallInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallInfo.swift; sourceTree = "<group>"; };
+		B57FCA7128B94BED0012164F /* dots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dots.json; sourceTree = "<group>"; };
 		B594BA2A28B8B1560000BF43 /* InquiryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryInfo.swift; sourceTree = "<group>"; };
 		B594BA2C28B8F5030000BF43 /* AnnoationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoationView.swift; sourceTree = "<group>"; };
 		B594BA2E28B90D250000BF43 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		B594BA3028B919350000BF43 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
-		B594BA3628B938150000BF43 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -418,7 +418,7 @@
 		B594BA3528B938090000BF43 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				B594BA3628B938150000BF43 /* loading.json */,
+				B57FCA7128B94BED0012164F /* dots.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -494,12 +494,12 @@
 				3558D93328B8AA6F000D1925 /* Green.mp3 in Resources */,
 				3558D93228B8AA6F000D1925 /* Red.mp3 in Resources */,
 				B51F19F928B5276300B82CAD /* LaunchScreen.storyboard in Resources */,
+				B57FCA7228B94BED0012164F /* dots.json in Resources */,
 				3558D93128B8AA6F000D1925 /* Yellow.mp3 in Resources */,
 				3558D92C28B8AA40000D1925 /* Gray.mp3 in Resources */,
 				B51F19F628B5276300B82CAD /* Assets.xcassets in Resources */,
 				3558D93428B8AA6F000D1925 /* Blue.mp3 in Resources */,
 				B51F19F428B5276200B82CAD /* Main.storyboard in Resources */,
-				B594BA3728B938150000BF43 /* loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
