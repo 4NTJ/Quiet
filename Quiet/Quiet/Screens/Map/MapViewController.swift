@@ -254,6 +254,8 @@ extension MapViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
+            mapView.showsUserLocation = true
+            mapView.setUserTrackingMode(.follow, animated: true)
             print("GPS 권한 설정됨")
         case .restricted, .notDetermined:
             print("GPS 권한 설정되지 않음")
