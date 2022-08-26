@@ -33,6 +33,7 @@ final class LocationDetailTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupLayout()
+        configureUI()
     }
     
     required init?(coder: NSCoder) {
@@ -57,6 +58,10 @@ final class LocationDetailTableViewCell: UITableViewCell {
                               leading: leadingAnchor,
                               bottom: bottomAnchor,
                               padding: UIEdgeInsets(top: 12, left: 20, bottom: 20, right: 0))
+    }
+    
+    private func configureUI() {
+        selectionStyle = .none
     }
     
     func setLocationData(title: String, content: String?) {

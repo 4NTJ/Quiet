@@ -17,6 +17,7 @@ final class SheetContainerViewController: BaseViewController {
         tableView.separatorColor = .clear
         tableView.isScrollEnabled = false
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(cell: LocationDetailTableViewCell.self)
         return tableView
     }()
@@ -88,5 +89,13 @@ extension SheetContainerViewController: UITableViewDataSource {
         let cell: LocationDetailTableViewCell = tableView.dequeueReusableCell(withType: LocationDetailTableViewCell.self, for: indexPath)
         cell.setLocationData(title: locationText, content: "")
         return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension SheetContainerViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewController = DetailViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

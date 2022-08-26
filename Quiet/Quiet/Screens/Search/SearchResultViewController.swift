@@ -28,6 +28,7 @@ final class SearchResultViewController: SheetViewController<SearchMapViewControl
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
+        setupNavigationPopGesture()
     }
     
     override func configureUI() {
@@ -45,5 +46,12 @@ final class SearchResultViewController: SheetViewController<SearchMapViewControl
         let searchLocationLabel = makeBarButtonItem(with: searchLocationLabel)
         
         navigationItem.leftBarButtonItems = [backButton, searchLocationLabel]
+    }
+
+    // MARK: - Func
+    
+    private func setupNavigationPopGesture() {
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
 }
