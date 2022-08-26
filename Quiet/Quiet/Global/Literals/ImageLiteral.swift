@@ -13,6 +13,9 @@ enum ImageLiteral {
     
     static var btnBack: UIImage { .load(systemName: "chevron.backward") }
     static var btnXmark: UIImage { .load(systemName: "xmark") }
+    static var btnPlay: UIImage { .load(systemName: "play.fill") }
+    static var btnPause: UIImage { .load(systemName: "pause.fill") }
+
     
     // MARK: - Image
     

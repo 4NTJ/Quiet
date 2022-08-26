@@ -9,6 +9,10 @@ import CoreLocation
 import MapKit
 import UIKit
 
+enum LocationType {
+    case dong, gu
+}
+
 final class SearchViewController: BaseViewController {
     
     private enum SearchType {
@@ -21,7 +25,7 @@ final class SearchViewController: BaseViewController {
         static let headerHeight = 66.0
         static let cellHeight = 56.0
         static let guOffset = 250.0
-        static let dongOffset = 184.0
+        static let dongOffset = 160.0
     }
     
     // MARK: - Properties
@@ -35,7 +39,7 @@ final class SearchViewController: BaseViewController {
         textfield.clearButtonMode = .whileEditing
         textfield.autocorrectionType = .no
         textfield.autocapitalizationType = .none
-        textfield.returnKeyType = .search
+        textfield.returnKeyType = .done
         textfield.delegate = self
         return textfield
     }()
@@ -123,6 +127,10 @@ final class SearchViewController: BaseViewController {
         let selectedResult = searchResults[indexPath.row]
         let searchRequest = MKLocalSearch.Request(completion: selectedResult)
         let search = MKLocalSearch(request: searchRequest)
+        let splitKeyword = selectedResult.title.split(separator: " ")
+        let keyword = makeAddressWithoutCountry(with: Array(splitKeyword))
+        UserDefaultHandler.setKeywords(keyword: keyword)
+        
         search.start { (response, error) in
             guard error == nil else {
                 return
@@ -140,12 +148,13 @@ final class SearchViewController: BaseViewController {
     }
     
     private func presentSearchResultView(with placeMark: MKPlacemark, installModel: [InstallInfo]) {
+        let locationType = checkLocationType(placeMark.subLocality ?? "")
         let viewController = SearchResultViewController(
-            contentViewController: SearchMapViewController(),
-            bottomSheetViewController: SheetContainerViewController(),
+            contentViewController: SearchMapViewController(locationType: locationType),
+            bottomSheetViewController: SheetContainerViewController(locationType: locationType),
             bottomSheetConfiguration: .init(
                 height: UIScreen.main.bounds.height * 0.8,
-                initialOffset: Size.guOffset
+                initialOffset: locationType == .gu ? Size.guOffset : Size.dongOffset
             )
         )
 
@@ -161,7 +170,25 @@ final class SearchViewController: BaseViewController {
         present(navigationController, animated: true)
     }
     
-    // MARK: - Selector
+    private func checkLocationType(_ subLocality: String) -> LocationType {
+        if subLocality.last == "동" {
+            return .dong
+        } else {
+            return .gu
+        }
+    }
+    
+    private func makeAddressWithoutCountry(with splitedKeyword: [String.SubSequence]) -> String {
+        var address: String = ""
+        
+        for index in 1..<splitedKeyword.count {
+            address += splitedKeyword[index] + " "
+        }
+        
+        return address
+    }
+    
+    // MARK: - selector
     
     @objc
     private func keyboardWillShow(_ notification:NSNotification) {
@@ -265,11 +292,6 @@ extension SearchViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        
-        guard let keyword = textField.text else { return false }
-        UserDefaultHandler.setKeywords(keyword: keyword)
-        searchTableView.reloadData()
-        
         return true
     }
     

@@ -4,15 +4,39 @@
 //
 //  Created by DaeSeong on 2022/08/25.
 //
-
+import AVFoundation
 import UIKit
+
+
+protocol ListeningDelegate: AnyObject {
+    func pausePreviusSound(id: Int)
+}
 
 class NoiseInfoView: UIStackView {
     // MARK: - Properties
     
     
     private let id: Int
-    
+    var audioPlayer: AVPlayer?
+    weak var delegate: ListeningDelegate?
+    var isSoundClicked = false {
+        didSet{
+            if isSoundClicked {
+                listeningButton.setImage(ImageLiteral.btnPause, for: .normal)
+                guard let playingId = UserData<Int>.getValue(forKey: DataKeys.playing) else { audioPlayer?.play() ; return }
+                
+                delegate?.pausePreviusSound(id: playingId)
+                UserData<Int>.setValue(id, forKey: DataKeys.playing)
+                audioPlayer?.play()
+            } else {
+                listeningButton.setImage(ImageLiteral.btnPlay, for: .normal)
+                UserData<Int>.setValue(-1, forKey: DataKeys.playing)
+
+                audioPlayer?.pause()
+
+            }
+        }
+    }
     private let title: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
@@ -21,24 +45,30 @@ class NoiseInfoView: UIStackView {
     private let levelLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.textColor = .systemGray
         return label
     }()
     private let markColorLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.textColor = .systemGray
         return label
     }()
     private let exampleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.textColor = .systemGray
         return label
     }()
-    private let listeningLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        label.textColor = .systemCyan
-        label.text = "▶︎ 들어보기"
-        return label
+    private lazy var listeningButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        button.setTitleColor(.systemCyan, for: .normal)
+        button.tintColor = .systemCyan
+        button.setTitle(" 들어보기", for: .normal)
+        button.setImage(ImageLiteral.btnPlay, for: .normal)
+        button.addTarget(self, action: #selector(soundTapped), for: .touchUpInside)
+        return button
     }()
     
     private let firstStackView: UIStackView = {
@@ -80,7 +110,7 @@ class NoiseInfoView: UIStackView {
     // MARK: - Func
     
     
-    func setupLayout() {
+    private func setupLayout() {
         self.addArrangedSubview(firstStackView)
         firstStackView.addArrangedSubview(title)
     
@@ -88,13 +118,24 @@ class NoiseInfoView: UIStackView {
         secondStackView.addArrangedSubview(levelLabel)
         secondStackView.addArrangedSubview(markColorLabel)
         secondStackView.addArrangedSubview(exampleLabel)
-        secondStackView.addArrangedSubview(listeningLabel)
+        secondStackView.addArrangedSubview(listeningButton)
     }
     
-    func configureUI() {
+    private func configureUI() {
         self.axis = .vertical
         self.alignment = .leading
         self.distribution = .fillProportionally
         self.spacing = 16
+    }
+    
+    @objc private func soundTapped() {
+        guard let url = Bundle.main.url(forResource: Noise.sampleData[id-1].soundName, withExtension: "mp3") else {return}
+        do {
+            audioPlayer = try AVPlayer(url: url)
+        } catch {
+            print("audio file error")
+        }
+        isSoundClicked.toggle()
+
     }
 }
