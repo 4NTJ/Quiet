@@ -23,6 +23,11 @@ final class NoiseLineChartView: UIView {
     
     func drawLineChart() {
         lineChart = LineChartView()
+        
+        lineChart.noDataText = NSLocalizedString("Loading...", comment: "Loading...")
+        lineChart.noDataFont = .systemFont(ofSize: 20)
+        lineChart.noDataTextColor = .lightGray
+        
         addSubview(lineChart)
         
         lineChart.constraint(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor)
@@ -38,10 +43,6 @@ final class NoiseLineChartView: UIView {
         
         let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "시간별 소음레벨")
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
-        
-        lineChart.noDataText = NSLocalizedString("chart_no_data", comment: "Loading...")
-        lineChart.noDataFont = .systemFont(ofSize: 20)
-        lineChart.noDataTextColor = .lightGray
         
         let limitLine = ChartLimitLine(limit: 120, label: "한도")
         lineChart.rightAxis.addLimitLine(limitLine)

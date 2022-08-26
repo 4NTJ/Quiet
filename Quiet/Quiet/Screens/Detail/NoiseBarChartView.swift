@@ -22,6 +22,10 @@ final class NoiseBarChartView: UIView {
     }
     
     func drawBarChart() {
+        horizontalBarChart.noDataText = NSLocalizedString("Loading...", comment: "Loading...")
+        horizontalBarChart.noDataFont = .systemFont(ofSize: 20)
+        horizontalBarChart.noDataTextColor = .lightGray
+        
         addSubview(horizontalBarChart)
         
         self.horizontalBarChart.constraint(
