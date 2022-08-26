@@ -9,6 +9,7 @@ import Foundation
 
 enum DataKeys: String, CaseIterable {
     case keywords = "keywords"
+    case playing = "play"
 }
 
 struct UserDefaultStorage {
