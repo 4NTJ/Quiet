@@ -277,9 +277,14 @@ extension SearchViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        switch searchType {
+        case .search:
+            fetchPlaceMark(with: indexPath)
+        default:
+            print("안되지")
+        }
         
-        fetchPlaceMark(with: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

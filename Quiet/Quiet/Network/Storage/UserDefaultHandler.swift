@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 struct UserDefaultHandler {
     static func clearAllData() {
