@@ -50,10 +50,12 @@ class MapViewController: UIViewController {
         setDelegation()
         setupLayout()
         btnAddTargets()
-        configureUI()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
     override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
         locationManager.stopUpdatingLocation()
     }
     
@@ -104,10 +106,6 @@ class MapViewController: UIViewController {
                                                         left: 0,
                                                         bottom: 16,
                                                         right: 20))
-    }
-    
-    private func configureUI() {
-        navigationController?.navigationBar.isHidden = true
     }
     
     private func getLocationUsagePermission() {
