@@ -42,12 +42,14 @@ final class SearchMapViewController: BaseViewController {
     }
     private var locationType: LocationType
     private var locationData: [InstallInfo]
+    private var currentCoordinator: CLLocationCoordinate2D
     
     // MARK: - Init
     
-    init(locationType: LocationType, locationData: [InstallInfo]) {
+    init(locationType: LocationType, locationData: [InstallInfo], currentCoordinator: CLLocationCoordinate2D) {
         self.locationType = locationType
         self.locationData = locationData
+        self.currentCoordinator = currentCoordinator
         super.init()
     }
     
@@ -140,6 +142,13 @@ final class SearchMapViewController: BaseViewController {
     }
     
     private func moveLocation() {
+        guard !locationData.isEmpty else {
+            let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            let region = MKCoordinateRegion(center: currentCoordinator, span: span)
+            mapView.setRegion(region, animated: true)
+            return
+        }
+        
         let averageLocation = calculateAverageLocation()
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: averageLocation, span: span)
@@ -169,6 +178,14 @@ final class SearchMapViewController: BaseViewController {
         mapView.showsUserLocation.toggle()
         mapView.setUserTrackingMode(.follow, animated: true)
         locationBtnCliked.toggle()
+    }
+    
+    // MARK: - Network
+    
+    private func fetchSpecificLocationData(modelSerial: String, completion: @escaping (([InquiryInfo]) -> ())) {
+        IoTAPI().fetchInquiry(datasetNo: GeneralAPI.noiseDatasetNo, modelSerial: modelSerial, inqDt: Date.getCurrentDate(with: "20220801"), currPageNo: 1) { data in
+            
+        }
     }
 }
 
@@ -211,5 +228,21 @@ extension SearchMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let coordinate = view.annotation?.coordinate else { return }
         mapView.setCenter(coordinate, animated: true)
+        var modelSerial = ""
+        
+        locationData.forEach {
+            let isSameLongitude = Double($0.longitude ?? "0") == view.annotation?.coordinate.longitude
+            let isSameLatitude = Double($0.latitude ?? "0") == view.annotation?.coordinate.latitude
+            
+            if isSameLatitude && isSameLongitude {
+                guard let modlSerial = $0.modlSerial else { return }
+                modelSerial = modlSerial
+                return
+            }
+        }
+        
+        fetchSpecificLocationData(modelSerial: modelSerial) { data in
+            dump(data)
+        }
     }
 }

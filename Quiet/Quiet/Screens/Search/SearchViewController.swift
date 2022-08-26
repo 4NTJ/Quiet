@@ -148,10 +148,11 @@ final class SearchViewController: BaseViewController {
     }
     
     private func presentSearchResultView(with placeMark: MKPlacemark, installModel: [InstallInfo]) {
+        let coordinate2D = placeMark.coordinate
         let locationType = checkLocationType(placeMark.subLocality ?? "")
         let sheetContainerViewController = SheetContainerViewController(locationType: locationType, locationData: installModel)
         let viewController = SearchResultViewController(
-            contentViewController: SearchMapViewController(locationType: locationType, locationData: installModel),
+            contentViewController: SearchMapViewController(locationType: locationType, locationData: installModel, currentCoordinator: coordinate2D),
             bottomSheetViewController: sheetContainerViewController,
             bottomSheetConfiguration: .init(
                 height: UIScreen.main.bounds.height * 0.8,
