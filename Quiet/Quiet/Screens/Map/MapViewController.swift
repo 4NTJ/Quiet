@@ -11,7 +11,7 @@ import UIKit
 class MapViewController: UIViewController {
     // MARK: - Properties
     
-    private var locationBtnCliked = false {
+    private var locationBtnCliked = true {
         didSet {
             let image = locationBtnCliked ?  ImageLiteral.icLocationFill
                 .resize(to: CGSize(width: 25, height: 25)) :
@@ -40,7 +40,7 @@ class MapViewController: UIViewController {
     }()
     
     private let manualButton: UIButton = CircleButton(buttonImage: "info.circle.fill")
-    private let locationButton: UIButton = CircleButton(buttonImage: "location")
+    private let locationButton: UIButton = CircleButton(buttonImage: "location.fill")
     
     
     
@@ -53,6 +53,7 @@ class MapViewController: UIViewController {
         setDelegation()
         setupLayout()
         btnAddTargets()
+        setMapRegion()
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
@@ -127,10 +128,20 @@ class MapViewController: UIViewController {
     
     @objc private func locationButtonTapped() {
         mapView.showsUserLocation.toggle()
-        mapView.setUserTrackingMode(.follow, animated: true)
         locationBtnCliked.toggle()
+        if mapView.showsUserLocation {
+            mapView.setUserTrackingMode(.follow, animated: true)
+        } else {
+            mapView.setUserTrackingMode(.none, animated: true)
+
+        }
     }
     
+    private func setMapRegion() {
+        guard let locationCoorinate = locationManager.location?.coordinate else {return}
+            let region = MKCoordinateRegion(center: locationCoorinate, span: MKCoordinateSpan(latitudeDelta: 0.016, longitudeDelta: 0.016) )
+        mapView.setRegion(region, animated: true)
+    }
 }
 
 
