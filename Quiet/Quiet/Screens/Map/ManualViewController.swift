@@ -8,7 +8,7 @@
 import SafariServices
 import UIKit
 
-class ManualViewController: UIViewController {
+final class ManualViewController: BaseViewController {
     // MARK: - Properties
     
 
@@ -88,13 +88,11 @@ class ManualViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
         linkButton.addTarget(self,
                              action: #selector(linkTapped),
                              for: .touchUpInside)
         setDelegation()
-        setupLayout()
-        configureUI()
-        
     }
     
     
@@ -109,7 +107,7 @@ class ManualViewController: UIViewController {
 
     }
     
-    func setupLayout() {
+    override func setupLayout() {
         view.addSubview(scrollView)
         scrollView.constraint(to: view)
         
@@ -154,17 +152,19 @@ class ManualViewController: UIViewController {
         
         
     }
-    func configureUI() {
-        view.backgroundColor = .systemBackground
+    override func configureUI() {
+        super.configureUI()
         
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .semibold)]
+        
         title = "소음 분류"
+    }
+    
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
     }
     
     @objc func linkTapped() {
