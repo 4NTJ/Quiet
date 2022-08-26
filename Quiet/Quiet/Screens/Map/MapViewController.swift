@@ -30,7 +30,8 @@ class MapViewController: BaseViewController {
         }
     }
     var locationText: String = ""
-    
+    private var circle: MKOverlay?
+
     private var noiseLevel: NoiseLevel = .level_1
 
     private var locationData: [InstallInfo] = []
@@ -174,7 +175,21 @@ class MapViewController: BaseViewController {
         mapView.setRegion(region, animated: true)
     }
     
-
+    private func setupAnnoationCircle(with center: CLLocationCoordinate2D) {
+        removeCircle()
+        
+        let distance = CLLocationDistance(300)
+        circle = MKCircle(center: center, radius: distance)
+        
+        mapView.addOverlay(circle!)
+    }
+    
+    private func removeCircle() {
+        if let circle = self.circle {
+            self.mapView.removeOverlay(circle)
+            self.circle = nil
+        }
+    }
     
     
     // MARK: - Network
@@ -194,9 +209,11 @@ class MapViewController: BaseViewController {
                 let noiseLevel = getNoiseLevel(dbValue: Double(currentNoise) ?? 0.0)
                 let noiseText = "\(noiseLevel.sheetComment)\n\(noiseLevel.level)"
 
+                self.noiseLevel = noiseLevel
                 self.selectedInfoView.setLocationData(content: noiseText,
                                                        address: address)
-                                                     
+                self.setupAnnoationCircle(with: coordinate2D)
+
             }
         }
     }
@@ -326,6 +343,14 @@ extension MapViewController: MKMapViewDelegate {
         
         selectedInfoView.setLocationTitle(title: "")
         selectedInfoView.setLocationData(content: "", address: "")
+        removeCircle()
 
     }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let circleRenderer : MKCircleRenderer = MKCircleRenderer(overlay: overlay)
+        circleRenderer.fillColor = noiseLevel.color.withAlphaComponent(0.3)
+        return circleRenderer
+    }
+    
 }
