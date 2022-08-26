@@ -311,6 +311,7 @@
 		B51F1A6628B666E800B82CAD /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				B594BA2C28B8F5030000BF43 /* AnnoationView.swift */,
 				3558D91628B71541000D1925 /* CircleButton.swift */,
 				B51F1A6728B6674600B82CAD /* BackButton.swift */,
 			);
@@ -331,7 +332,6 @@
 			isa = PBXGroup;
 			children = (
 				B51F1A6D28B6739900B82CAD /* RecentKeywordHeaderView.swift */,
-				B594BA2C28B8F5030000BF43 /* AnnoationView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
