@@ -196,7 +196,6 @@ class DetailViewController: UIViewController {
         configureUI()
         setupNavigationBar()
 
-        // Do any additional setup after loading the view.
         let startingDateInt = 20220701
         var times: [Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         var days: [Int] = Array(repeating: 0, count: 7)
@@ -206,18 +205,10 @@ class DetailViewController: UIViewController {
                 let newData = data.map { Int($0.column14 ?? "0") ?? 0 }
                 times = zip(times, newData).map(+)
                 days[((startingDateInt+i)%100 + 3)%7] = times.reduce(0, +)/24
-                print("days: \(days)")
-                
-                print("startingDate : ", startingDateInt)
-                print(times)
                 self.dbValues = times.map{ hourVal in
                     Double(hourVal/30)
                 }
-                
-                self.barDbValues = [Double(((days[0] + days[1] + days[2] + days[3] + days[4])/30)/5), Double((days[5]/30 + days[6]/30)/2)]
-                
-                print("dbValues: \(self.dbValues)")
-                print("barDbValues: \(self.barDbValues)")
+                self.barDbValues = [Double(((days[5] + days[6])/30)/2), Double(((days[0] + days[1] + days[2] + days[3] + days[4])/30)/5)]
                 
                 DispatchQueue.main.async {
                     self.setupLineChartView()
