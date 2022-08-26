@@ -40,6 +40,7 @@ final class SearchMapViewController: BaseViewController {
             locationButton.setImage(image, for: .normal)
         }
     }
+    private var noiseLevel: NoiseLevel = .level_1
     private var locationType: LocationType
     private var locationData: [InstallInfo]
     private var currentCoordinator: CLLocationCoordinate2D
@@ -202,6 +203,7 @@ final class SearchMapViewController: BaseViewController {
                 NotificationCenter.default.post(name: .noiseDetail, object: noiseText)
                 NotificationCenter.default.post(name: .address, object: address)
                 
+                self.noiseLevel = noiseLevel
                 self.setupAnnoationCircle(with: coordinate2D)
             }
         }
@@ -270,7 +272,7 @@ extension SearchMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let circleRenderer : MKCircleRenderer = MKCircleRenderer(overlay: overlay)
-        circleRenderer.fillColor = .green.withAlphaComponent(0.5)
+        circleRenderer.fillColor = noiseLevel.color.withAlphaComponent(0.3)
         return circleRenderer
     }
 }

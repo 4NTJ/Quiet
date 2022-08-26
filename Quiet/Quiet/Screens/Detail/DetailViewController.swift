@@ -79,6 +79,21 @@ enum NoiseLevel {
             return "😱 “소음이 인체에 영향을 주는 위험 지역이에요”"
         }
     }
+    
+    var color: UIColor {
+        switch self {
+        case .level_1:
+            return .systemGray
+        case .level_2:
+            return .systemBlue
+        case .level_3:
+            return .systemGreen
+        case .level_4:
+            return .systemYellow
+        case .level_5:
+            return .systemRed
+        }
+    }
 }
 
 class DetailViewController: UIViewController {
