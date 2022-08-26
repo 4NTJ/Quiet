@@ -241,7 +241,7 @@ class MapViewController: BaseViewController {
     @objc
     private func selectedInfoViewTapped() {
         guard !locationData.isEmpty else { return }
-        let viewController = DetailViewController()
+        let viewController = DetailViewController(title: "", noiseLevel: .level_1, deviceModel: "")
         navigationController?.pushViewController(viewController, animated: true)
     }
   
