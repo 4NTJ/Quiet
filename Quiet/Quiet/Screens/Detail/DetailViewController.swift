@@ -177,14 +177,15 @@ class DetailViewController: BaseViewController {
     
     var navigationTitle: String
     var noiseLevel: NoiseLevel
-    
+    var deviceModel: String
     // MARK: - Init
     
     init(title: String, noiseLevel: NoiseLevel, deviceModel: String) {
         self.navigationTitle = title
         self.noiseLevel = noiseLevel
+        self.deviceModel = deviceModel
         super.init()
-        self.fetchData(deviceModel: deviceModel)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -205,21 +206,23 @@ class DetailViewController: BaseViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        DispatchQueue.main.asyncAfter(deadline: .now()+5.0, execute: {
+        
+        self.fetchData(deviceModel: deviceModel) {
             self.setupLineChartView()
             self.setupBarChartView()
             self.stopLottieAnimation()
-        })
+        }
     }
     
-    private func fetchData(deviceModel: String) {
+    private func fetchData(deviceModel: String, completion: @escaping () -> ()) {
         let startingDateInt = 20220701
         var times: [Int] = Array(repeating: 0, count: 25)
         var days: [Int] = Array(repeating: 0, count: 7)
 
         setupLottieView()
-        
+        let myGroup = DispatchGroup()
         for i in 0...7 {
+            myGroup.enter()
             IoTAPI().fetchInquiry(datasetNo: 48, modelSerial: deviceModel, inqDt: String(startingDateInt+i), currPageNo: 1) { data in
                 let newData = data.map { Int($0.column14 ?? "0") ?? 0 }
                 times = zip(times, newData).map(+)
@@ -229,8 +232,12 @@ class DetailViewController: BaseViewController {
                 }
                 self.barDbValues = [Double((days[5] + days[6])/2)/7, Double((days[0] + days[1] + days[2] + days[3] + days[4])/5)/7]
                 print("barDbValues: \(self.barDbValues)")
+                myGroup.leave()
             }
         }
+        myGroup.notify(queue: .main) {
+                      completion()
+                  }
     }
     
     
