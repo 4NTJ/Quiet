@@ -97,7 +97,7 @@ enum NoiseLevel {
 }
 
 class DetailViewController: BaseViewController {
-
+    
     // MARK: - Properties
     
     var averageNoiseDb: Double = 30.0
@@ -218,7 +218,7 @@ class DetailViewController: BaseViewController {
         let startingDateInt = 20220701
         var times: [Int] = Array(repeating: 0, count: 25)
         var days: [Int] = Array(repeating: 0, count: 7)
-
+        
         setupLottieView()
         let myGroup = DispatchGroup()
         for i in 0...7 {
@@ -236,8 +236,8 @@ class DetailViewController: BaseViewController {
             }
         }
         myGroup.notify(queue: .main) {
-                      completion()
-                  }
+            completion()
+        }
     }
     
     
@@ -267,8 +267,8 @@ class DetailViewController: BaseViewController {
         
         scrollContentView.addSubview(dayChartDescriptionLabel)
         dayChartDescriptionLabel.constraint(top: dayChartLabel.bottomAnchor,
-                                 leading: scrollContentView.leadingAnchor,
-                                 padding: .init(top: 10.0, left: 20.0, bottom: 0, right: 0))
+                                            leading: scrollContentView.leadingAnchor,
+                                            padding: .init(top: 10.0, left: 20.0, bottom: 0, right: 0))
         
         scrollContentView.addSubview(lineChartView)
         lineChartView.constraint(top: dayChartDescriptionLabel.bottomAnchor,
@@ -291,8 +291,8 @@ class DetailViewController: BaseViewController {
         
         scrollContentView.addSubview(weeklyChartDescriptionLabel)
         weeklyChartDescriptionLabel.constraint(top: weeklyChartLabel.bottomAnchor,
-                                 leading: scrollContentView.leadingAnchor,
-                                 padding: .init(top: 10.0, left: 20.0, bottom: 0, right: 0))
+                                               leading: scrollContentView.leadingAnchor,
+                                               padding: .init(top: 10.0, left: 20.0, bottom: 0, right: 0))
         
         scrollContentView.addSubview(self.barChartView)
         barChartView.constraint(barChartView.heightAnchor, constant: 200)
@@ -303,7 +303,7 @@ class DetailViewController: BaseViewController {
             trailing: infoBoxView.trailingAnchor,
             padding: .init(top: 20, left: 0, bottom: 20, right: 0)
         )
-
+        
     }
     
     override func configureUI() {
