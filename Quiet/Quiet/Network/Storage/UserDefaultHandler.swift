@@ -49,6 +49,7 @@ struct UserDefaultHandler {
         var latitudes: [Double] = UserDefaultStorage.latitude
         var longitudes: [Double] = UserDefaultStorage.longitude
         
+        
         latitudes.append(latitude)
         longitudes.append(longitude)
         UserData.setValue(latitudes, forKey: .latitude)
