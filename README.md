@@ -10,13 +10,16 @@
 
 <img width="200" alt="image" src = "https://user-images.githubusercontent.com/69894461/197430833-d8aab984-e652-4026-9c17-e08ba605b72c.png">
 
+[🔍 Presentation PDF 🔍](https://github.com/4NTJ/Quiet/files/9848202/IoT._Quiet_NTJ2.pdf)
+
+
 </div>
-  
+ <br/>
+
 ### 📱 Screenshots
 
 <img width="1000" alt="image" src = "https://user-images.githubusercontent.com/69894461/197430999-11274d91-3d47-41a9-8f7e-2fcff071efac.png">
 
-<br/>
 
 > **2022년 서울시 IoT 공공도시데이터활용 해커톤 최우수상**
 
@@ -25,15 +28,21 @@
 
 
 > 현재 공공도시데이터 API 접근이 제한되어 앱 기능 실행에 문제가 있습니다 😥
+
+<br/>
+
 ### 🛠 Development Environment
 
 <img width="77" alt="스크린샷 2021-11-19 오후 3 52 02" src="https://img.shields.io/badge/iOS-15.0+-silver"> <img width="95" alt="스크린샷 2021-11-19 오후 3 52 02" src="https://img.shields.io/badge/Xcode-14.0.1-blue">
+
+<br/>
 
 
 ### :sparkles: Skills & Tech Stack
 
 - UIKit
 - MapKit
+<br/>
 
 ### 🎁 Library
 | 라이브러리        | Version |       |
